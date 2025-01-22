@@ -1,0 +1,108 @@
+﻿@* @model IEnumerable<MyEvent.DTOs.EventDTO> *@
+@model MyEvent.ViewModels.VMEvent
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Pic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().EventHolder.EventHolderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().EventType.EventType1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault().Venue.VenueName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Events)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventHolder.EventHolderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventType.EventType1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venue.VenueName)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <form asp-action="Index"> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Area" class="control-label"></label> *@
+@*                 <select asp-for="Area" class="form-control"></select> *@
+@*                 <span asp-validation-for="Area" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" value="Create" class="btn btn-primary" /> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@

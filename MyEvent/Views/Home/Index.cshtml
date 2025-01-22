@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyEvent.Models.Event>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home Page";
+    // int c = 0;
+}
+<style>
+    h2{
+        margin-top: 300px;
+        font-size: 50pt;
+        font-weight: 900;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>有趣的演出都在這</h2>
+            <button>瀏覽演出</button>
+        </div>
+        <div class="col-4">
+            <img />
+        </div>
+    </div>
+    
+</div>
+@* 2.表演列表 *@
+<div class="row mt-5">
+    @await Component.InvokeAsync("VCEventsTopFour")
+</div>
+
+@* 3. 放跟資料庫無關的banner圖 *@
+
+
+@* <div id="HomePhoto" class="carousel slide my-3" data-bs-ride="carousel"> *@
+@*     <div class="carousel-indicators"> *@
+@*         @for (int i = 0; i < Model.Count(); i++) *@
+@*         { *@
+@*         //判斷是否為第一張，若是，要加上active的class *@
+@*             <button type="button" data-bs-target="#HomePhoto" class="@(i==0? "active":"")" data-bs-slide-to="@i" aria-label="Slide @(i + 1)"></button> *@
+@*         } *@
+
+@*     </div> *@
+@*     <div class="carousel-inner"> *@
+@*         @foreach (var item in Model) *@
+@*         { *@
+@*             <div class="carousel-item @(c==0? "active":"")"> *@
+@*                 @* <img src="~/BookPhotos/@item.Photo" class="d-block w-100" alt="@item.Description"> *@ 
+@*                 <div class="carousel-caption d-none d-md-block"> *@
+@*                     <h5>Title</h5> *@
+@*                 </div> *@
+@*             </div> *@
+@*             c++; *@
+@*         } *@
+@*     </div> *@
+@*     <button class="carousel-control-prev" type="button" data-bs-target="#HomePhoto" data-bs-slide="prev"> *@
+@*         <span class="carousel-control-prev-icon" aria-hidden="true"></span> *@
+@*         <span class="visually-hidden">Previous</span> *@
+@*     </button> *@
+@*     <button class="carousel-control-next" type="button" data-bs-target="#HomePhoto" data-bs-slide="next"> *@
+@*         <span class="carousel-control-next-icon" aria-hidden="true"></span> *@
+@*         <span class="visually-hidden">Next</span> *@
+@*     </button> *@
+@* </div> *@
+
+
+
+

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MyEvent.Models.Event> 
+@{
+    // ViewData["Title"] = "Default";
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-3">
+        <div class="card mt-3">
+            @* overflow auto:超出就出現scroll bar *@
+
+            @* <img src="~/BookPhotos/@Model.Photo" class="card-img-top" style="height:300px;overflow:hidden" /> *@
+            <div class="card-body" style="height:300px;overflow:hidden">
+                <h4>@item.EventName</h4>
+                <p>@item.Date</p>
+                <p>@item.Price</p>
+            </div>
+        </div>
+    </div>
+}
+<div class="col-12 text-center my-4">
+    <a asp-action="Index" asp-controller="Browse">看更多留言</a>
+</div>
