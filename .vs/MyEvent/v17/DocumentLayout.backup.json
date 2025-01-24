@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\members\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\models\\areadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\models\\areadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\models\\areainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\models\\areainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\wwwroot\\data\\area_data.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\wwwroot\\data\\area_data.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\models\\areadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\models\\areadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\browse\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "area_data.json",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\data\\area_data.json",
               "RelativeDocumentMoniker": "MyEvent\\wwwroot\\data\\area_data.json",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "AreaInfo.cs",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Models\\AreaInfo.cs",
               "RelativeDocumentMoniker": "MyEvent\\Models\\AreaInfo.cs",
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AreaData.cs",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Models\\AreaData.cs",
               "RelativeDocumentMoniker": "MyEvent\\Models\\AreaData.cs",
@@ -84,8 +84,7 @@
               "RelativeToolTip": "MyEvent\\Models\\AreaData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T07:41:25.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T07:41:25.684Z"
             },
             {
               "$type": "Document",
@@ -95,20 +94,20 @@
               "RelativeDocumentMoniker": "MyEvent\\Views\\Members\\Create.cshtml",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Members\\Create.cshtml",
               "RelativeToolTip": "MyEvent\\Views\\Members\\Create.cshtml",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAADYAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAB8AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-23T06:08:13.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MembersController.cs",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\MembersController.cs",
               "RelativeDocumentMoniker": "MyEvent\\Controllers\\MembersController.cs",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\MembersController.cs",
               "RelativeToolTip": "MyEvent\\Controllers\\MembersController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwDsAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAD0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T06:06:42.842Z",
               "EditorCaption": ""
@@ -123,8 +122,7 @@
               "RelativeToolTip": "MyEvent\\ViewModels\\VMEvent.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T02:23:45.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T02:23:45.752Z"
             },
             {
               "$type": "Document",
@@ -136,8 +134,7 @@
               "RelativeToolTip": "MyEvent\\Views\\Browse\\Index.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-22T01:16:08.918Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T01:16:08.918Z"
             },
             {
               "$type": "Document",
@@ -149,8 +146,7 @@
               "RelativeToolTip": "MyEvent\\Controllers\\BrowseController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAxwE0AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T01:14:45.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T01:14:45.147Z"
             }
           ]
         }

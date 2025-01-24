@@ -29,34 +29,31 @@
             </div>
             <div class="form-group">
                 <label asp-for="Birthday" class="control-label"></label>
-                <input asp-for="Birthday" class="form-control" />
+                <input asp-for="Birthday" class="form-control" type="date"/>
                 <span asp-validation-for="Birthday" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ZipCode" class="control-label"></label>
-                <input asp-for="ZipCode" class="form-control" />
+                @* <input asp-for="ZipCode" class="form-control" /> *@
+                <p></p>
                 <span asp-validation-for="ZipCode" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 @* <input asp-for="City" class="form-control" /> *@
-                <select name="City" class="form-control" onchange="updateDistricts()">
+                <select id="city" name="City" class="form-control" onchange="updateDistricts()">
                     <option value="">請選擇城市</option>  
                     @foreach (var city in cities)
                     {
-                        <option id="city" value="@city">@city</option>
+                        <option value="@city">@city</option>
                     }
                 </select>
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Area" class="control-label"></label>
-                @* <input asp-for="Area" class="form-control" /> *@
                 <select id="district" name="Area" class="form-control" disabled>
-                    @foreach (var district in districts)
-                    {
                         <option value="">請先選擇城市</option>
-                    }
                 </select>
                 <span asp-validation-for="Area" class="text-danger"></span>
             </div>
@@ -90,8 +87,7 @@
                 const districtSelect = document.getElementById('district');
 
                 // 清空區域選單
-                // districtSelect.innerHTML = '<option value="">請選擇區域</option>';
-
+                districtSelect.innerHTML = '<option value="">請選擇區域</option>';
 
                 if (city && areaData[city]) {
                     // 根據選擇的城市填充區域選單
