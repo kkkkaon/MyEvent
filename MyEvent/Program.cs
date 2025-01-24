@@ -6,8 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MyEventContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("MyEventConnection")));
 
-builder.Services.AddDbContext<MyEventContext2>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("MyEventConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

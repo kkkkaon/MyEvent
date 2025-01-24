@@ -132,11 +132,9 @@ public partial class MyEventContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.Address).HasMaxLength(30);
             entity.Property(e => e.Area)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(10);
             entity.Property(e => e.City)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(5);
             entity.Property(e => e.JoinDate).HasColumnType("datetime");
             entity.Property(e => e.EventHolderName).HasMaxLength(50);
             entity.Property(e => e.Tel).HasMaxLength(15);
@@ -179,11 +177,9 @@ public partial class MyEventContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.Address).HasMaxLength(30);
             entity.Property(e => e.Area)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(10);
             entity.Property(e => e.City)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(5);
             entity.Property(e => e.JoinDate).HasColumnType("datetime");
             entity.Property(e => e.MemberName).HasMaxLength(50);
             entity.Property(e => e.ZipCode).HasMaxLength(6);
@@ -348,15 +344,14 @@ public partial class MyEventContext : DbContext
             entity.HasKey(e => e.VenueID).HasName("PK__Venue__3C57E5D275B2916E");
 
             entity.Property(e => e.VenueID)
-                .HasMaxLength(5)
+                .HasMaxLength(1)
                 .IsFixedLength();
             entity.Property(e => e.Address).HasMaxLength(30);
             entity.Property(e => e.Area)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(10);
             entity.Property(e => e.City)
-                .HasMaxLength(3)
-                .IsFixedLength();
+                .HasMaxLength(5);
+                
             entity.Property(e => e.VenueName).HasMaxLength(50);
             entity.Property(e => e.Region)
                 .HasMaxLength(2)

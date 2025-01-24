@@ -29,7 +29,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 00:37:55 GMT"
+          "Value": "Thu, 23 Jan 2025 05:42:12 GMT"
         }
       ],
       "EndpointProperties": [
@@ -74,7 +74,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Jan 2025 00:37:55 GMT"
+          "Value": "Thu, 23 Jan 2025 05:42:12 GMT"
         }
       ],
       "EndpointProperties": [
@@ -163,6 +163,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+        }
+      ]
+    },
+    {
+      "Route": "data/area_data.json",
+      "AssetFile": "data/area_data.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3ptCIVLdSERSVw+Pzjgz3fHT8C2fr5D3fW+5RFe/wjg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 24 Jan 2025 00:32:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3ptCIVLdSERSVw+Pzjgz3fHT8C2fr5D3fW+5RFe/wjg="
+        }
+      ]
+    },
+    {
+      "Route": "data/area_data.qh6ske8utq.json",
+      "AssetFile": "data/area_data.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3ptCIVLdSERSVw+Pzjgz3fHT8C2fr5D3fW+5RFe/wjg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 24 Jan 2025 00:32:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qh6ske8utq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3ptCIVLdSERSVw+Pzjgz3fHT8C2fr5D3fW+5RFe/wjg="
+        },
+        {
+          "Name": "label",
+          "Value": "data/area_data.json"
         }
       ]
     },

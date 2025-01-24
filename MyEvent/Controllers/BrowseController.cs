@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using MyEvent.DTOs;
 using MyEvent.Models;
+using MyEvent.ViewModels;
 
 namespace MyEvent.Controllers
 {
@@ -20,35 +23,35 @@ namespace MyEvent.Controllers
         }
 
         // GET: Browse
-        public async Task<IActionResult> Index(string? EventType, string? Area, DateOnly StartDate, DateOnly EndDate)
+        public async Task<IActionResult> Index(IEnumerable<string>? EventTypeID, IEnumerable<string>? Region, DateOnly StartDate, DateOnly EndDate)
         {
-
-            //VMtStudent students = new VMtStudent()
-            //{
-            //    //這裡的名字要跟類別裡定義的屬性名稱相同
-            //    Students = db.tStudent.Where(s => s.DeptID == deptid).ToList(),
-            //    Departments = db.Department.ToList()
-            //};
-
             var events = _context.Event.Include(h => h.EventHolder).Include(t => t.EventType).Include(v => v.Venue).AsQueryable();
 
-            if (!string.IsNullOrEmpty(EventType))
+
+
+            if (EventTypeID != null && EventTypeID.Any())
             {
-                events = events.Where(e => e.EventType.EventType1.Contains(EventType));
+                events = events.Where(e => EventTypeID.Contains(e.EventType.EventTypeID));
             }
-            if (!string.IsNullOrEmpty(Area))
+            
+
+            if (Region != null && Region.Any())
             {
-                events = events.Where(e => e.Venue.Area.Contains(Area));
+                events = events.Where(e => Region.Contains(e.Venue.Region));
             }
             if (StartDate != DateOnly.MinValue && EndDate != DateOnly.MinValue)
             {
                 events = events.Where(e => e.Date >= StartDate && e.Date <= EndDate);
             }
-            
+
+            var result = await events.ToListAsync();
 
 
+            ViewBag.EventType = new SelectList(await _context.EventType.ToListAsync(), "EventTypeID", "EventType1");
 
-            return View(await events.Select(p => ItemEvent(p)).ToListAsync());
+            ViewBag.Region = new SelectList(_context.Venue, "Region", "Region");
+
+            return View(result);
         }
 
         // GET: Browse/Details/5
@@ -72,21 +75,6 @@ namespace MyEvent.Controllers
             return View(@event);
         }
 
-        private static EventDTO ItemEvent(Event e)
-        {
-            var result = new EventDTO //4.2.3 上面也要改 IEnumerable<ProductDTO>
-            {
-                EventID = e.EventID,
-                EventName = e.EventName,
-                Price = e.Price,
-                Description = e.Description,
-                Date = e.Date,
-                VenueName = e.Venue.VenueName,
-                EventHolderName = e.EventHolder.EventHolderName,
-                EventType1 = e.EventType.EventType1
-            };
-
-            return result;
-        }
+      
     }
 }

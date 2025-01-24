@@ -1,0 +1,110 @@
+﻿@using System.Text.Json;
+@model MyEvent.Models.Member;
+
+@{
+
+    ViewData["Title"] = "Create";
+    var areaData = ViewBag.AreaData as Dictionary<string, Dictionary<string, AreaInfo>>;
+    var cities = ViewBag.Cities as List<string>;
+    var districts = ViewBag.Districts as List<string>;
+}
+
+<h1>Create</h1>
+
+<h4>Member</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MemberID" class="control-label"></label>
+                <input asp-for="MemberID" class="form-control" />
+                <span asp-validation-for="MemberID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberName" class="control-label"></label>
+                <input asp-for="MemberName" class="form-control" />
+                <span asp-validation-for="MemberName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                @* <input asp-for="City" class="form-control" /> *@
+                <select name="City" class="form-control" onchange="updateDistricts()">
+                    <option value="">請選擇城市</option>  
+                    @foreach (var city in cities)
+                    {
+                        <option id="city" value="@city">@city</option>
+                    }
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                @* <input asp-for="Area" class="form-control" /> *@
+                <select id="district" name="Area" class="form-control" disabled>
+                    @foreach (var district in districts)
+                    {
+                        <option value="">請先選擇城市</option>
+                    }
+                </select>
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        const areaData = @Html.Raw(JsonSerializer.Serialize(areaData));
+
+            function updateDistricts() {
+                const city = document.getElementById('city').value;
+                const districtSelect = document.getElementById('district');
+
+                // 清空區域選單
+                // districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+
+
+                if (city && areaData[city]) {
+                    // 根據選擇的城市填充區域選單
+                    for (const district in areaData[city]) {
+                        const option = document.createElement('option');
+                        option.value = district; // 區域名稱作為值
+                        option.textContent = district; // 顯示區域名稱
+                        districtSelect.appendChild(option);
+                    }
+                    districtSelect.disabled = false;
+                } else {
+                    districtSelect.disabled = true;
+                }
+            }
+    </script>
+}

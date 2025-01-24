@@ -1,4 +1,5 @@
 wwwroot\css\site.css
+wwwroot\data\area_data.json
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
