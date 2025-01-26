@@ -24,6 +24,12 @@ public partial class Member
     public virtual ICollection<Credentials> Credentials { get; set; } = new List<Credentials>();
 
     public virtual ICollection<CreditCard> CreditCard { get; set; } = new List<CreditCard>();
+    public virtual ICollection<MemberTel> MemberTel { get; set; } = new List<MemberTel>();
 
     public virtual ICollection<Order> Order { get; set; } = new List<Order>();
+
+    internal void ParseTo<T>()
+    {
+        throw new NotImplementedException();
+    }
 }

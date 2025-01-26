@@ -57,32 +57,29 @@
     </div>
 </div>
 
-<h2>事件列表</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>名稱</th>
-            <th>主辦</th>
-            <th>內容</th>
-            <th>類型</th>
-            <th>地點</th>
-            <th>日期</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var e in Model)
-        {
-            <tr>
-                <td>@e.EventName</td>
-                <td>@e.EventHolder.EventHolderName</td>
-                <td>@e.Description</td>
-                <td>@e.EventType.EventType1</td>
-                <td>@e.Venue.VenueName</td>
-                <td>@e.Date.ToShortDateString()</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@foreach (var item in Model)
+{
+    <div class="col-lg-6">
+        <div class="card mt-3">
+            @* overflow auto:超出就出現scroll bar *@
+            <div class="row align-items-start">
+                <div class="col-3">
+                    @* <img src="~/EventPhotos/@item.Photo" class="card-img-top" style="height:300px;overflow:hidden" /> *@
+                </div>
+                <div class="col-9">
+                <div class="card-body" style="height:300px;overflow:hidden">
+                        <h2 style="color:darkcyan">@item.EventType.EventType1</h2>
+                    <h4>@item.EventName</h4>
+                    <p>@item.Date</p>
+                    <p>@item.Venue.City.Substring(0, 2)</p>
+                    <p class="text-end">@item.Price</p>
+                </div>
+                </div>
+                <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="btn btn-primary">詳細資訊</a>
+            </div>
+        </div>
+    </div>
+}
 @section Scripts {
 
 }

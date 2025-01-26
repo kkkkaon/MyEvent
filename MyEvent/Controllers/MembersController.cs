@@ -73,7 +73,13 @@ namespace MyEvent.Controllers
         {
 
             member.JoinDate = DateTime.Now;
+            var memberID = DateTime.Now.ToString("yyyyMM");
+            
 
+            var lastMember = _context.Member.Where(m => m.JoinDate.ToString("yyyyMM") == DateTime.Now.ToString("yyyyMM")).OrderByDescending(m => m.MemberID).FirstOrDefault();
+            var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : DateTime.Now.ToString("yyyyMM") + "0001";
+            member.MemberID = newMemberID;
+              
             if (ModelState.IsValid)
             {
                 _context.Add(member);

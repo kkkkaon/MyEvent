@@ -161,7 +161,7 @@ public partial class MyEventContext : DbContext
             entity.HasKey(e => e.EventTypeID).HasName("PK__EventTyp__A9216B1FABFF90B6");
 
             entity.Property(e => e.EventTypeID)
-                .HasMaxLength(3)
+                .HasMaxLength(1)
                 .IsFixedLength();
             entity.Property(e => e.EventType1)
                 .HasMaxLength(50)

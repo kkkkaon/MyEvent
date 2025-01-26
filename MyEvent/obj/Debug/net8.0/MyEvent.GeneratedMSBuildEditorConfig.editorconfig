@@ -17,73 +17,73 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyEvent
 build_property.RootNamespace = MyEvent
-build_property.ProjectDir = C:\Users\C50123\Documents\GitHub\MyEvent\MyEvent\
+build_property.ProjectDir = C:\Users\user\Documents\GitHub\MyEvent\MyEvent\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\C50123\Documents\GitHub\MyEvent\MyEvent
+build_property.MSBuildProjectDirectory = C:\Users\user\Documents\GitHub\MyEvent\MyEvent
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Browse/Details.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Browse/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Browse/Index.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Browse/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Home/Index.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Home/Privacy.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Members/Create.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Members/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Members/Delete.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Members/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Members/Details.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Members/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Members/Edit.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Members/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Members/Index.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Members/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Components/VCEventsTopFour/Default.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Components/VCEventsTopFour/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVkNFdmVudHNUb3BGb3VyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Error.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/_ViewImports.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/_ViewStart.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/_Layout.cshtml]
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-713uywjfd4
