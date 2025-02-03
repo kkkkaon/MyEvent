@@ -16,8 +16,9 @@ namespace MyEvent.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
 
-            var events = await _context.Event.OrderByDescending(b => b.Date).Take(4).ToListAsync();
+            var events = await _context.Event.Include(v => v.Venue).OrderByDescending(b => b.Date).Take(4).ToListAsync();
             return View(events);
+            
         }
     }
 }

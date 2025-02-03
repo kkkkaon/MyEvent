@@ -40,9 +40,11 @@ public partial class Event
 
     public virtual EventHolder? EventHolder { get; set; }
 
-    public virtual EventType? EventType { get; set; }
+    public virtual EventType EventType { get; set; } = null!;
+    public virtual Venue Venue { get; set; } = null!;
 
     public virtual ICollection<Order> Order { get; set; } = new List<Order>();
 
-    public virtual Venue Venue { get; set; } = null!;
+    public virtual ICollection<EventTag> EventTag{ get; set; } = new List<EventTag>();
+
 }

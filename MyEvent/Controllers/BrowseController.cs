@@ -44,7 +44,7 @@ namespace MyEvent.Controllers
                 events = events.Where(e => e.Date >= StartDate && e.Date <= EndDate);
             }
 
-            var result = await events.ToListAsync();
+            var result = await events.OrderByDescending(b => b.Date).ToListAsync();
 
 
             ViewBag.EventType = new SelectList(await _context.EventType.ToListAsync(), "EventTypeID", "EventType1");
@@ -66,6 +66,7 @@ namespace MyEvent.Controllers
                 .Include(h => h.EventHolder)
                 .Include(t => t.EventType)
                 .Include(v => v.Venue)
+                .Include(a => a.EventTag)
                 .FirstOrDefaultAsync(m => m.EventID == id);
             if (@event == null)
             {
