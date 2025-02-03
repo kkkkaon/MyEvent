@@ -121,6 +121,11 @@ public partial class MyEventContext : DbContext
                 .HasForeignKey(d => d.VenueID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Event__VenueID__2DE6D218");
+
+            entity.HasMany(e => e.EventTag)
+                .WithOne(et => et.Event)
+                .HasForeignKey(et => et.EventID)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<EventHolder>(entity =>
@@ -287,7 +292,7 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.SeatID)
                 .HasMaxLength(7)
                 .IsFixedLength();
-            
+
             entity.Property(e => e.Number)
                 .HasMaxLength(2)
                 .IsFixedLength();
@@ -351,7 +356,7 @@ public partial class MyEventContext : DbContext
                 .HasMaxLength(10);
             entity.Property(e => e.City)
                 .HasMaxLength(5);
-                
+
             entity.Property(e => e.VenueName).HasMaxLength(50);
             entity.Property(e => e.Region)
                 .HasMaxLength(2)
