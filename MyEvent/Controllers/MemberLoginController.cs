@@ -22,23 +22,7 @@ namespace MyEvent.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Credential = new Credentials();
-            //var member = _context.Member.Include(m => m.MemberTel).Include(m => m.CreditCard).Include(m => m.Credentials).Include(m => m.Order).FirstOrDefault();
-
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
-            var json = System.IO.File.ReadAllText(filePath);
-            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
-
-            ViewBag.AreaData = areaData;
-
-            var cities = areaData.Keys.ToList();
-            ViewBag.Cities = cities;
-
-            var districts = areaData
-            .SelectMany(city => city.Value.Keys)
-            .ToList();
-
-            ViewBag.Districts = districts;
+            callViewBagData();
 
             return View();
         }
@@ -50,7 +34,14 @@ namespace MyEvent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Member member)
         {
-            //member.Credentials = new Credentials();
+            callViewBagData();
+
+            if (_context.Credentials.Find(member.Credentials.Account) != null)
+            {
+                ViewData["ErrorMessage"] = "帳號已存在";
+                return View(member);
+            }
+
             member.JoinDate = DateTime.Now;
             var memberID = DateTime.Now.ToString("yyyyMM");
             var currentYear = DateTime.Now.Year;
@@ -61,11 +52,7 @@ namespace MyEvent.Controllers
             member.MemberID = newMemberID;
             ModelState.Remove("MemberID");
 
-            //if (_context.Credentials.Find(member.Credentials.Account) != null)
-            //{
-            //    ViewData["ErrorMessage"] = "帳號已存在";
-            //    return View(member);
-            //}
+
 
             if (ModelState.IsValid)
             {
@@ -84,8 +71,6 @@ namespace MyEvent.Controllers
                 ;
 
             }
-
-
 
             //要寫City跟Area必填的errormessage
 
@@ -134,5 +119,24 @@ namespace MyEvent.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        private void callViewBagData()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
+            var json = System.IO.File.ReadAllText(filePath);
+            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
+
+            ViewBag.AreaData = areaData;
+
+            var cities = areaData.Keys.ToList();
+            ViewBag.Cities = cities;
+
+            var districts = areaData
+            .SelectMany(city => city.Value.Keys)
+            .ToList();
+
+            ViewBag.Districts = districts;
+        }
+
     }
 }
