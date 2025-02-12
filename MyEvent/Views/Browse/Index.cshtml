@@ -2,24 +2,32 @@
 
 @{
     ViewData["Title"] = "Browse Index";
+    ViewData["BrowseBackground"] = "background-color: black; color: lightgray;";
 }
+<style>
+    .filter{
+        color:lightgray;
+    }
+    .eventCards a {
+        background-color: black;
+        border-color: #333333;
+        color: lightgray;
+        text-decoration: none;
+    }
+    .eventCards a:hover {
+        text-decoration: none;
+        color: lightgray;
+        background-color: #333333;
+    }
+    
+</style>
+
 
 <h1>@ViewData["Title"] </h1>
 
-
-
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 filter">
         <form method="get" asp-action="Index">
-            <div class="form-group">
-                @* <label for="EventTypeID" class="form-label">活動類型</label> *@
-                @* <select name="EventTypeID" id="EventTypeID" class="form-select">  *@
-                @*     @foreach (var eventType in ViewBag.EventType)  *@
-                @*     {  *@
-                @*         <option value="@eventType.Value">@eventType.Text</option>  *@
-                @*     }  *@
-                @* </select>  *@
-            </div>
             <div class="form-group">
                 <label class="form-label">地區</label>
                 @{
@@ -34,7 +42,6 @@
                 }
 
             </div>
-
             <div class="form-group mt-4">
                 <label class="form-label">活動類型</label>
 
@@ -47,8 +54,6 @@
                 }
 
             </div>
-
-
             <div class="form-group">
                 <input type="submit" value="篩選" class="btn btn-primary" />
             </div>
@@ -56,30 +61,28 @@
         </form>
     </div>
 </div>
-
+<div class="row">
 @foreach (var item in Model)
 {
-    <div class="col-lg-6">
-        <div class="card mt-3">
+    <div class="col-lg-6 eventCards">
+        <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="card mt-3 p-4">
             @* overflow auto:超出就出現scroll bar *@
             <div class="row align-items-start">
-                <div class="col-3">
-                    @* <img src="~/EventPhotos/@item.Photo" class="card-img-top" style="height:300px;overflow:hidden" /> *@
+                <div class="col-4">
+                        <img src="~/EventPhotos/@item.Pic" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center;" />
                 </div>
-                <div class="col-9">
-                <div class="card-body" style="height:300px;overflow:hidden">
-                        <h2 style="color:darkcyan">@item.EventType.EventType1</h2>
-                    <h4>@item.EventName</h4>
+                <div class="col-8" style="height:200px;overflow:hidden">
+                    <p style="color:darkcyan">@item.EventType.EventType1</p>
+                    <h5>@item.EventName</h5>
                     <p>@item.Date</p>
                     <p>@item.Venue.City.Substring(0, 2)</p>
                     <p class="text-end">@item.Price</p>
                 </div>
-                </div>
-                <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="btn btn-primary">詳細資訊</a>
             </div>
-        </div>
+        </a>
     </div>
 }
+</div>
 @section Scripts {
 
 }

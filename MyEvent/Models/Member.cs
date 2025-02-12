@@ -21,7 +21,7 @@ public partial class Member
 
     public string Address { get; set; } = null!;
 
-    public virtual ICollection<Credentials> Credentials { get; set; } = new List<Credentials>();
+    public virtual Credentials Credentials { get; set; } = null!;
 
     public virtual ICollection<CreditCard> CreditCard { get; set; } = new List<CreditCard>();
     public virtual ICollection<MemberTel> MemberTel { get; set; } = new List<MemberTel>();

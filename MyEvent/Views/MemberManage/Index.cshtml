@@ -1,0 +1,93 @@
+﻿@model MyEvent.Models.Member
+@{
+    ViewData["Title"] = "Login Index";
+    int tc = 1;
+}
+<style>
+    .nav-item a {
+        color: black
+    }
+    .nav-underline .nav-link.active {
+        border-bottom: 2px solid black;
+    }
+</style>
+
+<h1>@ViewData["Title"]</h1>
+<div class="text-center p-5">
+    <h5>嗨！@(Model.MemberName)</h5>
+</div>
+<div class="container">
+    <ul class="nav nav-underline" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true">訂購紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false">個人資料</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false">信用卡</a>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="myTabContent">
+        <div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+            @foreach (var order in ViewBag.Orders)
+            {
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <p>訂單編號：@order.OrderID</p>
+                    </div>
+                    <div class="card-body">
+                        <p>演出日期：@order.Date.ToString("yyyy-MM-dd")</p>
+                        <p>演出名稱：@order.Event.EventName</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+            <p>帳號：@Model.Credentials.Account</p>
+            <p>密碼：@Model.Credentials.Password</p>
+            @foreach (var mt in Model.MemberTel)
+            {
+                <p>電話@(tc)：@mt.Tel</p>
+                tc++;
+            }
+            <p>生日：@Model.Birthday</p>
+            <p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
+        </div>
+        <div class="tab-pane fade" id="creditcard-tab-pane" role="tabpanel" aria-labelledby="creditcard-tab" tabindex="0">
+            @foreach (var cc in Model.CreditCard)
+            {
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p>卡號：@cc.CardNo</p>
+                    <p>安全碼：@cc.SecurityNo</p>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function activateTab(tabId) {
+            // 先移除所有 tab 的 active 類別和底線
+            var allTabs = document.querySelectorAll('.nav-link');
+            allTabs.forEach(function(tab) {
+                tab.classList.remove('active');
+                tab.style.borderBottom = '';  // 移除底線
+            });
+
+            // 為選中的 tab 添加 active 類別和底線
+            var activeTab = document.getElementById(tabId);
+            activeTab.classList.add('active');
+            activeTab.style.borderBottom = '2px solid black';  // 添加底線
+        }
+    </script>
+}

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
+using MyEvent.ViewModels;
 using System.Text.Json;
 
 namespace MyEvent.Controllers
@@ -44,50 +45,7 @@ namespace MyEvent.Controllers
         }
 
         // GET: Members/Create
-        public IActionResult Create()
-        {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
-            var json = System.IO.File.ReadAllText(filePath);
-            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
-
-            ViewBag.AreaData = areaData;
-
-            var cities = areaData.Keys.ToList();
-            ViewBag.Cities = cities;
-
-            var districts = areaData
-            .SelectMany(city => city.Value.Keys)
-            .ToList();
-
-            ViewBag.Districts = districts;
-
-            return View();
-        }
-
-        // POST: Members/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MemberID,MemberName,Birthday,JoinDate,ZipCode,City,Area,Address")] Member member)
-        {
-
-            member.JoinDate = DateTime.Now;
-            var memberID = DateTime.Now.ToString("yyyyMM");
-            
-
-            var lastMember = _context.Member.Where(m => m.JoinDate.ToString("yyyyMM") == DateTime.Now.ToString("yyyyMM")).OrderByDescending(m => m.MemberID).FirstOrDefault();
-            var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : DateTime.Now.ToString("yyyyMM") + "0001";
-            member.MemberID = newMemberID;
-              
-            if (ModelState.IsValid)
-            {
-                _context.Add(member);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(member);
-        }
+        
 
         // GET: Members/Edit/5
         public async Task<IActionResult> Edit(string id)

@@ -7,19 +7,17 @@
 {
     <div class="col-lg-3">
         <div class="card mt-3">
-            @* overflow auto:超出就出現scroll bar *@
-
-            @* <img src="~/EventPhotos/@item.Photo" class="card-img-top" style="height:300px;overflow:hidden" /> *@
-            <div class="card-body" style="height:300px;overflow:hidden">
+            <img src="~/EventPhotos/@item.Pic" class="card-img-top" style="height:200px; object-fit: cover; object-position: center; overflow:hidden;" />
+            <div class="card-body" style="height:200px;overflow:hidden">
                 <h4>@item.EventName</h4>
                 <p>@item.Venue.VenueName</p>
                 <p>@item.Date</p>
                 <p>@item.Price</p>
             </div>
-            <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="btn btn-primary">詳細資訊</a>
+            <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="btn btn-outline-dark">詳細資訊</a>
         </div>
     </div>
 }
 <div class="col-12 text-center my-4">
-    <a asp-action="Index" asp-controller="Browse">看更多演出</a>
+    <a asp-action="Index" asp-controller="Browse" class="btn btn-dark">看更多演出</a>
 </div>

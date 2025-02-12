@@ -7,6 +7,7 @@
     var areaData = ViewBag.AreaData as Dictionary<string, Dictionary<string, AreaInfo>>;
     var cities = ViewBag.Cities as List<string>;
     var districts = ViewBag.Districts as List<string>;
+    // var credential = ViewBag.Credential as MyEvent.Models.Credentials;
 }
 
 <h1>Create</h1>
@@ -15,13 +16,19 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @* <div class="form-group"> *@
-            @*     <label asp-for="MemberID" class="control-label"></label> *@
-            @*     <input asp-for="MemberID" class="form-control" /> *@
-            @*     <span asp-validation-for="MemberID" class="text-danger"></span> *@
-            @* </div> *@
+            <div class="form-group"> 
+                <label asp-for="Credentials.Account" class="control-label"></label>
+                <input asp-for="Credentials.Account" class="form-control" />
+                <span asp-validation-for="Credentials.Account" class="text-danger"></span>
+                <span class="text-danger">@ViewData["ErrorMessage"]</span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="Credentials.Password" class="control-label"></label>
+                <input asp-for="Credentials.Password" type="password" class="form-control" />
+                <span asp-validation-for="Credentials.Password" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="MemberName" class="control-label"></label>
                 <input asp-for="MemberName" class="form-control" />
@@ -29,33 +36,34 @@
             </div>
             <div class="form-group">
                 <label asp-for="Birthday" class="control-label"></label>
-                <input asp-for="Birthday" class="form-control" type="date"/>
+                <input asp-for="Birthday" class="form-control" type="date" />
                 <span asp-validation-for="Birthday" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ZipCode" class="control-label"></label>
-                @* <input asp-for="ZipCode" class="form-control" /> *@
+                <input asp-for="ZipCode" class="form-control" />
                 <p></p>
                 <span asp-validation-for="ZipCode" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
-                @* <input asp-for="City" class="form-control" /> *@
-                <select id="city" name="City" class="form-control" onchange="updateDistricts()">
-                    <option value="">請選擇城市</option>  
-                    @foreach (var city in cities)
-                    {
-                        <option value="@city">@city</option>
-                    }
-                </select>
+                <select id="city" name="City" class="form-control" onchange="updateDistricts()"> 
+                     <option value="">請選擇城市</option>    
+                     @foreach (var city in cities)  
+                     { 
+                          <option value="@city">@city</option> 
+                      } 
+                 </select>
                 <span asp-validation-for="City" class="text-danger"></span>
+                <span class="text-danger">@ViewData["ErrorMessage"]</span>
             </div>
             <div class="form-group">
                 <label asp-for="Area" class="control-label"></label>
-                <select id="district" name="Area" class="form-control" disabled>
+                <select id="district" name="Area" class="form-control" disabled> 
                         <option value="">請先選擇城市</option>
-                </select>
+                 </select>
                 <span asp-validation-for="Area" class="text-danger"></span>
+                <span class="text-danger">@ViewData["ErrorMessage"]</span>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>

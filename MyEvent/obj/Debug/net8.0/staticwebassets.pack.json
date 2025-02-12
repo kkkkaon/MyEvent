@@ -2,7 +2,23 @@
   "Files": [
     {
       "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MyEvent.g43w0hpbx3.bundle.scp.css"
+      "PackagePath": "staticwebassets\\MyEvent.bl7vsm7qp9.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2023120201.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2023120201.jpg"
+    },
+    {
+      "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2023120202.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2023120202.jpg"
+    },
+    {
+      "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2024122410.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2024122410.jpg"
+    },
+    {
+      "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2024122835.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2024122835.jpg"
     },
     {
       "Id": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\css\\site.css",

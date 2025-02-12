@@ -14,6 +14,7 @@ public partial class Seat
     public string? Row { get; set; }
 
     public string? Number { get; set; }
+    public string? Status { get; set; }
 
     public string VenueID { get; set; } = null!;
 

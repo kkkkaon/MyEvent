@@ -46,5 +46,6 @@ public partial class Event
     public virtual ICollection<Order> Order { get; set; } = new List<Order>();
 
     public virtual ICollection<EventTag> EventTag{ get; set; } = new List<EventTag>();
+    public virtual ICollection<TicketType> TicketType { get; set; } = new List<TicketType>();
 
 }

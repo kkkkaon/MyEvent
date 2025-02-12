@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\BannerPhotos\**" />
+    <Content Remove="wwwroot\BannerPhotos\**" />
+    <EmbeddedResource Remove="wwwroot\BannerPhotos\**" />
+    <None Remove="wwwroot\BannerPhotos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -18,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\EventPhotos\" />
-    <Folder Include="wwwroot\BannerPhotos\" />
   </ItemGroup>
 
 </Project>

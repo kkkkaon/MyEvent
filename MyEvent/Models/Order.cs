@@ -25,8 +25,6 @@ public partial class Order
 
     public string? CollectionID { get; set; }
 
-    public string InvoiceNo { get; set; } = null!;
-
     public virtual Event Event { get; set; } = null!;
 
     public virtual Member Member { get; set; } = null!;

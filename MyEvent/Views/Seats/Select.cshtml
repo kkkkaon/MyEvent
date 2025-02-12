@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MyEvent.Models.Seat>
+@{
+    ViewData["Title"] = "Select";
+}
+
+<h1>Select</h1>
+<form>
+    @foreach (var seat in Model)
+    {
+        @* 把折扣方案的modal做在按鈕(input)上 *@
+        <div class="form-check-inline mx-3">
+            @if (@seat.Status == "1")
+            {
+                <input class="btn-check " type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+            }
+            else
+            {
+                <input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+            }
+            @if (Model.Count() == 1)
+            {
+                <label class="btn btn-outline-dark" for="@seat.SeatID">@seat.SeatType</label>
+            }
+            else
+            {
+                <label class="btn btn-outline-dark" for="@seat.SeatID">@seat.Row@seat.Number</label>
+            }
+        </div>
+    }
+    <div class="mt-6">
+    @if (Model.Count() == 1)
+    {
+            <input type="submit" value="下訂" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#OrderModalQty" />
+    }
+    else
+    {
+            <input type="submit" value="下訂" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#OrderModal" />
+    }
+    </div>
+</form>
+
+<div class="modal fade" id="OrderModalQty">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                @* onclick 改成下面js寫的function*@
+                <button type="button" class="btn btn-primary" onclick="addReBook()">送出回覆</button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 2.5.7 load載入哪個頁面到此選擇的容器
+        //2.5.8 改成放入modal，且把BookID傳進ReBooksController
+        $('#OrderModalQty .modal-body').load("/TicketTypes/Details/@ViewBag.EventID");
+    </script>
+}
+

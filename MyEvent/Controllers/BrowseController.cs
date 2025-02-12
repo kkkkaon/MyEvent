@@ -57,6 +57,8 @@ namespace MyEvent.Controllers
         // GET: Browse/Details/5
         public async Task<IActionResult> Details(string id)
         {
+            HttpContext.Session.SetString("EventID", id);
+
             if (id == null)
             {
                 return NotFound();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using MyEvent.Models;
 
 namespace MyEvent.Models;
 
@@ -39,7 +40,9 @@ public partial class MyEventContext : DbContext
 
     public virtual DbSet<TicketMethod> TicketMethod { get; set; }
 
-    public virtual DbSet<TicketType> TicketType { get; set; }
+    public virtual DbSet<TicketType> TicketType { get; set; } 
+
+    public virtual DbSet<TicketTypeList> TicketTypeList { get; set; }
 
     public virtual DbSet<Venue> Venue { get; set; }
 
@@ -55,8 +58,8 @@ public partial class MyEventContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.Password).HasMaxLength(30);
 
-            entity.HasOne(d => d.Member).WithMany(p => p.Credentials)
-                .HasForeignKey(d => d.MemberID)
+            entity.HasOne(d => d.Member).WithOne(p => p.Credentials)
+                .HasForeignKey<Credentials>(c => c.MemberID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Credentia__Membe__5DCAEF64");
         });
@@ -148,14 +151,14 @@ public partial class MyEventContext : DbContext
 
         modelBuilder.Entity<EventTag>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(et => new { et.EventID, et.Tag });
 
             entity.Property(e => e.EventID)
                 .HasMaxLength(11)
                 .IsFixedLength();
             entity.Property(e => e.Tag).HasMaxLength(20);
 
-            entity.HasOne(d => d.Event).WithMany()
+            entity.HasOne(d => d.Event).WithMany(e => e.EventTag)
                 .HasForeignKey(d => d.EventID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__EventTag__EventI__5535A963");
@@ -192,14 +195,14 @@ public partial class MyEventContext : DbContext
 
         modelBuilder.Entity<MemberTel>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(mt => new { mt.MemberID, mt.Tel });
 
             entity.Property(e => e.MemberID)
                 .HasMaxLength(10)
                 .IsFixedLength();
             entity.Property(e => e.Tel).HasMaxLength(15);
 
-            entity.HasOne(d => d.Member).WithMany()
+            entity.HasOne(d => d.Member).WithMany(e => e.MemberTel)
                 .HasForeignKey(d => d.MemberID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__MemberTel__Membe__5AEE82B9");
@@ -218,9 +221,6 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.EventID)
                 .HasMaxLength(11)
-                .IsFixedLength();
-            entity.Property(e => e.InvoiceNo)
-                .HasMaxLength(10)
                 .IsFixedLength();
             entity.Property(e => e.MemberID)
                 .HasMaxLength(10)
@@ -304,6 +304,9 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.VenueID)
                 .HasMaxLength(5)
                 .IsFixedLength();
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsFixedLength();
 
             entity.HasOne(d => d.Venue).WithMany(p => p.Seat)
                 .HasForeignKey(d => d.VenueID)
@@ -316,12 +319,12 @@ public partial class MyEventContext : DbContext
             entity.HasKey(e => e.TicketID).HasName("PK__Ticket__712CC6275F174448");
 
             entity.Property(e => e.TicketID).HasMaxLength(15);
-            entity.Property(e => e.TypeID)
+            entity.Property(e => e.TicketTypeID)
                 .HasMaxLength(2)
                 .IsFixedLength();
 
-            entity.HasOne(d => d.Type).WithMany(p => p.Ticket)
-                .HasForeignKey(d => d.TypeID)
+            entity.HasOne(d => d.TicketType).WithMany(p => p.Tickets)
+                .HasForeignKey(d => new { d.EventID, d.TicketTypeID })
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Ticket__TypeID__71D1E811");
         });
@@ -336,9 +339,33 @@ public partial class MyEventContext : DbContext
 
         modelBuilder.Entity<TicketType>(entity =>
         {
-            entity.HasKey(e => e.TypeID).HasName("PK__TicketTy__516F0395D3F1980E");
+            
+            entity.HasKey(tt => new { tt.EventID, tt.TicketTypeID });
 
-            entity.Property(e => e.TypeID)
+            entity.Property(e => e.EventID)
+                .HasMaxLength(11)
+                .IsFixedLength();
+            entity.Property(e => e.TicketTypeID)
+                .HasMaxLength(2)
+                .IsFixedLength();
+
+            entity.HasOne(d => d.Event).WithMany(e => e.TicketType)
+                .HasForeignKey(d => d.EventID)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TicketTyp__Event__7849DB76");
+
+            entity.HasOne(d => d.TicketTypeList).WithMany(e => e.TicketType)
+                .HasForeignKey(d => d.TicketTypeID)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TicketTyp__Ticke__793DFFAF");
+        });
+       
+
+        modelBuilder.Entity<TicketTypeList>(entity =>
+        {
+            entity.HasKey(e => e.TicketTypeID).HasName("PK__TicketTy__516F0395D3F1980E");
+
+            entity.Property(e => e.TicketTypeID)
                 .HasMaxLength(2)
                 .IsFixedLength();
             entity.Property(e => e.Name).HasMaxLength(10);
@@ -368,4 +395,5 @@ public partial class MyEventContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
 }
