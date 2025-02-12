@@ -61,17 +61,14 @@ namespace MyEvent.Controllers
             member.MemberID = newMemberID;
             ModelState.Remove("MemberID");
 
-            if (_context.Credentials.Find(member.Credentials.Account) != null)
-            {
-                ViewData["ErrorMessage"] = "帳號已存在";
-                return View(member);
-            }
-
-            //要寫City跟Area必填的errormessage
+            //if (_context.Credentials.Find(member.Credentials.Account) != null)
+            //{
+            //    ViewData["ErrorMessage"] = "帳號已存在";
+            //    return View(member);
+            //}
 
             if (ModelState.IsValid)
             {
-
                 _context.Member.Add(member);
                 await _context.SaveChangesAsync();
 
@@ -87,6 +84,10 @@ namespace MyEvent.Controllers
                 ;
 
             }
+
+
+
+            //要寫City跟Area必填的errormessage
 
             return View(member);
         }
