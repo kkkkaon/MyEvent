@@ -16,8 +16,10 @@ public partial class Member
 
     public string ZipCode { get; set; } = null!;
 
+    [Required(ErrorMessage = "此欄為必填")]
     public string City { get; set; } = null!;
 
+    [Required(ErrorMessage = "此欄為必填")]
     public string Area { get; set; } = null!;
 
     public string Address { get; set; } = null!;

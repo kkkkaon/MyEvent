@@ -10,14 +10,23 @@
     }
     .eventCards a {
         background-color: black;
-        border-color: #333333;
+        border: #1f1f1f, 3px, solid;
         color: lightgray;
         text-decoration: none;
     }
     .eventCards a:hover {
         text-decoration: none;
         color: lightgray;
-        background-color: #333333;
+        background-color: #1f1f1f;
+    }
+    .btn-dark{
+        color: lightgray; 
+        background-color: #2e2e2e;
+    }
+
+    .form-check-inline .btn-check:checked + label.btn-dark {
+        color: #1f1f1f;
+        background-color: lightgray;
     }
     
 </style>
@@ -37,7 +46,7 @@
                 {
                     <div class="form-check-inline mx-1">
                         <input class="btn-check " type="checkbox" id="Region_@region" name="Region" value="@region" autocomplete="off">
-                        <label class="btn btn-outline-dark" for="Region_@region">@region</label>
+                        <label class="btn btn-dark" for="Region_@region">@region</label>
                     </div>
                 }
 
@@ -48,8 +57,8 @@
                 @foreach (var eventType in ViewBag.EventType)
                 {
                     <div class="form-check-inline mx-1">
-                        <input class="btn-check " type="checkbox" id="EventType_@eventType.Value" name="EventTypeID" value="@eventType.Value" autocomplete="off">
-                        <label class="btn btn-outline-dark" for="EventType_@eventType.Value">@eventType.Text</label>
+                        <input class="btn-check" type="checkbox" id="EventType_@eventType.Value" name="EventTypeID" value="@eventType.Value" autocomplete="off">
+                        <label class="btn btn-dark" for="EventType_@eventType.Value">@eventType.Text</label>
                     </div>
                 }
 

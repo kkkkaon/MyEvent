@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyEvent.Models.TicketType>
+@{
+    // ViewData["Title"] = "Default";
+
+}
+<style>
+    .btn-outline-dark{
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+</style>
+
+@foreach (var item in Model)
+{
+    <div class="btn-outline-dark mt-3 p-3 col">
+        <div class="row">
+            <div class="col-8">
+                <h6 style="font-weight:800;">@item.TicketTypeList.Name</h6>
+                @{
+                    var price = Convert.ToDecimal(ViewBag.SeatPrice);
+                    var discount = Convert.ToDecimal(item.TicketTypeList.Discount);
+                }
+                <p>$@Convert.ToInt32(price * discount)</p>
+            </div>
+            <div class="col-4 my-auto">
+                <i class="bi bi-dash-circle"></i> <input id="qty" style="width:50px;"/> <i class="bi bi-plus-circle"></i>
+            </div>
+        </div>
+        
+    </div>
+}
+
+@section Scripts {
+    <script>
+
+    </script>
+}

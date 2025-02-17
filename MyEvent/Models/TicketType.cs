@@ -11,5 +11,4 @@ public partial class TicketType
 
     public virtual Event Event { get; set; } = null!;
     public virtual TicketTypeList TicketTypeList { get; set; }
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

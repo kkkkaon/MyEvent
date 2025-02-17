@@ -13,6 +13,6 @@ public partial class Ticket
     public string TicketTypeID { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetail { get; set; } = new List<OrderDetail>();
-    public virtual TicketType TicketType { get; set; } = null!;
+    public virtual TicketTypeList TicketTypeList { get; set; } = null!;
 
 }

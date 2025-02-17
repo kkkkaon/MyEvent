@@ -323,8 +323,8 @@ public partial class MyEventContext : DbContext
                 .HasMaxLength(2)
                 .IsFixedLength();
 
-            entity.HasOne(d => d.TicketType).WithMany(p => p.Tickets)
-                .HasForeignKey(d => new { d.EventID, d.TicketTypeID })
+            entity.HasOne(d => d.TicketTypeList).WithMany(p => p.Tickets)
+                .HasForeignKey(d => d.TicketTypeID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Ticket__TypeID__71D1E811");
         });

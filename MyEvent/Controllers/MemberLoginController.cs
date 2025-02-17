@@ -91,7 +91,6 @@ namespace MyEvent.Controllers
 
             if (result != null)
             {
-
                 HttpContext.Session.SetString("MemberID", result.Member.MemberID);
                 HttpContext.Session.SetString("Member", result.Account);
                 string? eventId = HttpContext.Session.GetString("EventID");
@@ -108,7 +107,7 @@ namespace MyEvent.Controllers
                 ViewData["Message"] = "帳號或密碼錯誤";
 
             }
-            return View(result);
+            return View(login);
         }
 
         public IActionResult Logout()

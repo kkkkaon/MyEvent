@@ -12,4 +12,5 @@ public partial class TicketTypeList
     public double Discount { get; set; }
 
     public virtual ICollection<TicketType> TicketType { get; set; } = new List<TicketType>();
+    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

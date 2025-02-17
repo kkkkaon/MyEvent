@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 <select id="city" name="City" class="form-control" onchange="updateDistricts()">
-                    <option value="">請選擇城市</option>
+                    @* <option value="-1" selected>請選擇城市</option>  *@
                     @foreach (var city in cities)
                     {
 
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label asp-for="Area" class="control-label"></label>
                 <select id="district" name="Area" class="form-control" disabled>
-                    <option value="">請先選擇城市</option>
+                    @* <option value="">請先選擇城市</option> *@
                 </select>
                 <span asp-validation-for="Area" class="text-danger"></span>
                 @* <span class="text-danger">@ViewData["ErrorMessage"]</span> *@
@@ -96,7 +96,7 @@
     }
     <script>
         const areaData = @Html.Raw(JsonSerializer.Serialize(areaData));
-        const selectedArea = "@Model?.Area";
+        const selectedArea = "@(Model?.Area)";
 
             function updateDistricts() {
                 const city = document.getElementById('city').value;
@@ -111,17 +111,27 @@
                         const option = document.createElement('option');
                         option.value = district; // 區域名稱作為值
                         option.textContent = district; // 顯示區域名稱
-                        districtSelect.appendChild(option);
 
-                        //這邊還是未成功，錯誤後無法顯示以選區域，但不會報錯
                         if (district == selectedArea) {
                             option.selected = true;
                         }
+
+                        districtSelect.appendChild(option);
                     }
                     districtSelect.disabled = false;
                 } else {
                     districtSelect.disabled = true;
                 }
+
+                $(districtSelect).removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(districtSelect);
             }
+
+            window.onload = function() {
+                if (document.getElementById('city').value) {
+                    updateDistricts();
+                }
+            }
+
     </script>
 }

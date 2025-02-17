@@ -1,5 +1,5 @@
 ﻿@{
-    var manager = Context.Session.GetString("Member");
+    var manager = ViewContext.HttpContext.Session.GetString("Member");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -13,54 +13,68 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyModel_CodeFirst.styles.css" asp-append-version="true" />
 </head>
+<style>
+    .navbar-dark {
+        background-color: black;
+        color: lightgray;
+    }
+
+    .navbar-dark a:hover {
+        text-decoration: none;
+        color: lightgray;
+        background-color: #333333;
+    }
+</style>
 <body>
-    <div style="@ViewData["BrowseBackground"]">
+    <div class="d-flex flex-column min-vh-100" style="@ViewData["BrowseBackground"]">
         <header class="row">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="@ViewData["BrowseBackground"]">
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between col-11">
-                        <ul class="navbar-nav flex-grow-1">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm @(ViewBag.IsDarkbg == true ? "navbar-dark" : "navbar-light bg-white") border-bottom box-shadow mb-3" style="@ViewData["BrowseBackground"]">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between col-11">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Browse" asp-action="Index">瀏覽演出</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Members" asp-action="Index">會員</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li>
+                            <a asp-action="Index" asp-controller="MemberManage" type="button" class="btn btn-outline-primary"> 會員管理</a>
+                        </li>
+                        @if (manager == "admin")
+                        {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link" asp-area="" asp-controller="LoginsManage" asp-action="Index">帳號管理</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Browse" asp-action="Index">瀏覽演出</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Index">會員</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                            @if (manager == "admin")
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="LoginsManage" asp-action="Index">帳號管理</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="col-1">
-                        <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-dark"> 登出</a>
-                    </div>
+                        }
+                    </ul>
+                </div>
+                <div class="col-1">
+                    <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-dark"> 登出</a>
+                </div>
             </nav>
         </header>
-    </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container flex-grow-1">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 
-
+        <footer class="border-top footer text-muted @(ViewBag.IsDarkbg == true ? "navbar-dark" : "")">
+            <div class="container">
+                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>

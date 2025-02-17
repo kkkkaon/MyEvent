@@ -51,6 +51,7 @@ namespace MyEvent.Controllers
 
             ViewBag.Region = new SelectList(_context.Venue, "Region", "Region");
 
+            ViewBag.IsDarkbg = true;
             return View(result);
         }
 
@@ -75,6 +76,7 @@ namespace MyEvent.Controllers
                 return NotFound();
             }
 
+            ViewBag.IsDarkbg = true;
             return View(@event);
         }
 

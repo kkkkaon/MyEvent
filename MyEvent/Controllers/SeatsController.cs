@@ -32,18 +32,19 @@ namespace MyEvent.Controllers
         }
 
         //redirect to confirm頁面
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Select(Seat seat)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Select(Seat seat)
+        //{
+        //    return View(seat);
+        //}
+
+        
+
+        public IActionResult LoadDiscount(string SeatID)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(seat);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueID", seat.VenueID);
-            return View(seat);
+            
+            return ViewComponent("VCDiscount", new { seatID = SeatID });
         }
 
         // GET: Seats

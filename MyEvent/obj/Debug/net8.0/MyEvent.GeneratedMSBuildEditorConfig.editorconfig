@@ -96,6 +96,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhdHNcU2VsZWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Components/VCDiscount/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVkNEaXNjb3VudFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Components/VCDiscount/Qty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVkNEaXNjb3VudFxRdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/C50123/Documents/GitHub/MyEvent/MyEvent/Views/Shared/Components/VCEventsTopFour/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVkNFdmVudHNUb3BGb3VyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
