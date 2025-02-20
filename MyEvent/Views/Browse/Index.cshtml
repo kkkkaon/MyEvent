@@ -10,9 +10,10 @@
     }
     .eventCards a {
     background-color: black;
-    border: #1f1f1f, 3px, solid;
+    border: #1f1f1f, 1px, solid;
     color: lightgray;
     text-decoration: none;
+    min-height: 450px;
     }
     .eventCards a:hover {
     text-decoration: none;
@@ -79,21 +80,17 @@
 <div class="row">
 @foreach (var item in Model)
 {
-    <div class="col-lg-6 eventCards">
-        <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="card mt-3 p-4">
+    <div class="col-xl-3 col-md-6 eventCards">
+        <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="card mt-3">
             @* overflow auto:超出就出現scroll bar *@
-            <div class="row align-items-start">
-                <div class="col-4">
-                        <img src="~/EventPhotos/@item.Pic" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center;" />
-                </div>
-                <div class="col-8" style="height:200px;overflow:hidden">
-                    <p style="color:darkcyan">@item.EventType.EventType1</p>
-                    <h5>@item.EventName</h5>
-                    <p>@item.Date</p>
-                    <p>@item.Venue.City.Substring(0, 2)</p>
-                    <p class="text-end">@item.Price</p>
-                </div>
-            </div>
+                <img src="~/EventPhotos/@item.Pic" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center;" />
+				<div class="p-3">
+                <p style="color:darkcyan" class="mt-3">@item.EventType.EventType1</p>
+                <h5>@item.EventName</h5>
+                <p>@item.Date</p>
+                <p>@item.Venue.City.Substring(0, 2)</p>
+                <p class="text-end">@item.Price</p>
+             </div> 
         </a>
     </div>
 }

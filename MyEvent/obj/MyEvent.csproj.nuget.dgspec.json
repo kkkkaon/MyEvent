@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj",
         "projectName": "MyEvent",
-        "projectPath": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj",
-        "packagesPath": "C:\\Users\\C50123\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\MyEvent.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\C50123\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
