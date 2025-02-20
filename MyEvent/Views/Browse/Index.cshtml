@@ -6,29 +6,34 @@
 }
 <style>
     .filter{
-        color:lightgray;
+    color:lightgray;
     }
     .eventCards a {
-        background-color: black;
-        border: #1f1f1f, 3px, solid;
-        color: lightgray;
-        text-decoration: none;
+    background-color: black;
+    border: #1f1f1f, 3px, solid;
+    color: lightgray;
+    text-decoration: none;
     }
     .eventCards a:hover {
-        text-decoration: none;
-        color: lightgray;
-        background-color: #1f1f1f;
+    text-decoration: none;
+    color: lightgray;
+    background-color: #1f1f1f;
     }
     .btn-dark{
-        color: lightgray; 
-        background-color: #2e2e2e;
+    color: lightgray; 
+    background-color: #2e2e2e;
     }
 
     .form-check-inline .btn-check:checked + label.btn-dark {
-        color: #1f1f1f;
-        background-color: lightgray;
+    color: #1f1f1f;
+    background-color: lightgray;
     }
-    
+
+    p{
+        margin-top: 1px;
+        font-size: 14px;
+    }
+
 </style>
 
 
@@ -51,21 +56,22 @@
                 }
 
             </div>
-            <div class="form-group mt-4">
-                <label class="form-label">活動類型</label>
-
-                @foreach (var eventType in ViewBag.EventType)
+            <div class="form-group mt-2 mb-4">
+                @* <label class="form-label">活動類型</label> *@
+                @{
+                    string[] icon = { "bi-card-image", "bi-music-note-beamed", "bi-person-arms-up", "bi-balloon", "bi-bank", "bi-camera-reels" };
+                    var eventTypes = ((SelectList)ViewBag.EventType).ToList();
+                }
+                @for (var i = 0; i < eventTypes.Count; i++)
                 {
                     <div class="form-check-inline mx-1">
-                        <input class="btn-check" type="checkbox" id="EventType_@eventType.Value" name="EventTypeID" value="@eventType.Value" autocomplete="off">
-                        <label class="btn btn-dark" for="EventType_@eventType.Value">@eventType.Text</label>
+                        <input class="btn-check" type="checkbox" id="EventType_@eventTypes[i].Value" name="EventTypeID" value="@eventTypes[i].Value" autocomplete="off">
+                        <label class="btn btn-dark" for="EventType_@eventTypes[i].Value" style="width:70px; font-size:14px;"> <i class="bi @icon[i]"></i> <div class="mt-1">@eventTypes[i].Text</div></label>
                     </div>
                 }
-
+                <input class="mx-6 p-2" type="submit" value="篩選"/>
             </div>
-            <div class="form-group">
-                <input type="submit" value="篩選" class="btn btn-primary" />
-            </div>
+            
 
         </form>
     </div>

@@ -21,11 +21,12 @@ namespace MyEvent.ViewComponents
             var seat = await _context.Seat.Where(o => o.SeatID == seatID).FirstOrDefaultAsync();
             ViewBag.SeatPrice = seat.Price;
 
-            var event1 = await _context.Event.Where(t => t.EventID == eventId).FirstOrDefaultAsync();
 
+            var event1 = await _context.Event.Where(t => t.EventID == eventId).FirstOrDefaultAsync();
             var seatType = await _context.Seat.Where(t => t.VenueID == event1.VenueID).ToListAsync();
 
             if (seatType.Count() == 1){
+                
                 return View("Qty",discounts);
             }
 

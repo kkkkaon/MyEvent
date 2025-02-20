@@ -26,7 +26,10 @@ namespace MyEvent.Controllers
             var seats = await _context.Seat
                 .Where(s => s.VenueID == eventItem.VenueID)
                 .ToListAsync();
-            
+
+            var tt = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).ToListAsync();
+            ViewBag.TicketTypes = tt;
+
             ViewBag.EventID = eventId;
             return View(seats);
         }

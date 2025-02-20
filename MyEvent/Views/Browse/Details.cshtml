@@ -2,38 +2,58 @@
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["BrowseBackground"] = "background-color: black; color: lightgray;";
 }
 <style>
-    .nav-item a{
+     h5{
         color: black
     }
+
+    .nav-underline a, .nav-underline a:hover {
+        font-weight: 600;
+        color: lightgray;
+    }
     .nav-underline .nav-link.active {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid lightgray;
+    }
+
+    .btn-dark {
+        color: lightgray;
+        background-color: #2e2e2e;
+    }
+    section{ 
+        margin-top: 50px;
+        margin-bottom: 40px;
+     }
+    .min-height{
+        min-height: 200px;
     }
 </style>
 
 <h1>Details</h1>
 
-<div>
-    <h4>Event</h4>
-    <div class="row align-items-start">
-        <div class="col-3">
-             <img src="~/EventPhotos/@Model.Pic" class="card-img-top img-thumbnail" /> 
-        </div>
-        <div class="col-9">
-            <h3>@Model.EventName</h3>
-            <p style="color:darkcyan">@Model.EventType.EventType1</p>
-            <p>時間： @Model.Date @Model.StartTime</p>
-            <p>地點： @Model.Venue.VenueName</p>
-            <p>票價： @Model.Price</p>
-            @if (Model.EventTag != null) {
-                foreach (var et in Model.EventTag)
-                {
-                    <p class="d-inline-block">#@(et.Tag)</p>
-                }
-            }
-        </div>
+
+<h4>Event</h4>
+<section class="row align-items-start">
+    <div class="col-3">
+        <img src="~/EventPhotos/@Model.Pic" class="card-img-top" />
     </div>
+    <div class="col-9">
+        <h3>@Model.EventName</h3>
+        <p style="color:darkcyan">@Model.EventType.EventType1</p>
+        <p>時間： @Model.Date @Model.StartTime</p>
+        <p>地點： @Model.Venue.VenueName</p>
+        <p>票價： @Model.Price</p>
+        @if (Model.EventTag != null)
+        {
+            foreach (var et in Model.EventTag)
+            {
+                <p class="d-inline-block">#@(et.Tag)</p>
+            }
+        }
+    </div>
+</section>
+<section>
     <ul class="nav nav-underline" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">節目介紹</a>
@@ -46,31 +66,56 @@
         </li>
     </ul>
 
-    <div class="tab-content mt-3" id="myTabContent">
+    <div class="tab-content mt-3 min-height" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <p>@Html.Raw(Model.Description.Replace("\r\n", "<br>"))</p>
         </div>
         <div class="tab-pane fade" id="discount-tab-pane" role="tabpanel" aria-labelledby="discount-tab" tabindex="0">
-            <p>@Model.Discount</p>
+            <p>@Html.Raw(Model.Discount.Replace("\r\n", "<br>"))</p>
         </div>
         <div class="tab-pane fade" id="note-tab-pane" role="tabpanel" aria-labelledby="note-tab" tabindex="0">
-            <p>@Model.Note</p>
+            <p>@Html.Raw(Model.Note.Replace("\r\n", "<br>"))</p>
         </div>
     </div>
+</section>
 
-</div>
 
 <div>
     @if (Context.Session.GetString("Member") != null)
     {
-        <a asp-action="Select" asp-controller="Seats" type="button" class="btn btn-outline-dark">訂購</a>
+        @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1){
+            <button type="button" id="@(ViewBag.Seat.SeatID)" data-seat-row-num="@(ViewBag.Seat.SeatType)" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#OrderModal">下訂</button>
+        }else{
+            <a asp-action="Select" asp-controller="Seats" type="button" class="btn btn-dark">選位</a>
+        }
     }
     else
     {
-        <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-outline-dark">訂購</a>
+        @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1)
+        {
+            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-dark">下訂</a>
+        }else{
+            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-dark">選位</a>
+        }
     }
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-dark">其他演出</a>
 </div>
+
+<form asp-action="">
+    <div class="modal fade" id="OrderModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="selectedSeat"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="modal-content">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 @section Scripts {
     @{
@@ -88,7 +133,70 @@
             // 為選中的 tab 添加 active 類別和底線
             var activeTab = document.getElementById(tabId);
             activeTab.classList.add('active');
-            activeTab.style.borderBottom = '2px solid black';  // 添加底線
+            activeTab.style.borderBottom = '2px solid lightgray;';  // 添加底線
+        }
+
+        $('#OrderModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var seatID = button.attr('id');  // 抓取被點擊的 SeatID
+        var modal = $(this);
+        var url = '/Seats/LoadDiscount?seatID=' + seatID;
+
+        // 用 AJAX 請求 ViewComponent 的內容
+        $.get(url, function(data) {
+            modal.find('#modal-content').html(data);
+        });
+        });
+
+        //顯示header title
+        $('#OrderModal').on('show.bs.modal', function (event) {
+            var trigger = event.relatedTarget;
+            var seat = trigger.getAttribute('data-seat-row-num');
+            document.getElementById('selectedSeat').textContent = seat;
+        });
+
+        // add btn for VCDiscount Qty
+        $(document).on('click', '.qty_plus', function() {
+            var id = $(this).data('id');
+            var qtyInput = $('#qty_' + id);
+            var currentQty = parseInt(qtyInput.val());
+            qtyInput.val(currentQty + 1);
+
+            updateTotal();
+        });
+
+        // minus btn
+        $(document).on('click', '.qty_minus', function() {
+            var id = $(this).data('id');
+            var qtyInput = $('#qty_' + id);
+            var currentQty = parseInt(qtyInput.val());
+            if (currentQty > 0) {
+                qtyInput.val(currentQty - 1);
+            }
+
+            updateTotal();
+        });
+
+        $(document).on('input', '.qty_change', function() {
+            updateTotal();
+        });
+
+        function updateTotal() {
+            var totalQty = 0;
+            var totalPrice = 0;
+
+            $('[id^="qty_"]').each(function() {
+                var qty = parseInt($(this).val());
+                var id = $(this).attr('id').split('_')[1];
+                var priceText = $('#price_' + id).text().replace('$', '').trim();
+                var price = parseFloat(priceText) || 0;
+
+                totalQty += qty;
+                totalPrice += qty * price;
+            });
+
+            $('#totalQty').text(totalQty);
+            $('#totalPrice').text(totalPrice);
         }
     </script>
 }

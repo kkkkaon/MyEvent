@@ -65,19 +65,26 @@ namespace MyEvent.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Event
+            var event1 = await _context.Event
                 .Include(h => h.EventHolder)
                 .Include(t => t.EventType)
                 .Include(v => v.Venue)
                 .Include(a => a.EventTag)
                 .FirstOrDefaultAsync(m => m.EventID == id);
-            if (@event == null)
+            if (event1 == null)
             {
                 return NotFound();
             }
 
+            var eventItem = await _context.Event.Where(e => e.EventID == id).FirstOrDefaultAsync();
+
+            var seat = await _context.Seat.Where(t => t.VenueID == event1.VenueID).FirstOrDefaultAsync();
+            var seats = await _context.Seat.Where(t => t.VenueID == event1.VenueID).ToListAsync();
+            ViewData["seatTypeCount"] = seats.Count();
+            ViewBag.Seat = seat;
+            
             ViewBag.IsDarkbg = true;
-            return View(@event);
+            return View(event1);
         }
 
       

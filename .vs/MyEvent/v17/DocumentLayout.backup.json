@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\controllers\\seatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\controllers\\seatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\viewcomponents\\vcdiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\viewcomponents\\vcdiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,16 +23,12 @@
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\components\\vcdiscount\\qty.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\viewcomponents\\vcdiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\viewcomponents\\vcdiscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\controllers\\seatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\controllers\\seatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\views\\browse\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\browse\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\c50123\\documents\\github\\myevent\\myevent\\controllers\\browsecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,49 +42,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Index.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Browse\\Index.cshtml",
+              "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Index.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Browse\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-18T01:06:53.177Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Browse\\Details.cshtml",
+              "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Browse\\Details.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAAsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-18T02:27:00.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Qty.cshtml",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
               "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
               "RelativeToolTip": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAABUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-17T07:07:05.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
               "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
               "RelativeToolTip": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-14T08:27:28.01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SeatsController.cs",
-              "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
-              "RelativeDocumentMoniker": "MyEvent\\Controllers\\SeatsController.cs",
-              "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
-              "RelativeToolTip": "MyEvent\\Controllers\\SeatsController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAwC0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T07:33:41.448Z",
               "EditorCaption": ""
             },
             {
@@ -87,33 +109,46 @@
               "RelativeDocumentMoniker": "MyEvent\\ViewComponents\\VCDiscount.cs",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\ViewComponents\\VCDiscount.cs",
               "RelativeToolTip": "MyEvent\\ViewComponents\\VCDiscount.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAABBwB0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAABDwBIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-14T06:41:01.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Select.cshtml",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Seats\\Select.cshtml",
               "RelativeDocumentMoniker": "MyEvent\\Views\\Seats\\Select.cshtml",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Seats\\Select.cshtml",
               "RelativeToolTip": "MyEvent\\Views\\Seats\\Select.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAUwGgAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-14T02:28:31.354Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "SeatsController.cs",
+              "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
+              "RelativeDocumentMoniker": "MyEvent\\Controllers\\SeatsController.cs",
+              "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
+              "RelativeToolTip": "MyEvent\\Controllers\\SeatsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwB4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:33:41.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "BrowseController.cs",
               "DocumentMoniker": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\BrowseController.cs",
               "RelativeDocumentMoniker": "MyEvent\\Controllers\\BrowseController.cs",
               "ToolTip": "C:\\Users\\C50123\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\BrowseController.cs",
               "RelativeToolTip": "MyEvent\\Controllers\\BrowseController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAswFQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-13T07:15:20.312Z",
               "EditorCaption": ""

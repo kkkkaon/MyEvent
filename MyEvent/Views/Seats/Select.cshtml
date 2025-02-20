@@ -5,51 +5,67 @@
 
 <h1>Select</h1>
 <form asp-action="SelectDiscount">
-    @foreach (var seat in Model)
-    {
-        <div class="form-check-inline mx-3">
-            @if (@seat.Status == "1")
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var seat in Model)
             {
-                <input class="btn-check " type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
-            }
-            else
-            {
-                <input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
-            }
-            @if (Model.Count() == 1)
-            {
-                <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@seat.SeatType">@seat.SeatType</label>
-            }
-            else
-            {
-                <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
+                <div class="form-check-inline mx-3">
+                    @if (@seat.Status == "1")
+                    {
+                        <input class="btn-check seat-checkbox" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
+                    }
+                    else
+                    {
+                        <input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
+                    }
+
+                    <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
+
+                </div>
             }
         </div>
-    }
+
+        <div class="col-md-4">
+            <div class="card p-4" style="min-height:500px;">
+                <h5>已選座位</h5>
+                <ul id="selectedSeatsList" class="list-group">
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <select id="ticketTypeList" class="form-select d-none">
+        @foreach (var tt in ViewBag.TicketTypes)
+        {
+            <option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
+        }
+        
+    </select>
+
     <div class="mt-6">
         <input type="submit" value="下訂" class="btn btn-dark" />
     </div>
 </form>
 
-<div class="modal fade" id="OrderModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="selectedSeat"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modal-content">
-                ...
+<form asp-action="">
+    <div class="modal fade" id="OrderModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="selectedSeat"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    ...
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 @section Scripts {
     <script>
-        // 2.5.7 load載入哪個頁面到此選擇的容器
-        //2.5.8 改成放入modal，且把BookID傳進ReBooksController
-        // $('#OrderModal .modal-body').load("/TicketTypes/Details/@ViewBag.EventID");
         $('#OrderModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var seatID = button.attr('id');  // 抓取被點擊的 SeatID
@@ -61,7 +77,8 @@
             modal.find('#modal-content').html(data);
         });
         });
-            
+
+        //顯示header title
         $('#OrderModal').on('show.bs.modal', function (event) {
             var trigger = event.relatedTarget;
             var label = document.querySelector('label[for="' + trigger.id + '"]');
@@ -69,8 +86,31 @@
             document.getElementById('selectedSeat').textContent = seat;
         });
 
+        //已選座位列表
+        $(document).ready(function () {
+            $(".seat-checkbox").on("change", function () {
+                var seatId = $(this).attr("id");
+                var seatLabel = $("label[for='" + seatId + "']").attr("data-seat-row-num");
+                var list = $("#selectedSeatsList");
 
+                if ($(this).is(":checked")) {
+                    // 如果選擇該座位，則動態新增到列表
+                    var ticketSelect = $("#ticketTypeList").clone();
+                    ticketSelect.removeAttr("id").removeClass("d-none").addClass("ticket-select");
 
+                    var listItem = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
+                        .attr("data-seat-id", seatId)
+                        .append($("<div>").text(seatLabel))
+                        .append($("<div>").append(ticketSelect));
+                    
+                    list.append(listItem);
+                    console.log(seatLabel)
+                } else {
+                    // 取消選擇時，移除該座位
+                    list.find("li[data-seat-id='" + seatId + "']").remove();
+                }
+            });
+         });
     </script>
 }
 

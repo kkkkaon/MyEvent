@@ -4,34 +4,55 @@
 
 }
 <style>
-    .btn-outline-dark{
+    .btn-outline-dark {
         border: 1px solid black;
         border-radius: 5px;
     }
+
+    .text-start{
+        color: black;
+    }
+
+    .btn-dark {
+        color: lightgray;
+        background-color: #2e2e2e;
+    }
+
+    .bi:hover{
+        cursor: pointer;
+    }
 </style>
 
-@foreach (var item in Model)
-{
-    <div class="btn-outline-dark mt-3 p-3 col">
-        <div class="row">
-            <div class="col-8">
-                <h6 style="font-weight:800;">@item.TicketTypeList.Name</h6>
-                @{
-                    var price = Convert.ToDecimal(ViewBag.SeatPrice);
-                    var discount = Convert.ToDecimal(item.TicketTypeList.Discount);
-                }
-                <p>$@Convert.ToInt32(price * discount)</p>
+<div class="modal-body">
+    @foreach (var item in Model)
+    {
+        <div class="btn-outline-dark mt-3 p-3 col">
+            <div class="row">
+                <div class="col-8">
+                    <h6 style="font-weight:800;">@item.TicketTypeList.Name</h6>
+                    @{
+                        var price = Convert.ToDecimal(ViewBag.SeatPrice);
+                        var discount = Convert.ToDecimal(item.TicketTypeList.Discount);
+                    }
+                    <p id="price_@(item.TicketTypeList.TicketTypeID)">$@Convert.ToInt32(price * discount)</p>
+                </div>
+                <div class="col-4 my-auto">
+                    <i class="bi bi-patch-minus qty_minus" data-id="@item.TicketTypeList.TicketTypeID"></i>
+                    <input id="qty_@(item.TicketTypeList.TicketTypeID)" style="width:50px;" value="0" class="qty_change" />
+                    <i class="bi bi-patch-plus qty_plus" data-id="@item.TicketTypeList.TicketTypeID"></i>
+                </div>
             </div>
-            <div class="col-4 my-auto">
-                <i class="bi bi-dash-circle"></i> <input id="qty" style="width:50px;"/> <i class="bi bi-plus-circle"></i>
-            </div>
+
         </div>
-        
+    }
+</div>
+ 
+<div class="modal-footer">
+    <div class="text-start me-auto">
+        <span>總數量：</span><b id="totalQty"></b>
+        <span>金額：</span><b id="totalPrice"></b>
     </div>
-}
 
-@section Scripts {
-    <script>
+    <input type="submit" value="下訂" class="btn btn-dark" />
+</div>
 
-    </script>
-}
