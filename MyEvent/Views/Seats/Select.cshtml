@@ -1,116 +1,161 @@
 ﻿@model IEnumerable<MyEvent.Models.Seat>
 @{
-    // ViewData["Title"] = "Select";
+	// ViewData["Title"] = "Select";
 }
+<style>
+	.bi:hover {
+		cursor: pointer;
+	}
+</style>
 
 <h1>Select</h1>
 <form asp-action="SelectDiscount">
-    <div class="row">
-        <div class="col-md-8">
-            @foreach (var seat in Model)
-            {
-                <div class="form-check-inline mx-3">
-                    @if (@seat.Status == "1")
-                    {
-                        <input class="btn-check seat-checkbox" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
-                    }
-                    else
-                    {
-                        <input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off" data-bs-toggle="modal" data-bs-target="#OrderModal">
-                    }
+	<div class="row">
+		<div class="col-md-8">
+			@foreach (var seat in Model)
+			{
+				<div class="form-check-inline mx-3">
+					@if (@seat.Status == "1")
+					{
+						<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+					}
+					else
+					{
+						<input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+					}
 
-                    <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
+					<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
 
-                </div>
-            }
-        </div>
+				</div>
+			}
+		</div>
 
-        <div class="col-md-4">
-            <div class="card p-4" style="min-height:500px;">
-                <h5>已選座位</h5>
-                <ul id="selectedSeatsList" class="list-group">
-                </ul>
-            </div>
+		<div class="col-md-4">
+			<div class="card p-4 d-flex flex-column" style="min-height:500px;">
+				<h5>已選座位</h5>
+				<ul id="selectedSeatsList" class="list-group">
+				</ul>
+				<input type="submit" value="下訂" class="btn btn-dark mt-auto" />
+			</div>
+		</div>
 
-        </div>
-    </div>
+	</div>
 
-    <select id="ticketTypeList" class="form-select d-none">
-        @foreach (var tt in ViewBag.TicketTypes)
-        {
-            <option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
-        }
-        
-    </select>
+	<select id="ticketTypeList" class="form-select d-none">
+		@foreach (var tt in ViewBag.TicketTypes)
+		{
+			<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
+		}
 
-    <div class="mt-6">
-        <input type="submit" value="下訂" class="btn btn-dark" />
-    </div>
+	</select>
+
+
 </form>
 
-<form asp-action="">
-    <div class="modal fade" id="OrderModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="selectedSeat"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="modal-content">
-                    ...
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+
+<div class="modal fade" id="OrderModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="selectedSeat"></h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" id="modal-content">
+				...
+			</div>
+		</div>
+	</div>
+</div>
+
 
 @section Scripts {
-    <script>
-        $('#OrderModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var seatID = button.attr('id');  // 抓取被點擊的 SeatID
-        var modal = $(this);
-        var url = '/Seats/LoadDiscount?seatID=' + seatID;
+	<script>
+	
+		//已選座位列表
+		var list = $("#selectedSeatsList");
 
-        // 用 AJAX 請求 ViewComponent 的內容
-        $.get(url, function(data) {
-            modal.find('#modal-content').html(data);
-        });
-        });
+		// **1. 監聽座位 (SeatID) 變更**
+		$(document).on("change", "input[name='SeatID']", function () {
+			
+			var seatId = $(this).attr("id");
+			var seatLabel = $("label[for='" + seatId + "']").attr("data-seat-row-num");
 
-        //顯示header title
-        $('#OrderModal').on('show.bs.modal', function (event) {
-            var trigger = event.relatedTarget;
-            var label = document.querySelector('label[for="' + trigger.id + '"]');
-            var seat = label.getAttribute('data-seat-row-num');
-            document.getElementById('selectedSeat').textContent = seat;
-        });
+			if ($(this).is(":checked")) {					
+				// **開啟票種選擇 Modal**
+				$("#OrderModal").modal("show");
 
-        //已選座位列表
-        $(document).ready(function () {
-            $(".seat-checkbox").on("change", function () {
-                var seatId = $(this).attr("id");
-                var seatLabel = $("label[for='" + seatId + "']").attr("data-seat-row-num");
-                var list = $("#selectedSeatsList");
+				// **標記當前選擇的座位**
+				$("#OrderModal").data("selectedSeatId", seatId);
+				$("#OrderModal").data("selectedSeatLabel", seatLabel);
+			} else {
+				// **取消座位時，直接從列表中移除**
+				list.find("li[data-seat-id='" + seatId + "']").remove();
+			}
+		});
 
-                if ($(this).is(":checked")) {
-                    // 如果選擇該座位，則動態新增到列表
-                    var ticketSelect = $("#ticketTypeList").clone();
-                    ticketSelect.removeAttr("id").removeClass("d-none").addClass("ticket-select");
+		// **2. 監聽票種 (TicketTypeID) 變更**
+		$(document).on("change", '.seat-checkbox', function () {
+			var ticketId = $(this).attr("id"); // 取得選中的票種 ID
+			var seatId = $("#OrderModal").data("selectedSeatId"); // 取得之前選的座位 ID
+			var seatLabel = $("#OrderModal").data("selectedSeatLabel"); // 取得座位標籤
 
-                    var listItem = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
-                        .attr("data-seat-id", seatId)
-                        .append($("<div>").text(seatLabel))
-                        .append($("<div>").append(ticketSelect));
-                    
-                    list.append(listItem);
-                    console.log(seatLabel)
-                } else {
-                    // 取消選擇時，移除該座位
-                    list.find("li[data-seat-id='" + seatId + "']").remove();
-                }
-            });
-         });
-    </script>
+			if (!seatId) return; // **如果沒有選座位，則不執行**
+
+			var seatCheckbox = $("#" + seatId); // 找到對應的座位 checkbox
+
+			// **移除該座位的舊 listItem (避免重複)**
+			list.find("li[data-seat-id='" + seatId + "']").remove();
+
+			// **新增新的 listItem**
+			var ticketSelect = $("#ticketTypeList").clone();
+			ticketSelect.removeAttr("id").removeClass("d-none").addClass("ticket-select");
+
+			var listItem = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
+				.attr("data-seat-id", seatId)
+				.append($("<b>").text(seatLabel))
+				.append($("<div>").append(ticketSelect).css("width", "200px"))
+				.append($("<i>").addClass("bi bi-x-circle-fill"));
+
+			list.append(listItem);
+			$("#OrderModal").modal("hide"); // **關閉 Modal**
+
+			// **存儲座位與票種的對應**
+			seatCheckbox.attr("data-ticket-id", ticketId);
+		});
+
+		// **3. 當點擊刪除按鈕時**
+		list.on("click", '.bi-x-circle-fill', function () {
+			var seatId = $(this).closest("li").attr("data-seat-id");
+
+			// **取消對應的座位 checkbox**
+			var seatCheckbox = $("#" + seatId);
+			if (seatCheckbox.length) {
+				seatCheckbox.prop("checked", false);
+				seatCheckbox.removeAttr("data-ticket-id");
+			}
+
+			// **從列表中移除該座位**
+			$(this).closest("li").remove();
+		});
+
+		$('#OrderModal').on('show.bs.modal', function (event) {
+			var seatId = $(this).data('selectedSeatId'); // 取得選擇的座位 ID
+			var seatLabel = $(this).data('selectedSeatLabel'); // 取得座位標籤
+			var modal = $(this);
+
+			// 顯示座位標籤
+			modal.find('#selectedSeat').text(seatLabel);
+
+			// 請求票種資料
+			var url = '/Seats/LoadDiscount?seatID=' + seatId;
+			$.get(url, function (data) {
+				modal.find('#modal-content').html(data);
+			});
+		});
+
+
+
+
+	</script>
 }
 

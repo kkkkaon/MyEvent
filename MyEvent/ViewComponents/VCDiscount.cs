@@ -19,7 +19,7 @@ namespace MyEvent.ViewComponents
             var discounts = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).ToListAsync();
 
             var seat = await _context.Seat.Where(o => o.SeatID == seatID).FirstOrDefaultAsync();
-            ViewBag.SeatPrice = seat.Price;
+            ViewBag.Seat = seat;
 
 
             var event1 = await _context.Event.Where(t => t.EventID == eventId).FirstOrDefaultAsync();

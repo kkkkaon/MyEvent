@@ -19,11 +19,7 @@
         color: lightgray;
     }
 
-    .navbar-dark a:hover {
-        text-decoration: none;
-        color: lightgray;
-        background-color: #333333;
-    }
+
 </style>
 <body>
     <div class="d-flex flex-column min-vh-100" style="@ViewData["BrowseBackground"]">
@@ -44,18 +40,18 @@
                             <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li>
-                            <a asp-action="Index" asp-controller="MemberManage" type="button" class="btn btn-outline-primary"> 會員管理</a>
+                            <a asp-action="Index" asp-controller="MemberManage" type="button" class="btn btn-outline-primary"> 會員資料</a>
                         </li>
                         @if (manager == "admin")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="LoginsManage" asp-action="Index">帳號管理</a>
+                                <a class="nav-link" asp-area="" asp-controller="LoginsManage" asp-action="Index">平台帳號管理</a>
                             </li>
                         }
                     </ul>
                 </div>
                 <div class="col-1">
-                    <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-dark"> 登出</a>
+                    <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"><i class="bi bi-person-fill"></i> 登出</a>
                 </div>
             </nav>
         </header>

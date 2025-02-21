@@ -42,7 +42,6 @@ namespace MyEvent.Controllers
         //    return View(seat);
         //}
 
-        
 
         public IActionResult LoadDiscount(string SeatID)
         {
