@@ -198,6 +198,13 @@
 
             $('#totalQty').text(totalQty);
             $('#totalPrice').text("$"+totalPrice);
+
+            //未選票不能按下訂
+            if(totalQty !=0){
+                $("input[type='submit']").removeClass("disabled");
+            }else{
+                $("input[type='submit']").addClass("disabled");
+            }
         }
     </script>
 }
