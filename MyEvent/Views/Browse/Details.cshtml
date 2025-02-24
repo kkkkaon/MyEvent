@@ -191,12 +191,13 @@
                 var priceText = $('#price_' + id).text().replace('$', '').trim();
                 var price = parseFloat(priceText) || 0;
 
+                
                 totalQty += qty;
                 totalPrice += qty * price;
             });
 
             $('#totalQty').text(totalQty);
-            $('#totalPrice').text(totalPrice);
+            $('#totalPrice').text("$"+totalPrice);
         }
     </script>
 }

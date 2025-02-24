@@ -1,0 +1,44 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>訂單確認</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>座位</th>
+            <th>票種</th>
+            <th>價格</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Seat.Row - @item.Seat.Number</td>
+                <td>@item.TicketType.Name</td>
+                <td>$@Convert.ToInt32(Convert.ToDecimal(item.Seat.Price) * Convert.ToDecimal(item.TicketType.Discount))</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <h4>總金額: <b>$@(Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.Seat.Price) * Convert.ToDecimal(i.TicketType.Discount))))</b></h4>
+</div>
+
+<form asp-action="PlaceOrder" asp-controller="Order" method="post">
+    @foreach (var item in Model)
+    {
+        <input type="hidden" name="SeatID" value="@item.Seat.SeatID" />
+        <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" />
+    }
+    <button type="submit" class="btn btn-success">確認訂單</button>
+</form>
+
+<a asp-action="Select" class="btn btn-secondary">返回</a>
+
+

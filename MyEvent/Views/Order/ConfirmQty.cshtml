@@ -1,0 +1,51 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "ConfirmQty";
+}
+
+<h1>ConfirmQty</h1>
+
+
+<h1>確認票種數量</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>票種名稱</th>
+			<th>價格</th>
+            <th>數量</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+        decimal totalAmount = 0;
+        foreach (var item in Model)
+        {
+            if (item.Qty > 0)
+            {
+            <tr>
+                <td>@item.TicketTypeName</td>
+                <td>@Convert.ToInt32(item.price)</td>
+                <td>@item.Qty</td>
+            </tr>
+			    totalAmount += item.price * item.discount * item.Qty;
+            }   
+        }
+        }
+    </tbody>
+</table>
+<div>
+    <h4>總金額: <b>$@Convert.ToInt32(totalAmount)</b></h4>
+</div>
+
+<form asp-action="PlaceOrder" asp-controller="Order" method="post">
+    @* @foreach (var item in Model) *@
+    @* { *@
+    @*     <input type="hidden" name="SeatID" value="@item.Seat.SeatID" /> *@
+    @*     <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" /> *@
+    @* } *@
+    @* <button type="submit" class="btn btn-success">確認訂單</button> *@
+</form>
+
+<a asp-action="Select" class="btn btn-secondary">返回</a>
+

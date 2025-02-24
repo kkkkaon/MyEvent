@@ -44,8 +44,7 @@ namespace MyEvent.Controllers
 
 
         public IActionResult LoadDiscount(string SeatID)
-        {
-            
+        { 
             return ViewComponent("VCDiscount", new { seatID = SeatID });
         }
 

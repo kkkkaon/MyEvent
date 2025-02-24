@@ -9,7 +9,7 @@
 </style>
 
 <h1>Select</h1>
-<form asp-action="SelectDiscount">
+<form asp-action="Confirm" asp-controller="Order">
 	<div class="row">
 		<div class="col-md-8">
 			@foreach (var seat in Model)
@@ -35,7 +35,11 @@
 				<h5>已選座位</h5>
 				<ul id="selectedSeatsList" class="list-group">
 				</ul>
-				<input type="submit" value="下訂" class="btn btn-dark mt-auto" />
+				<div class="text-start mt-auto">
+					<span>已選 <b id="totalQty"></b> 個座位</span>
+					<span>金額：</span><b id="totalPrice">$</b>
+				</div>
+				<input type="submit" value="下訂" class="btn btn-dark mt-3 disabled" />
 			</div>
 		</div>
 
@@ -46,9 +50,7 @@
 		{
 			<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
 		}
-
 	</select>
-
 
 </form>
 
@@ -80,22 +82,25 @@
 			var seatId = $(this).attr("id");
 			var seatLabel = $("label[for='" + seatId + "']").attr("data-seat-row-num");
 
-			if ($(this).is(":checked")) {					
-				// **開啟票種選擇 Modal**
-				$("#OrderModal").modal("show");
-
+			if ($(this).is(":checked")) {	
+				
 				// **標記當前選擇的座位**
 				$("#OrderModal").data("selectedSeatId", seatId);
 				$("#OrderModal").data("selectedSeatLabel", seatLabel);
+				// **開啟票種選擇 Modal**
+				$("#OrderModal").modal("show");
+
+				
 			} else {
 				// **取消座位時，直接從列表中移除**
 				list.find("li[data-seat-id='" + seatId + "']").remove();
+				updateTotal();
 			}
 		});
 
 		// **2. 監聽票種 (TicketTypeID) 變更**
 		$(document).on("change", '.seat-checkbox', function () {
-			var ticketId = $(this).attr("id"); // 取得選中的票種 ID
+			var ticketTypeId = $(this).attr("id"); // 取得選中的票種 ID
 			var seatId = $("#OrderModal").data("selectedSeatId"); // 取得之前選的座位 ID
 			var seatLabel = $("#OrderModal").data("selectedSeatLabel"); // 取得座位標籤
 
@@ -110,17 +115,23 @@
 			var ticketSelect = $("#ticketTypeList").clone();
 			ticketSelect.removeAttr("id").removeClass("d-none").addClass("ticket-select");
 
+			ticketSelect.attr("name", "TicketTypeID").val(ticketTypeId);
+
 			var listItem = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
 				.attr("data-seat-id", seatId)
 				.append($("<b>").text(seatLabel))
 				.append($("<div>").append(ticketSelect).css("width", "200px"))
+				.append($("<input type='hidden' name='SeatID' value='" + seatId + "'>"))
 				.append($("<i>").addClass("bi bi-x-circle-fill"));
 
 			list.append(listItem);
 			$("#OrderModal").modal("hide"); // **關閉 Modal**
 
-			// **存儲座位與票種的對應**
-			seatCheckbox.attr("data-ticket-id", ticketId);
+			updateTotal();
+		});
+
+		$(document).on("change", ".ticket-select", function () {
+			updateTotal(); // 重新計算總價
 		});
 
 		// **3. 當點擊刪除按鈕時**
@@ -136,7 +147,19 @@
 
 			// **從列表中移除該座位**
 			$(this).closest("li").remove();
+
+			updateTotal();
 		});
+
+		//按close會取消checked
+		$(document).on("click", "#OrderModal .btn-close", function () {
+			var seatId = $("#OrderModal").data("selectedSeatId"); 
+			if (seatId) {
+			$("#" + seatId).prop("checked", false); 
+			$("#OrderModal").removeData("selectedSeatId").removeData("selectedSeatLabel"); // 清除暫存數據
+			}
+		});
+
 
 		$('#OrderModal').on('show.bs.modal', function (event) {
 			var seatId = $(this).data('selectedSeatId'); // 取得選擇的座位 ID
@@ -152,8 +175,32 @@
 				modal.find('#modal-content').html(data);
 			});
 		});
+		
+		
+		function updateTotal() {
+			var total = $("#selectedSeatsList li").length;
+			$("#totalQty").text(total);
 
+			var totalPrice = 0;
+			$("#selectedSeatsList li").each(function () {
+				var ticketSelect = $(this).find("select.ticket-select"); // 找到該座位的票種選擇器
+				var ticketTypeID = ticketSelect.val(); // 取得票種 ID
+				
+				// 根據票種 ID 取得對應 label 中 p 的文字內容
+				var priceText = $("label[for='" + ticketTypeID + "'] p").text();
+				// 移除 $ 符號及空格，轉換成數字
+				var price = parseFloat(priceText.replace('$', '').trim()) || 0;
+				totalPrice += price;
+			});
 
+			$('#totalPrice').text("$"+totalPrice);
+
+			if(total !=0){
+				$("input[type='submit']").removeClass("disabled");
+			}else{
+				$("input[type='submit']").addClass("disabled");
+			}
+		}
 
 
 	</script>
