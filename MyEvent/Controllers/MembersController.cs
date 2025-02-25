@@ -68,7 +68,7 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MemberID,MemberName,Birthday,JoinDate,ZipCode,City,Area,Address")] Member member)
+        public async Task<IActionResult> Edit(string id, [Bind("MemberID,MemberName,JoinDate,ZipCode,City,Area,Address")] Member member, DateOnly? Birthday)
         {
             if (id != member.MemberID)
             {
@@ -79,7 +79,25 @@ namespace MyEvent.Controllers
             {
                 try
                 {
-                    _context.Update(member);
+                    // 先從資料庫查詢出原本的資料
+                    var existingMember = await _context.Member.FindAsync(id);
+                    if (existingMember == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // 如果前端未傳遞 Birthday，則保持原本的值
+                    if (Birthday.HasValue)
+                    {
+                        existingMember.Birthday = Birthday.Value;
+                    }
+
+                    existingMember.MemberName = member.MemberName;
+                    existingMember.ZipCode = member.ZipCode;
+                    existingMember.City = member.City;
+                    existingMember.Area = member.Area;
+                    existingMember.Address = member.Address;
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

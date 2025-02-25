@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "waGdAbtxgTycSvz4Zz79Xz7+HI26BFJiMvQERBq9uh0=",
+  "Hash": "qxvgzhttvHl0R8p795jpIp5/qo1l7DnkGKRjUDYef1M=",
   "Source": "MyEvent",
   "BasePath": "_content/MyEvent",
   "Mode": "Default",
@@ -241,8 +241,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ozu22stjof",
-      "Integrity": "ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=",
+      "Fingerprint": "mi7tpv9zww",
+      "Integrity": "sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
@@ -283,8 +283,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6gzpyzhau4",
-      "Integrity": "SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=",
+      "Fingerprint": "w7ll1qudh8",
+      "Integrity": "rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
@@ -2092,7 +2092,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "215356"
+          "Value": "215369"
         },
         {
           "Name": "Content-Type",
@@ -2100,11 +2100,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
+          "Value": "\"sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 06:58:37 GMT"
+          "Value": "Tue, 25 Feb 2025 03:43:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2114,7 +2114,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
+          "Value": "sha256-sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI="
         }
       ]
     },
@@ -2201,8 +2201,8 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.6gzpyzhau4.css",
-      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Route": "lib/bootstrap/dist/css/bootstrap.mi7tpv9zww.css",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2211,7 +2211,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162726"
+          "Value": "215369"
         },
         {
           "Name": "Content-Type",
@@ -2219,11 +2219,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+          "Value": "\"sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 06:58:37 GMT"
+          "Value": "Tue, 25 Feb 2025 03:43:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2233,15 +2233,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6gzpyzhau4"
+          "Value": "mi7tpv9zww"
         },
         {
           "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
+          "Value": "lib/bootstrap/dist/css/bootstrap.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+          "Value": "sha256-sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI="
         }
       ]
     },
@@ -2256,7 +2256,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162726"
+          "Value": "162751"
         },
         {
           "Name": "Content-Type",
@@ -2264,11 +2264,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+          "Value": "\"rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 06:58:37 GMT"
+          "Value": "Tue, 25 Feb 2025 05:57:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2278,7 +2278,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+          "Value": "sha256-rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8="
         }
       ]
     },
@@ -2365,8 +2365,8 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.ozu22stjof.css",
-      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.w7ll1qudh8.css",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2375,7 +2375,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "215356"
+          "Value": "162751"
         },
         {
           "Name": "Content-Type",
@@ -2383,11 +2383,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA=\""
+          "Value": "\"rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 06:58:37 GMT"
+          "Value": "Tue, 25 Feb 2025 05:57:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2397,15 +2397,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ozu22stjof"
+          "Value": "w7ll1qudh8"
         },
         {
           "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.css"
+          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ZMvmWDSU4zY1Z29EQGm5Mubfz/YxF4hiReGqx84o4tA="
+          "Value": "sha256-rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8="
         }
       ]
     },
@@ -6778,7 +6778,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Feb 2025 07:44:35 GMT"
+          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6823,7 +6823,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Feb 2025 07:44:35 GMT"
+          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6868,7 +6868,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Feb 2025 07:44:35 GMT"
+          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6905,7 +6905,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Feb 2025 07:44:35 GMT"
+          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
         },
         {
           "Name": "Cache-Control",

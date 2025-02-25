@@ -5,9 +5,7 @@
     ViewData["BrowseBackground"] = "background-color: black; color: lightgray;";
 }
 <style>
-    .filter{
-    color:lightgray;
-    }
+
     .eventCards a {
     background-color: black;
     border: #1f1f1f, 1px, solid;
@@ -20,12 +18,9 @@
     color: lightgray;
     background-color: #1f1f1f;
     }
-    .btn-dark{
-    color: lightgray; 
-    background-color: #2e2e2e;
-    }
+   
 
-    .form-check-inline .btn-check:checked + label.btn-dark {
+    .form-check-inline .btn-check:checked{
     color: #1f1f1f;
     background-color: lightgray;
     }
@@ -44,18 +39,18 @@
     <div class="col-md-8 filter">
         <form method="get" asp-action="Index">
             <div class="form-group">
-                <label class="form-label">地區</label>
+                |
                 @{
                     string[] Region = { "北部", "中部", "南部", "東部" };
+                    foreach (var region in Region)
+                    {
+                        <div class="form-check-inline mx-1">
+                            <input class="btn-check " type="checkbox" id="Region_@region" name="Region" value="@region" autocomplete="off">
+                            <label class="btn btn-dark" for="Region_@region">@region</label>
+                        </div>
+                    }
                 }
-                @foreach (var region in Region)
-                {
-                    <div class="form-check-inline mx-1">
-                        <input class="btn-check " type="checkbox" id="Region_@region" name="Region" value="@region" autocomplete="off">
-                        <label class="btn btn-dark" for="Region_@region">@region</label>
-                    </div>
-                }
-
+                |
             </div>
             <div class="form-group mt-2 mb-4">
                 @* <label class="form-label">活動類型</label> *@
@@ -70,7 +65,7 @@
                         <label class="btn btn-dark" for="EventType_@eventTypes[i].Value" style="width:70px; font-size:14px;"> <i class="bi @icon[i]"></i> <div class="mt-1">@eventTypes[i].Text</div></label>
                     </div>
                 }
-                <input class="mx-6 p-2" type="submit" value="篩選"/>
+                <input class="mx-6 p-2 btn btn-primary" type="submit" value="篩選"/>
             </div>
             
 

@@ -6,9 +6,10 @@ namespace MyEvent.Models;
 
 public partial class Credentials
 {
-    
+    [Display(Name="帳號")]
     public string Account { get; set; } = null!;
 
+    [Display(Name = "密碼")]
     public string Password { get; set; } = null!;
 
     public string? MemberID { get; set; }

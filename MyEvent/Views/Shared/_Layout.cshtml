@@ -51,7 +51,7 @@
                             <li>
                                 @if (Context.Session.GetString("Member") != null)
                                 {
-                                    <a asp-action="Index" asp-controller="MemberManage" type="button" class="btn btn-outline-primary"> 會員資料</a>
+                                    <a asp-action="Index" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"> 會員資料</a>
                                 }
                             </li>
                             @if (manager == "admin")
@@ -69,7 +69,7 @@
                         }
                         else
                         {
-                            <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"><i class="bi bi-person-fill"></i> 登出</a>
+                            <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> 登出</a>
                         }
                     </div>
                 </div>

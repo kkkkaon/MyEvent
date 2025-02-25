@@ -28,7 +28,6 @@ namespace MyEvent.Controllers
             var events = _context.Event.Include(h => h.EventHolder).Include(t => t.EventType).Include(v => v.Venue).AsQueryable();
 
 
-
             if (EventTypeID != null && EventTypeID.Any())
             {
                 events = events.Where(e => EventTypeID.Contains(e.EventType.EventTypeID));

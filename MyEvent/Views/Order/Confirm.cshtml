@@ -12,6 +12,7 @@
             <th>座位</th>
             <th>票種</th>
             <th>價格</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 <td>@item.Seat.Row - @item.Seat.Number</td>
                 <td>@item.TicketType.Name</td>
                 <td>$@Convert.ToInt32(Convert.ToDecimal(item.Seat.Price) * Convert.ToDecimal(item.TicketType.Discount))</td>
+                <td><i class="bi bi-trash3-fill"></i></td>
             </tr>
         }
     </tbody>
@@ -30,14 +32,14 @@
     <h4>總金額: <b>$@(Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.Seat.Price) * Convert.ToDecimal(i.TicketType.Discount))))</b></h4>
 </div>
 
-<form asp-action="PlaceOrder" asp-controller="Order" method="post">
-    @foreach (var item in Model)
-    {
-        <input type="hidden" name="SeatID" value="@item.Seat.SeatID" />
-        <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" />
-    }
-    <button type="submit" class="btn btn-success">確認訂單</button>
-</form>
+ <form asp-action="PlaceOrder" asp-controller="Order" method="post"> 
+    @foreach (var item in Model)  
+    {  
+        <input type="hidden" name="SeatID" value="@item.Seat.SeatID" />  
+        <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" />  
+    }  
+     <button type="submit" class="btn btn-primary text-end">確認訂單</button> 
+ </form> 
 
 <a asp-action="Select" class="btn btn-secondary">返回</a>
 

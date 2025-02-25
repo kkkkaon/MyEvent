@@ -17,10 +17,7 @@
         border-bottom: 2px solid lightgray;
     }
 
-    .btn-dark {
-        color: lightgray;
-        background-color: #2e2e2e;
-    }
+
     section{ 
         margin-top: 50px;
         margin-bottom: 40px;
@@ -84,18 +81,18 @@
     @if (Context.Session.GetString("Member") != null)
     {
         @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1){
-            <button type="button" id="@(ViewBag.Seat.SeatID)" data-seat-row-num="@(ViewBag.Seat.SeatType)" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#OrderModal">下訂</button>
+            <button type="button" id="@(ViewBag.Seat.SeatID)" data-seat-row-num="@(ViewBag.Seat.SeatType)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#OrderModal">下訂</button>
         }else{
-            <a asp-action="Select" asp-controller="Seats" type="button" class="btn btn-dark">選位</a>
+            <a asp-action="Select" asp-controller="Seats" type="button" class="btn btn-primary">選位</a>
         }
     }
     else
     {
         @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1)
         {
-            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-dark">下訂</a>
+            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-primary">下訂</a>
         }else{
-            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-dark">選位</a>
+            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-primary">選位</a>
         }
     }
     <a asp-action="Index" class="btn btn-dark">其他演出</a>

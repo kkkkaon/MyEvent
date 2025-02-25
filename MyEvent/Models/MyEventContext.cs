@@ -60,7 +60,7 @@ public partial class MyEventContext : DbContext
 
             entity.HasOne(d => d.Member).WithOne(p => p.Credentials)
                 .HasForeignKey<Credentials>(c => c.MemberID)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Credentia__Membe__5DCAEF64");
         });
 
@@ -191,6 +191,10 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.JoinDate).HasColumnType("datetime");
             entity.Property(e => e.MemberName).HasMaxLength(50);
             entity.Property(e => e.ZipCode).HasMaxLength(6);
+            entity.HasOne(m => m.Credentials)
+                   .WithOne(c => c.Member)
+                   .HasForeignKey<Credentials>(c => c.MemberID)
+                   .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<MemberTel>(entity =>
