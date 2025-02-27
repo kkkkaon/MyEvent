@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -19,6 +20,7 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
+
         public async Task<IActionResult> Index()
         {
             var id = HttpContext.Session.GetString("MemberID");
@@ -30,15 +32,20 @@ namespace MyEvent.Controllers
             var member = await _context.Member.Include(m => m.MemberTel).Include(m => m.CreditCard).Include(m => m.Credentials).Include(m => m.Order).Where(o => o.MemberID == id).FirstOrDefaultAsync();
 
 
-
             ViewBag.Orders = await _context.Order.Where(o => o.MemberID == id).Include(o => o.Event).ToListAsync();
             return View(member);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             callViewBagData();
 
+            ViewBag.RoleList = await _context.RoleList
+                .Select(r => new SelectListItem
+                {
+                    Value = r.RoleID.ToString(),
+                    Text = r.RoleName
+                }).ToListAsync();
             return View();
         }
 
@@ -58,6 +65,7 @@ namespace MyEvent.Controllers
             }
 
             member.JoinDate = DateTime.Now;
+            member.Role = "1";
             var memberID = DateTime.Now.ToString("yyyyMM");
             var currentYear = DateTime.Now.Year;
             var currentMonth = DateTime.Now.Month;
@@ -67,27 +75,31 @@ namespace MyEvent.Controllers
             member.MemberID = newMemberID;
             ModelState.Remove("MemberID");
 
-
-
             if (ModelState.IsValid)
             {
-                _context.Member.Add(member);
+                _context.Add(member);
                 await _context.SaveChangesAsync();
 
                 HttpContext.Session.SetString("MemberID", member.MemberID);
-                HttpContext.Session.SetString("Member", member.Credentials.Account);
+                HttpContext.Session.SetString("Member", member.Credentials.Account);                
                 string? eventId = HttpContext.Session.GetString("EventID");
                 if (eventId != null)
                 {
                     //瀏覽的演出
                     return RedirectToAction("Details", "Browse", new { id = eventId });
                 }
-                return RedirectToAction("Index", "Browse");
+                return RedirectToAction("Index", "Browse"); 
                 ;
 
             }
 
-            //要寫City跟Area必填的errormessage
+            //要寫City跟Area跟角色 (如果沒有value)顯示errormessage
+            ViewBag.RoleList = await _context.RoleList
+                .Select(r => new SelectListItem
+                {
+                    Value = r.RoleID.ToString(),
+                    Text = r.RoleName
+                }).ToListAsync();
 
             return View(member);
         }
@@ -108,7 +120,9 @@ namespace MyEvent.Controllers
             {
                 HttpContext.Session.SetString("MemberID", result.Member.MemberID);
                 HttpContext.Session.SetString("Member", result.Account);
+                HttpContext.Session.SetString("Role", result.Member.Role);
                 string? eventId = HttpContext.Session.GetString("EventID");
+                
                 if (eventId != null)
                 {
                     //瀏覽的演出
@@ -120,7 +134,6 @@ namespace MyEvent.Controllers
             else
             {
                 ViewData["Message"] = "帳號或密碼錯誤";
-
             }
             return View(login);
         }
@@ -130,6 +143,7 @@ namespace MyEvent.Controllers
             //5.4.2
             //HttpContext.Session.Clear():清除所有session
             HttpContext.Session.Remove("Member");
+            HttpContext.Session.Remove("Role");
 
             return RedirectToAction("Index", "Home");
         }
@@ -150,6 +164,7 @@ namespace MyEvent.Controllers
             .ToList();
 
             ViewBag.Districts = districts;
+            
         }
 
     }

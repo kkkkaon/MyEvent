@@ -1,5 +1,5 @@
 ﻿@{
-    var manager = ViewContext.HttpContext.Session.GetString("Member");
+  var role = ViewContext.HttpContext.Session.GetString("Role");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -32,32 +32,18 @@
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm @(ViewBag.IsDarkbg == true ? "navbar-dark" : "navbar-light bg-white") border-bottom box-shadow mb-3">
                 <div class="container-fluid">
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                        <ul class="navbar-nav flex-grow-1 container">
                             <li class="nav-item">
                                 <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Browse" asp-action="Index">瀏覽演出</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Members" asp-action="Index">會員</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="TicketTypes" asp-action="Index">TicketTypes</a>
-                            </li>
-                            <li>
-                                @if (Context.Session.GetString("Member") != null)
-                                {
-                                    <a asp-action="Index" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"> 會員資料</a>
-                                }
-                            </li>
-                            @if (manager == "admin")
+                            
+                            @if (role == "3")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Members" asp-action="Index">平台帳號管理</a>
+                                    <a class="nav-link text-success" asp-area="" asp-controller="Members" asp-action="Index">平台帳號管理</a>
                                 </li>
                             }
                         </ul>
@@ -65,11 +51,11 @@
                     <div class="col-1">
                         @if (Context.Session.GetString("Member") == null)
                         {
-                            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> 登入</a>
+                            <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-outline-success"><i class="bi bi-person-fill"></i> 登入</a>
                         }
                         else
                         {
-                            <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-primary"><i class="bi bi-person-fill"></i> 登出</a>
+                            <a asp-action="Index" asp-controller="MemberLogin" class="text-success"><i class="bi bi-person-circle fs-3"></i></a>
                         }
                     </div>
                 </div>

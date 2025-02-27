@@ -1,0 +1,143 @@
+﻿@using System.Text.Json;
+@model MyEvent.Models.Member;
+
+@{
+
+    ViewData["Title"] = "Create";
+    var areaData = ViewBag.AreaData as Dictionary<string, Dictionary<string, AreaInfo>>;
+    var cities = ViewBag.Cities as List<string>;
+    var districts = ViewBag.Districts as List<string>;
+}
+
+<h1>Create</h1>
+
+<h4>Member</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="text-danger">@ViewData["ErrorMessage"]</div>
+            <div class="form-group">
+                <label asp-for="Credentials.Account" class="control-label"></label>
+                <input asp-for="Credentials.Account" class="form-control" />
+                <span asp-validation-for="Credentials.Account" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Credentials.Password" class="control-label"></label>
+                <input asp-for="Credentials.Password" type="password" class="form-control" />
+                <span asp-validation-for="Credentials.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberName" class="control-label"></label>
+                <input asp-for="MemberName" class="form-control" />
+                <span asp-validation-for="MemberName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" type="date" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <select id="city" name="City" class="form-control" onchange="updateDistricts()">
+                    @* <option value="-1" selected>請選擇城市</option>  *@
+                    @foreach (var city in cities)
+                    {
+
+                        @if (Model?.City == city)
+                        {
+                            <option value="@city" selected>@city</option>
+                        }
+                        else
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+                @* <span class="text-danger">@ViewData["ErrorMessage"]</span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <select id="district" name="Area" class="form-control" disabled>
+                    @* <option value="">請先選擇城市</option> *@
+                </select>
+                <span asp-validation-for="Area" class="text-danger"></span>
+                @* <span class="text-danger">@ViewData["ErrorMessage"]</span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="Role" class="control-label"></label>
+                    <select asp-for="Role" class="form-control" asp-items="ViewBag.RoleList">
+                        <option>請選擇角色</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="建立會員" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index" >Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        const areaData = @Html.Raw(JsonSerializer.Serialize(areaData));
+        const selectedArea = "@(Model?.Area)";
+
+            function updateDistricts() {
+                const city = document.getElementById('city').value;
+                const districtSelect = document.getElementById('district');
+
+                // 清空區域選單
+                districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+
+                if (city && areaData[city]) {
+                    // 根據選擇的城市填充區域選單
+                    for (const district in areaData[city]) {
+                        const option = document.createElement('option');
+                        option.value = district; // 區域名稱作為值
+                        option.textContent = district; // 顯示區域名稱
+
+                        if (district == selectedArea) {
+                            option.selected = true;
+                        }
+
+                        districtSelect.appendChild(option);
+                    }
+                    districtSelect.disabled = false;
+                } else {
+                    districtSelect.disabled = true;
+                }
+
+                $(districtSelect).removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(districtSelect);
+            }
+
+            window.onload = function() {
+                if (document.getElementById('city').value) {
+                    updateDistricts();
+                }
+            }
+
+    </script>
+}

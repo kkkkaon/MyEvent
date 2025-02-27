@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qxvgzhttvHl0R8p795jpIp5/qo1l7DnkGKRjUDYef1M=",
+  "Hash": "SZgjLbqLKW5gstDINfqWap8S3HMrMicGtJzGRZZq0EE=",
   "Source": "MyEvent",
   "BasePath": "_content/MyEvent",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "bl7vsm7qp9",
-      "Integrity": "0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=",
+      "Fingerprint": "6u3umrbiyx",
+      "Integrity": "7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "bl7vsm7qp9",
-      "Integrity": "0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=",
+      "Fingerprint": "6u3umrbiyx",
+      "Integrity": "7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css"
@@ -283,8 +283,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "w7ll1qudh8",
-      "Integrity": "rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=",
+      "Fingerprint": "w0k4mzp5jy",
+      "Integrity": "oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
@@ -2256,7 +2256,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162751"
+          "Value": "162731"
         },
         {
           "Name": "Content-Type",
@@ -2264,11 +2264,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=\""
+          "Value": "\"oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 05:57:17 GMT"
+          "Value": "Thu, 27 Feb 2025 03:28:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2278,7 +2278,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8="
+          "Value": "sha256-oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4="
         }
       ]
     },
@@ -2365,7 +2365,7 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.w7ll1qudh8.css",
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.w0k4mzp5jy.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2375,7 +2375,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162751"
+          "Value": "162731"
         },
         {
           "Name": "Content-Type",
@@ -2383,11 +2383,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8=\""
+          "Value": "\"oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 05:57:17 GMT"
+          "Value": "Thu, 27 Feb 2025 03:28:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2397,7 +2397,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "w7ll1qudh8"
+          "Value": "w0k4mzp5jy"
         },
         {
           "Name": "label",
@@ -2405,7 +2405,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rMc7oeXrx7l4koid+Djdufs77Bj70yCOkRBaTeNSUC8="
+          "Value": "sha256-oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4="
         }
       ]
     },
@@ -6756,7 +6756,7 @@
       ]
     },
     {
-      "Route": "MyEvent.bl7vsm7qp9.bundle.scp.css",
+      "Route": "MyEvent.6u3umrbiyx.bundle.scp.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -6766,7 +6766,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2256"
+          "Value": "2255"
         },
         {
           "Name": "Content-Type",
@@ -6774,11 +6774,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=\""
+          "Value": "\"7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
+          "Value": "Thu, 27 Feb 2025 04:42:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6788,7 +6788,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bl7vsm7qp9"
+          "Value": "6u3umrbiyx"
         },
         {
           "Name": "label",
@@ -6796,12 +6796,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g="
+          "Value": "sha256-7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g="
         }
       ]
     },
     {
-      "Route": "MyEvent.bl7vsm7qp9.styles.css",
+      "Route": "MyEvent.6u3umrbiyx.styles.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -6811,7 +6811,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2256"
+          "Value": "2255"
         },
         {
           "Name": "Content-Type",
@@ -6819,11 +6819,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=\""
+          "Value": "\"7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
+          "Value": "Thu, 27 Feb 2025 04:42:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6833,7 +6833,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bl7vsm7qp9"
+          "Value": "6u3umrbiyx"
         },
         {
           "Name": "label",
@@ -6841,7 +6841,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g="
+          "Value": "sha256-7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g="
         }
       ]
     },
@@ -6856,7 +6856,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2256"
+          "Value": "2255"
         },
         {
           "Name": "Content-Type",
@@ -6864,11 +6864,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=\""
+          "Value": "\"7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
+          "Value": "Thu, 27 Feb 2025 04:42:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6878,7 +6878,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g="
+          "Value": "sha256-7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g="
         }
       ]
     },
@@ -6893,7 +6893,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2256"
+          "Value": "2255"
         },
         {
           "Name": "Content-Type",
@@ -6901,11 +6901,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g=\""
+          "Value": "\"7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 07:54:32 GMT"
+          "Value": "Thu, 27 Feb 2025 04:42:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6915,7 +6915,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0SOJp+Uf/qHkhxRYRvPRgi8VGOgbxgebnmPcUPNxi0g="
+          "Value": "sha256-7sC0XdUdMToNivLUX3Y83UXauZ8zUYnUSAt3dPPdT3g="
         }
       ]
     }

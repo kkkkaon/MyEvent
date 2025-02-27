@@ -10,32 +10,47 @@
     .nav-underline .nav-link.active {
         border-bottom: 2px solid black;
     }
+    .name{
+        background-color: rgba(0,153,153,.25);
+        padding-top:40px;
+		padding-bottom: 40px;
+        border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+    }
+    .col-3{
+		border-radius: 10px;
+    }
 </style>
 
 <h1>@ViewData["Title"]</h1>
-<div class="text-center p-5">
-    <h5>嗨！@(Model.MemberName)</h5>
-</div>
-<div class="container">
-    <ul class="nav nav-underline" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true">訂購紀錄</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false">個人資料</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false">信用卡</a>
-        </li>
-    </ul>
 
-    <div class="tab-content mt-3" id="myTabContent">
+<div class="container row g-0">
+    <div class="col-3 shadow me-3">
+        <div class="name text-center">
+			<h5>嗨！@(Model.MemberName)</h5>
+        </div>
+        <ul class="nav flex-column" role="tablist">
+            <li class="nav-item mt-3" role="presentation">
+                <a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 訂購紀錄</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false"><i class="bi bi-credit-card"></i> 信用卡</a>
+            </li>
+            <li class="text-center mt-5 mb-2">
+                <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-success w-75">登出</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content col-8" id="myTabContent">
         <div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
             @foreach (var order in ViewBag.Orders)
             {
-                <div class="card mt-3">
+                <div class="card mb-3">
                     <div class="card-header">
-                        <p>訂單編號：@order.OrderID</p>
+                        <p class="fw-bold">訂單編號：@order.OrderID</p>
                     </div>
                     <div class="card-body">
                         <p>演出日期：@order.Date.ToString("yyyy-MM-dd")</p>

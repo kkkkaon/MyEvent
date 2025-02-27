@@ -26,6 +26,78 @@ namespace MyEvent.Controllers
             return View(await _context.Member.ToListAsync());
         }
 
+        public async Task<IActionResult> Create()
+        {
+            callViewBagData();
+
+            ViewBag.RoleList = await _context.RoleList
+                .Select(r => new SelectListItem
+                {
+                    Value = r.RoleID.ToString(),
+                    Text = r.RoleName
+                }).ToListAsync();
+            return View();
+        }
+
+        // POST: Members/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Member member)
+        {
+            callViewBagData();
+
+            if (_context.Credentials.Find(member.Credentials.Account) != null)
+            {
+                ViewData["ErrorMessage"] = "帳號已存在";
+                return View(member);
+            }
+
+            member.JoinDate = DateTime.Now;
+            member.Role = "1";
+            var memberID = DateTime.Now.ToString("yyyyMM");
+            var currentYear = DateTime.Now.Year;
+            var currentMonth = DateTime.Now.Month;
+
+            var lastMember = _context.Member.Where(m => m.JoinDate.Year == currentYear && m.JoinDate.Month == currentMonth).OrderByDescending(m => m.MemberID).FirstOrDefault();
+            var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : DateTime.Now.ToString("yyyyMM") + "0001";
+            member.MemberID = newMemberID;
+            ModelState.Remove("MemberID");
+
+            string role = HttpContext.Session.GetString("Role");
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(member);
+                await _context.SaveChangesAsync();
+
+                HttpContext.Session.SetString("MemberID", member.MemberID);
+                HttpContext.Session.SetString("Member", member.Credentials.Account);
+                string? eventId = HttpContext.Session.GetString("EventID");
+                if (eventId != null)
+                {
+                    //瀏覽的演出
+                    return RedirectToAction("Details", "Browse", new { id = eventId });
+                }
+
+                return RedirectToAction("Index", "Members"); 
+
+                ;
+
+            }
+
+            //要寫City跟Area跟角色 (如果沒有value)顯示errormessage
+            ViewBag.RoleList = await _context.RoleList
+                .Select(r => new SelectListItem
+                {
+                    Value = r.RoleID.ToString(),
+                    Text = r.RoleName
+                }).ToListAsync();
+
+            return View(member);
+        }
+
         // GET: Members/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -97,6 +169,14 @@ namespace MyEvent.Controllers
                     existingMember.City = member.City;
                     existingMember.Area = member.Area;
                     existingMember.Address = member.Address;
+                    existingMember.Role = member.Role;
+
+                    ViewBag.RoleList = await _context.RoleList
+                    .Select(r => new SelectListItem
+                    {
+                        Value = r.RoleID.ToString(),
+                        Text = r.RoleName
+                    }).ToListAsync();
 
                     await _context.SaveChangesAsync();
                 }
@@ -152,6 +232,25 @@ namespace MyEvent.Controllers
         private bool MemberExists(string id)
         {
             return _context.Member.Any(e => e.MemberID == id);
+        }
+
+        private void callViewBagData()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
+            var json = System.IO.File.ReadAllText(filePath);
+            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
+
+            ViewBag.AreaData = areaData;
+
+            var cities = areaData.Keys.ToList();
+            ViewBag.Cities = cities;
+
+            var districts = areaData
+            .SelectMany(city => city.Value.Keys)
+            .ToList();
+
+            ViewBag.Districts = districts;
+
         }
     }
 }

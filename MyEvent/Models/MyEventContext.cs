@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Humanizer;
 using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
 
@@ -27,6 +28,7 @@ public partial class MyEventContext : DbContext
     public virtual DbSet<Member> Member { get; set; }
 
     public virtual DbSet<MemberTel> MemberTel { get; set; }
+    public virtual DbSet<RoleList> RoleList { get; set; }
 
     public virtual DbSet<Order> Order { get; set; }
 
@@ -191,10 +193,16 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.JoinDate).HasColumnType("datetime");
             entity.Property(e => e.MemberName).HasMaxLength(50);
             entity.Property(e => e.ZipCode).HasMaxLength(6);
+            entity.Property(e => e.Role).HasMaxLength(1).IsFixedLength();
+
             entity.HasOne(m => m.Credentials)
                    .WithOne(c => c.Member)
                    .HasForeignKey<Credentials>(c => c.MemberID)
                    .OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(d => d.RoleList).WithMany(e => e.Member)
+                    .HasForeignKey(d => d.Role)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Member__Role__245D67DE");
         });
 
         modelBuilder.Entity<MemberTel>(entity =>
@@ -212,7 +220,15 @@ public partial class MyEventContext : DbContext
                 .HasConstraintName("FK__MemberTel__Membe__5AEE82B9");
         });
 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<RoleList>(entity =>
+        {
+            entity.HasKey(e => e.RoleID).HasName("PK__RoleList");
+
+            entity.Property(e => e.RoleID).HasMaxLength(1).IsFixedLength();
+            entity.Property(e => e.RoleName).HasMaxLength(15);
+        });
+
+            modelBuilder.Entity<Order>(entity =>
         {
             entity.HasKey(e => e.OrderID).HasName("PK__Order__C3905BAFC90BF40E");
 

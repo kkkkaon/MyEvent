@@ -4,9 +4,9 @@
     Layout = "_Layout";
 
     //5.3.1
-    if (Context.Request.RouteValues["controller"]?.ToString() == "MemberManage" || Context.Request.RouteValues["controller"]?.ToString() == "LoginsManage")
+    if (Context.Request.RouteValues["controller"]?.ToString() == "Members" || Context.Request.RouteValues["controller"]?.ToString() == "LoginsManage")
     {
-        Layout = "_MemberLayout";
+        Layout = "_AdminLayout";
 
         //5.3.5
         if (Context.Session.GetString("Member") == null)
@@ -14,4 +14,6 @@
             Context.Response.Redirect("/Home/Index");
         }
     }
+
+    
 }

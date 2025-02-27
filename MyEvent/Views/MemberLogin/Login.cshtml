@@ -20,7 +20,6 @@
         color: #5c5c5c;
         text-decoration: #5c5c5c solid 2px underline;
     }
-
     .backToBrowse:hover{
         color: #323232;
         text-decoration: #323232 solid 2px underline;
@@ -28,11 +27,11 @@
    
 </style>
 <body class="container">
-<h1>Login</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<h1 class="text-center mt-4">登入/註冊</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 col-md-6">
+         <hr style="color:#eb4f69;"/>
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -48,14 +47,16 @@
             <div class="text-danger">
                 @ViewData["Message"]
             </div>
-            <div class="form-group mt-2">
-                <input type="submit" value="登入" class="btn btn-primary" />
+                <div class="form-group mt-3 d-flex justify-content-center">
+                <input type="submit" value="登入" class="btn btn-primary me-2"/>
                 <a asp-action="Create" asp-controller="MemberLogin" class="btn btn-primary">註冊</a>
             </div>
+                <div class="mt-3 d-flex justify-content-center">
+                <a asp-action="Index" asp-controller="Browse" class="backToBrowse">下次再說，返回瀏覽</a>
+            </div>
+            
         </form>
-        <div class="mt-3">
-        <a asp-action ="Index" asp-controller="Browse" class="backToBrowse">下次再說，返回瀏覽</a>
-        </div>
+        
     </a>
 </div>
 </body>
