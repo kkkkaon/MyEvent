@@ -29,7 +29,7 @@
     <div class="d-flex flex-column min-vh-100" style="@ViewData["BrowseBackground"]">
         <header class="row">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm @(ViewBag.IsDarkbg == true ? "navbar-dark" : "navbar-light") border-bottom box-shadow mb-3" style="@ViewData["BrowseBackground"]">
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between col-11">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between col-10">
                     <ul class="navbar-nav flex-grow-1 container">
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -45,6 +45,9 @@
                             </li>
                         }
                     </ul>
+                </div>
+                <div class="col-1">
+                    <a asp-action="Logout" asp-controller="MemberLogin" class="text-light btn">登出</a>
                 </div>
                 <div class="col-1">
                     <a asp-action="Index" asp-controller="MemberLogin" class="text-light"><i class="bi bi-person-circle fs-3"></i></a>

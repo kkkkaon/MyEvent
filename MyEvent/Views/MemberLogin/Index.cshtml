@@ -2,23 +2,24 @@
 @{
     ViewData["Title"] = "Login Index";
     int tc = 1;
+    var role = ViewContext.HttpContext.Session.GetString("Role");
 }
 <style>
     .nav-item a {
-        color: black
+    color: black
     }
     .nav-underline .nav-link.active {
-        border-bottom: 2px solid black;
+    border-bottom: 2px solid black;
     }
     .name{
-        background-color: rgba(0,153,153,.25);
-        padding-top:40px;
-		padding-bottom: 40px;
-        border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
+    background-color: rgba(0,153,153,.25);
+    padding-top:40px;
+    padding-bottom: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     }
     .col-3{
-		border-radius: 10px;
+    border-radius: 10px;
     }
 </style>
 
@@ -27,7 +28,7 @@
 <div class="container row g-0">
     <div class="col-3 shadow me-3">
         <div class="name text-center">
-			<h5>嗨！@(Model.MemberName)</h5>
+            <h5>嗨！@(Model.MemberName)</h5>
         </div>
         <ul class="nav flex-column" role="tablist">
             <li class="nav-item mt-3" role="presentation">
@@ -36,9 +37,11 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
             </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false"><i class="bi bi-credit-card"></i> 信用卡</a>
-            </li>
+            @if (role != "3"){
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false"><i class="bi bi-credit-card"></i> 信用卡</a>
+                </li>}
+            
             <li class="text-center mt-5 mb-2">
                 <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-success w-75">登出</a>
             </li>
