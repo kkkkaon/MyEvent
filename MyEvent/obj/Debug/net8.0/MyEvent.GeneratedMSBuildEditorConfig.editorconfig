@@ -36,6 +36,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EHLogin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUhMb2dpblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EHLogin/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUhMb2dpblxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Events/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

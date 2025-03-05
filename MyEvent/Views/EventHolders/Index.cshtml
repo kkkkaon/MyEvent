@@ -1,25 +1,25 @@
-﻿@model IEnumerable<MyEvent.Models.Member>
+﻿@model IEnumerable<MyEvent.Models.EventHolder>
 
 @{
-    ViewData["Title"] = "會員帳號管理";
+    ViewData["Title"] = "Index";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create" asp-controller="Members">新增會員</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MemberName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Birthday)
+                @Html.DisplayNameFor(model => model.EventHolderName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JoinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tel)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
@@ -40,13 +40,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MemberName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
+                @Html.DisplayFor(modelItem => item.EventHolderName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZipCode)
@@ -61,8 +61,8 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MemberID"><i class="bi bi-pencil-fill text-success"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.MemberID"><i class="bi bi-trash3-fill text-primary"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.EventHolderID"><i class="bi bi-pencil-fill text-success"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.EventHolderID"><i class="bi bi-trash3-fill text-primary"></i>Delete</a>
             </td>
         </tr>
 }

@@ -80,8 +80,7 @@ namespace MyEvent.Controllers
                 _context.Add(member);
                 await _context.SaveChangesAsync();
 
-                HttpContext.Session.SetString("MemberID", member.MemberID);
-                HttpContext.Session.SetString("Member", member.Credentials.Account);                
+                HttpContext.Session.SetString("MemberID", member.MemberID);                
                 string? eventId = HttpContext.Session.GetString("EventID");
                 if (eventId != null)
                 {
@@ -119,10 +118,13 @@ namespace MyEvent.Controllers
             if (result != null)
             {
                 HttpContext.Session.SetString("MemberID", result.Member.MemberID);
-                HttpContext.Session.SetString("Member", result.Account);
                 HttpContext.Session.SetString("Role", result.Member.Role);
                 string? eventId = HttpContext.Session.GetString("EventID");
-                
+                string? role = HttpContext.Session.GetString("Role");
+                if(role == "2")
+                {
+                    return RedirectToAction("Index", "Members");
+                }
                 if (eventId != null)
                 {
                     //瀏覽的演出
@@ -142,7 +144,7 @@ namespace MyEvent.Controllers
         {
             //5.4.2
             //HttpContext.Session.Clear():清除所有session
-            HttpContext.Session.Remove("Member");
+            HttpContext.Session.Remove("MemberID");
             HttpContext.Session.Remove("Role");
 
             return RedirectToAction("Index", "Home");

@@ -4,12 +4,12 @@
     Layout = "_Layout";
 
     //5.3.1
-    if (Context.Request.RouteValues["controller"]?.ToString() == "Members")
+    if (Context.Request.RouteValues["controller"]?.ToString() == "Members" || Context.Request.RouteValues["controller"]?.ToString() == "EventHolders")
     {
         Layout = "_AdminLayout";
 
         //5.3.5
-        if (Context.Session.GetString("Member") == null)
+        if (Context.Session.GetString("MemberID") == null)
         {
             Context.Response.Redirect("/Home/Index");
         }

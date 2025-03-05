@@ -22,4 +22,6 @@ public partial class EventHolder
     public string Address { get; set; } = null!;
 
     public virtual ICollection<Event> Event { get; set; } = new List<Event>();
+
+    public virtual ECredentials? ECredentials { get; set; } = null!;
 }

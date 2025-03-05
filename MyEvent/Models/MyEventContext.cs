@@ -21,6 +21,8 @@ public partial class MyEventContext : DbContext
 
     public virtual DbSet<EventHolder> EventHolder { get; set; }
 
+    public virtual DbSet<ECredentials> ECredentials { get; set; }
+
     public virtual DbSet<EventTag> EventTag { get; set; }
 
     public virtual DbSet<EventType> EventType { get; set; }
@@ -100,8 +102,7 @@ public partial class MyEventContext : DbContext
                 .HasMaxLength(11)
                 .IsFixedLength();
             entity.Property(e => e.EventHolderID)
-                .HasMaxLength(4)
-                .IsFixedLength();
+                .HasMaxLength(36);
             entity.Property(e => e.EventName).HasMaxLength(50);
             entity.Property(e => e.EventTypeID)
                 .HasMaxLength(3)
@@ -138,8 +139,7 @@ public partial class MyEventContext : DbContext
             entity.HasKey(e => e.EventHolderID).HasName("PK__EventHol__ACE2A24FC6F83D0A");
 
             entity.Property(e => e.EventHolderID)
-                .HasMaxLength(4)
-                .IsFixedLength();
+                .HasMaxLength(36);
             entity.Property(e => e.Address).HasMaxLength(30);
             entity.Property(e => e.Area)
                 .HasMaxLength(10);
@@ -149,6 +149,25 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.EventHolderName).HasMaxLength(50);
             entity.Property(e => e.Tel).HasMaxLength(15);
             entity.Property(e => e.ZipCode).HasMaxLength(6);
+
+            entity.HasOne(m => m.ECredentials)
+           .WithOne(c => c.EventHolder)
+           .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<ECredentials>(entity =>
+        {
+            entity.HasKey(e => e.Account).HasName("PK__ECredent__B0C3AC47011D1485");
+
+            entity.Property(e => e.Account).HasMaxLength(40);
+            entity.Property(e => e.EventHolderID)
+                .HasMaxLength(36);
+            entity.Property(e => e.Password).HasMaxLength(30);
+
+            entity.HasOne(d => d.EventHolder).WithOne(p => p.ECredentials)
+                .HasForeignKey<ECredentials>(c => c.EventHolderID)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__ECredenti__Event__3864608B");
         });
 
         modelBuilder.Entity<EventTag>(entity =>
@@ -197,7 +216,6 @@ public partial class MyEventContext : DbContext
 
             entity.HasOne(m => m.Credentials)
                    .WithOne(c => c.Member)
-                   .HasForeignKey<Credentials>(c => c.MemberID)
                    .OnDelete(DeleteBehavior.Cascade);
             entity.HasOne(d => d.RoleList).WithMany(e => e.Member)
                     .HasForeignKey(d => d.Role)
