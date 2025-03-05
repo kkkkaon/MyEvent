@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyEvent.Models;
 
@@ -7,6 +8,7 @@ public partial class Venue
 {
     public string VenueID { get; set; } = null!;
 
+    [Display(Name = "場館")]
     public string VenueName { get; set; } = null!;
 
     public string Region { get; set; } = null!;

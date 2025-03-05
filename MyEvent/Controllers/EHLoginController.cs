@@ -71,25 +71,5 @@ namespace MyEvent.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        private void callViewBagData()
-        {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
-            var json = System.IO.File.ReadAllText(filePath);
-            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
-
-            ViewBag.AreaData = areaData;
-
-            var cities = areaData.Keys.ToList();
-            ViewBag.Cities = cities;
-
-            var districts = areaData
-            .SelectMany(city => city.Value.Keys)
-            .ToList();
-
-            ViewBag.Districts = districts;
-            
-        }
-
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
+using Newtonsoft.Json;
 
 namespace MyEvent.Controllers
 {
@@ -45,6 +46,7 @@ namespace MyEvent.Controllers
         // GET: EventHolders/Create
         public IActionResult Create()
         {
+            callViewBagData();
             return View();
         }
 
@@ -53,8 +55,18 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventHolderID,EventHolderName,JoinDate,Tel,ZipCode,City,Area,Address")] EventHolder eventHolder)
+        public async Task<IActionResult> Create(EventHolder eventHolder)
         {
+            callViewBagData();
+            if (_context.ECredentials.Find(eventHolder.ECredentials.Account) != null)
+            {
+                ViewData["ErrorMessage"] = "帳號已存在";
+                return View(eventHolder);
+            }
+
+            eventHolder.JoinDate = DateTime.Now;
+            eventHolder.EventHolderID = Guid.NewGuid().ToString();
+
             if (ModelState.IsValid)
             {
                 _context.Add(eventHolder);
@@ -151,6 +163,24 @@ namespace MyEvent.Controllers
         private bool EventHolderExists(string id)
         {
             return _context.EventHolder.Any(e => e.EventHolderID == id);
+        }
+
+        private void callViewBagData()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
+            var json = System.IO.File.ReadAllText(filePath);
+            var areaData = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
+
+            ViewBag.AreaData = areaData;
+
+            var cities = areaData.Keys.ToList();
+            ViewBag.Cities = cities;
+
+            var districts = areaData
+            .SelectMany(city => city.Value.Keys)
+            .ToList();
+
+            ViewBag.Districts = districts;
         }
     }
 }

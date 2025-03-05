@@ -17,6 +17,7 @@ public partial class Member
     [Required(ErrorMessage = "此欄為必填")]
     public DateOnly Birthday { get; set; }
 
+    [Display(Name = "加入日期")]
     public DateTime JoinDate { get; set; }
 
     [Display(Name = "郵遞區號")]

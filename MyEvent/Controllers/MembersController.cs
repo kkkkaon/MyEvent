@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
 using MyEvent.ViewModels;
 using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace MyEvent.Controllers
 {
@@ -238,7 +239,7 @@ namespace MyEvent.Controllers
         {
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "area_data.json");
             var json = System.IO.File.ReadAllText(filePath);
-            var areaData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
+            var areaData = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, AreaInfo>>>(json);
 
             ViewBag.AreaData = areaData;
 

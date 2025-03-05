@@ -29,24 +29,20 @@
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VenueID" class="control-label"></label>
+                <label asp-for="Venue.VenueName" class="control-label"></label>
                 <select asp-for="VenueID" class="form-control" asp-items="ViewBag.VenueID"></select>
                 <span asp-validation-for="VenueID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EventHolderID" class="control-label"></label>
-                <select asp-for="EventHolderID" class="form-control" asp-items="ViewBag.EventHolderID"></select>
-                <span asp-validation-for="EventHolderID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pic" class="control-label"></label>
-                <input asp-for="Pic" class="form-control" />
-                <span asp-validation-for="Pic" class="text-danger"></span>
+                <img class="img-thumbnail" src="/EventPhotos/@(Model.Pic)" style="max-width: 150px;" />
+                <input type="file" name="newPhoto" id="Photo" class="form-control" />
+                <span class="text-danger">@ViewData["Message"]</span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
@@ -55,16 +51,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Discount" class="control-label"></label>
-                <input asp-for="Discount" class="form-control" />
+                <textarea asp-for="Discount" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Note" class="control-label"></label>
-                <input asp-for="Note" class="form-control" />
+                <textarea asp-for="Note" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="Note" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EventTypeID" class="control-label"></label>
+                <label asp-for="EventType.EventType1" class="control-label"></label>
                 <select asp-for="EventTypeID" class="form-control" asp-items="ViewBag.EventTypeID"></select>
                 <span asp-validation-for="EventTypeID" class="text-danger"></span>
             </div>

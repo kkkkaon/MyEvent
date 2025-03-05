@@ -6,33 +6,44 @@ namespace MyEvent.Models;
 
 public partial class Event
 {
-    
     public string EventID { get; set; } = null!;
-    
+
+    [Display(Name = "演出名稱")]
     [Required(ErrorMessage = "必填")]
     public string EventName { get; set; } = null!;
 
+    [Display(Name = "演出日期")]
     public DateOnly Date { get; set; }
 
+    [Display(Name = "開始時間")]
     public TimeOnly StartTime { get; set; }
 
+    
     [Required(ErrorMessage = "必填")]
     public string VenueID { get; set; } = null!;
 
     [Required(ErrorMessage = "必填")]
     public string EventHolderID { get; set; } = null!;
 
+    [Display(Name = "演出內容")]
     [Required(ErrorMessage = "必填")]
+    [DataType(DataType.MultilineText)]
     public string Description { get; set; } = null!;
 
+    [Display(Name = "圖示")]
     [Required(ErrorMessage = "必填")]
     public string Pic { get; set; } = null!;
 
+    [Display(Name = "票價")]
     [Required(ErrorMessage = "必填")]
     public string Price { get; set; } = null!;
 
+    [Display(Name = "折扣方案")]
+    [DataType(DataType.MultilineText)]
     public string? Discount { get; set; }
 
+    [Display(Name = "重要須知")]
+    [DataType(DataType.MultilineText)]
     public string? Note { get; set; }
 
     [Required(ErrorMessage = "必填")]

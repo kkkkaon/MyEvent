@@ -4,6 +4,7 @@
     ViewData["Title"] = "會員帳號管理";
 }
 
+
 <h1>@ViewData["Title"]</h1>
 
 <p>
@@ -61,10 +62,17 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MemberID"><i class="bi bi-pencil-fill text-success"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.MemberID"><i class="bi bi-trash3-fill text-primary"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.MemberID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.MemberID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
+}

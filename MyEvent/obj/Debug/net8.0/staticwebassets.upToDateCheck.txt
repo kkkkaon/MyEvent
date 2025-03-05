@@ -1,9 +1,9 @@
 wwwroot\css\site.css
 wwwroot\data\area_data.json
-wwwroot\EventPhotos\E2023120201.jpg
 wwwroot\EventPhotos\E2023120202.jpg
 wwwroot\EventPhotos\E2024122410.jpg
 wwwroot\EventPhotos\E2024122835.jpg
+wwwroot\EventPhotos\E2025041101.jpg
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

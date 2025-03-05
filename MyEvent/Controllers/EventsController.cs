@@ -61,8 +61,34 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Pic,Price,Discount,Note,EventTypeID")] Event @event)
+        public async Task<IActionResult> Create([Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Price,Discount,Note,EventTypeID")] Event @event, IFormFile newPhoto)
         {
+            if (newPhoto != null && newPhoto.Length != 0)
+            {
+
+                if (newPhoto.ContentType != "image/jpeg" && newPhoto.ContentType != "image/png") //限定上傳的檔案類型
+                {
+                    ViewData["Message"] = "請選擇jpeg/png上傳";
+                    return View(@event);
+                }
+
+                //取得檔案名稱
+                string fileName = @event.EventID + ".jpg";
+
+                //用一個filePath變數儲存路徑，Directory.GetCurrentDirectory():取得目前的工作目錄路徑
+                string EventPhotosPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos", fileName);
+
+                //把檔案儲存於伺服器上(新增一個通道的建構子) using: 使用完後刪除通道，不佔資源
+                using (FileStream stream = new FileStream(EventPhotosPath, FileMode.Create))
+                { newPhoto.CopyTo(stream); }
+
+                //把值傳進屬性
+                @event.Pic = fileName;
+            }
+
+            var id = HttpContext.Session.GetString("EventHolderID");
+            @event.EventHolderID = id;
+
             if (ModelState.IsValid)
             {
                 _context.Add(@event);
@@ -99,12 +125,36 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Pic,Price,Discount,Note,EventTypeID")] Event @event)
+        public async Task<IActionResult> Edit(string id, [Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Pic,Price,Discount,Note,EventTypeID")] Event @event, IFormFile? newPhoto)
         {
             if (id != @event.EventID)
             {
                 return NotFound();
             }
+
+            if (newPhoto != null && newPhoto.Length != 0)
+            {
+
+                if (newPhoto.ContentType != "image/jpeg" && newPhoto.ContentType != "image/png") //限定上傳的檔案類型
+                {
+                    ViewData["Message"] = "請選擇jpeg/png上傳";
+                    return View(@event);
+                }
+
+                //取得檔案名稱
+                string fileName = @event.EventID + ".jpg";
+
+                //用一個filePath變數儲存路徑，Directory.GetCurrentDirectory():取得目前的工作目錄路徑
+                string EventPhotosPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos", fileName);
+
+                //把檔案儲存於伺服器上(新增一個通道的建構子) using: 使用完後刪除通道，不佔資源
+                using (FileStream stream = new FileStream(EventPhotosPath, FileMode.Create))
+                { newPhoto.CopyTo(stream); }
+
+                //把值傳進屬性
+                @event.Pic = fileName;
+            }
+
 
             if (ModelState.IsValid)
             {
