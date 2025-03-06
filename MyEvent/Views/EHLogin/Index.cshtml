@@ -1,109 +1,89 @@
-﻿@model MyEvent.Models.Member
+﻿@model MyEvent.Models.EventHolder
 @{
-    ViewData["Title"] = "Login Index";
-    int tc = 1;
-    var role = ViewContext.HttpContext.Session.GetString("Role");
+	ViewData["Title"] = "Login Index";
 }
 <style>
-    .nav-item a {
-    color: black
-    }
-    .nav-underline .nav-link.active {
-    border-bottom: 2px solid black;
-    }
-    .name{
-    background-color: rgba(0,153,153,.25);
-    padding-top:40px;
-    padding-bottom: 40px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    }
-    .col-3{
-    border-radius: 10px;
-    }
+	.nav-item a {
+		color: black
+	}
+
+	.nav-underline .nav-link.active {
+		border-bottom: 2px solid black;
+	}
+
+	.name {
+		background-color: rgba(235,79,105,.25);
+		padding-top: 40px;
+		padding-bottom: 40px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.col-3 {
+		border-radius: 10px;
+	}
 </style>
 
 <h1>@ViewData["Title"]</h1>
 
 <div class="container row g-0">
-    <div class="col-3 shadow me-3">
-        <div class="name text-center">
-            <h5>嗨！@(Model.MemberName)</h5>
-        </div>
-        <ul class="nav flex-column" role="tablist">
-            <li class="nav-item mt-3" role="presentation">
-                <a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 訂購紀錄</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false"><i class="bi bi-credit-card"></i> 信用卡</a>
-            </li>
-            <li class="text-center mt-5 mb-2">
-                <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-success w-75">登出</a>
-            </li>
-        </ul>
-    </div>
-    <div class="tab-content col-8" id="myTabContent">
-        <div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
-            @foreach (var order in ViewBag.Orders)
-            {
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <p class="fw-bold">訂單編號：@order.OrderID</p>
-                    </div>
-                    <div class="card-body">
-                        <p>演出日期：@order.Date.ToString("yyyy-MM-dd")</p>
-                        <p>演出名稱：@order.Event.EventName</p>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
-            <p>帳號：@Model.Credentials.Account</p>
-            <p>密碼：@Model.Credentials.Password</p>
-            @foreach (var mt in Model.MemberTel)
-            {
-                <p>電話@(tc)：@mt.Tel</p>
-                tc++;
-            }
-            <p>生日：@Model.Birthday</p>
-            <p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
-        </div>
-        <div class="tab-pane fade" id="creditcard-tab-pane" role="tabpanel" aria-labelledby="creditcard-tab" tabindex="0">
-            @foreach (var cc in Model.CreditCard)
-            {
-            <div class="card mt-3">
-                <div class="card-body">
-                    <p>卡號：@cc.CardNo</p>
-                    <p>安全碼：@cc.SecurityNo</p>
-                </div>
-            </div>
-            }
+	<div class="col-3 shadow me-3">
+		<div class="name text-center">
+			<h5>嗨！@(Model.EventHolderName)</h5>
+		</div>
+		<ul class="nav flex-column" role="tablist">
+			<li class="nav-item mt-3" role="presentation">
+				<a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 演出列表</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
+			</li>
+			<li class="text-center mt-5 mb-2">
+				<a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-primary w-75">登出</a>
+			</li>
+		</ul>
+	</div>
+	<div class="tab-content col-8" id="myTabContent">
+		<div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+			@foreach (var e in ViewBag.Events)
+			{
+				<div class="card mb-3">
+					<div class="card-header pt-3">
+						<h5 class="fw-bold">演出名稱：@e.EventName</h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-xl-9">
+								<p>日期：@e.Date.ToString("yyyy-MM-dd")</p>
+								<p>場館：@e.Venue.VenueName</p>
+							</div>
+							<div class="col-xl-3 d-flex justify-content-center align-items-center">
+								<a asp-action="Details" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-search text-secondary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="詳細內容"></i> </a> |
+								<a asp-action="Edit" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i> </a> |
+								<a asp-action="CheckOrder" asp-route-id="@e.EventID"><i class="bi bi-journal-text text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="查看訂單"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+			<p>帳號：@Model.ECredentials.Account</p>
+			<p>密碼：@Model.ECredentials.Password</p>
+			<p>電話：@Model.Tel</p>
+			<p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
+			<p>加入日期：@Model.JoinDate</p>
+		</div>
 
-        </div>
-    </div>
+	</div>
 </div>
 
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    <script>
-        function activateTab(tabId) {
-            // 先移除所有 tab 的 active 類別和底線
-            var allTabs = document.querySelectorAll('.nav-link');
-            allTabs.forEach(function(tab) {
-                tab.classList.remove('active');
-                tab.style.borderBottom = '';  // 移除底線
-            });
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	<script>
 
-            // 為選中的 tab 添加 active 類別和底線
-            var activeTab = document.getElementById(tabId);
-            activeTab.classList.add('active');
-            activeTab.style.borderBottom = '2px solid black';  // 添加底線
-        }
-    </script>
+	</script>
 }

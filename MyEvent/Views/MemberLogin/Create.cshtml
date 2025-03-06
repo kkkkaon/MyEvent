@@ -29,13 +29,21 @@
 		color: #323232;
 		text-decoration: #323232 solid 2px underline;
 	}
+	.btn-success {
+		background-color: #099;
+		border-color: #099;
+	}
+	.btn-success:hover {
+		background-color: #098d8d;
+		border-color: #098d8d;
+	}
 </style>
 <body class="container">
 	<h1 class="text-center mt-4">註冊帳號</h1>
 
 	<div class="row d-flex justify-content-center">
 		<div class="col-xl-4 col-md-6">
-			<hr style="color:#eb4f69;" />
+			<hr style="color:#099;" />
 			<form asp-action="Create" method="post">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<div class="text-danger">@ViewData["ErrorMessage"]</div>
@@ -99,7 +107,7 @@
 					<span asp-validation-for="Address" class="text-danger"></span>
 				</div>
 				<div class="form-group mt-3 d-flex justify-content-center">
-					<input type="submit" value="註冊" class="btn btn-primary w-25"/>
+					<input type="submit" value="註冊" class="btn btn-success w-25"/>
 				</div>
 				<div class="d-flex justify-content-center mt-2">
 					<a asp-action="Login" class="backToBrowse me-3">我要登入</a>

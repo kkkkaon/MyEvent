@@ -29,9 +29,9 @@ namespace MyEvent.Controllers
                 return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
             }
 
-            var EH = await _context.EventHolder.Include(m => m.ECredentials).Include(m => m.Event).Where(o => o.EventHolderID == id).FirstOrDefaultAsync();
+            var EH = await _context.EventHolder.Include(m => m.ECredentials).FirstOrDefaultAsync();
 
-            ViewBag.Events = await _context.Event.Where(o => o.EventHolderID == id).Select(e => e.EventID).ToListAsync();
+            ViewBag.Events = await _context.Event.Include(v => v.Venue).Where(o => o.EventHolderID == id).ToListAsync();
             return View(EH);
         }
 
@@ -52,7 +52,7 @@ namespace MyEvent.Controllers
             {
                 HttpContext.Session.SetString("EventHolderID", result.EventHolder.EventHolderID);
 
-                return RedirectToAction("Index", "Events");
+                return RedirectToAction("Index", "EHLogin");
                 ;
             }
             else
@@ -70,6 +70,17 @@ namespace MyEvent.Controllers
             HttpContext.Session.Remove("Role");
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> CheckOrder(string id)
+        {
+            var EHID = HttpContext.Session.GetString("EventHolderID");
+            if (string.IsNullOrEmpty(EHID))
+            {
+                return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
+            }
+            var orders = await _context.Order.Include(o => o.Member).Include(t=>t.TicketMethod).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
+            return View(orders);
         }
     }
 }

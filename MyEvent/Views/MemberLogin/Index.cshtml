@@ -70,6 +70,7 @@
             }
             <p>生日：@Model.Birthday</p>
             <p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
+            <p>加入日期：@Model.JoinDate</p>
         </div>
         <div class="tab-pane fade" id="creditcard-tab-pane" role="tabpanel" aria-labelledby="creditcard-tab" tabindex="0">
             @foreach (var cc in Model.CreditCard)
@@ -92,18 +93,6 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        function activateTab(tabId) {
-            // 先移除所有 tab 的 active 類別和底線
-            var allTabs = document.querySelectorAll('.nav-link');
-            allTabs.forEach(function(tab) {
-                tab.classList.remove('active');
-                tab.style.borderBottom = '';  // 移除底線
-            });
 
-            // 為選中的 tab 添加 active 類別和底線
-            var activeTab = document.getElementById(tabId);
-            activeTab.classList.add('active');
-            activeTab.style.borderBottom = '2px solid black';  // 添加底線
-        }
     </script>
 }

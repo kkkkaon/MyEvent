@@ -624,8 +624,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w0k4mzp5jy</Fingerprint>
-      <Integrity>oK9pC8d3Kc/IeOQzcuYZ4yIQEaGQm571X9RKlKODVU4=</Integrity>
+      <Fingerprint>61ilp6phgl</Fingerprint>
+      <Integrity>iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.min.css'))</OriginalItemSpec>
