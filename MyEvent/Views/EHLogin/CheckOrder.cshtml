@@ -26,18 +26,17 @@
                 @Html.DisplayNameFor(model => model.CollectionID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Event)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Member)
+                @Html.DisplayNameFor(model => model.Member.MemberID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Method)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Payment)
+                @Html.DisplayNameFor(model => model.Payment.Type)
             </th>
-            <th></th>
+            <th>
+                移除
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -59,16 +58,16 @@
                 @Html.DisplayFor(modelItem => item.CollectionID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Member.MemberID)
+                @Html.DisplayFor(modelItem => item.Member.MemberName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Method.MethodID)
+                @Html.DisplayFor(modelItem => item.Method.Method)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Payment.PaymentID)
+                @Html.DisplayFor(modelItem => item.Payment.Type)
             </td>
             <td>
-                <a asp-action="Delete" asp-controller="Order" asp-route-id="@item.OrderID">Delete</a>
+                    <a asp-action="Delete" asp-controller="Order" asp-route-id="@item.OrderID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
             </td>
         </tr>
 }

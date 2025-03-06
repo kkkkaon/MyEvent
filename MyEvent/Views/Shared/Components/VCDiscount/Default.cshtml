@@ -5,8 +5,8 @@
 }
 <style>
 	.btn-outline-dark {
-		border: 1px solid black;
-		border-radius: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
 	}
 </style>
 
@@ -19,8 +19,14 @@
 			@{
 				var price = Convert.ToDecimal(ViewBag.Seat.Price);
 				var discount = Convert.ToDecimal(item.TicketTypeList.Discount);
+				var discountValue = (discount * 100).ToString("0"); // 轉成整數字串
+				discountValue = discountValue.EndsWith("0") ? discountValue.TrimEnd('0') : discountValue;
 			}
 			<p>$@Convert.ToInt32(price * discount)</p>
+			@if (discount < 1)
+			{
+				<p class="text-primary"><i class="bi bi-tag-fill"></i>@(discountValue)折</p>
+			}
 		</label>
 	}
 </div>

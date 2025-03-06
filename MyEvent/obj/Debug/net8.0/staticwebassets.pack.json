@@ -2,7 +2,19 @@
   "Files": [
     {
       "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MyEvent.6u3umrbiyx.bundle.scp.css"
+      "PackagePath": "staticwebassets\\MyEvent.46yxtfq5s3.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\2025030001.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\2025030001.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\2025030001.png",
+      "PackagePath": "staticwebassets\\EventPhotos\\2025030001.png"
     },
     {
       "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2023120202.jpg",
@@ -15,6 +27,26 @@
     {
       "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2024122835.jpg",
       "PackagePath": "staticwebassets\\EventPhotos\\E2024122835.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025030101.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2025030101.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025030701.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2025030701.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025030801.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2025030801.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025031501.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2025031501.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025032101.jpg",
+      "PackagePath": "staticwebassets\\EventPhotos\\E2025032101.jpg"
     },
     {
       "Id": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025041101.jpg",

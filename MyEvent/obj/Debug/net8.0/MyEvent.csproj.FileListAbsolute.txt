@@ -792,3 +792,4 @@ C:\Users\user\Documents\GitHub\MyEvent\MyEvent\obj\Debug\net8.0\MyEvent.genrunti
 C:\Users\user\Documents\GitHub\MyEvent\MyEvent\obj\Debug\net8.0\ref\MyEvent.dll
 C:\Users\C50123\Documents\GitHub\MyEvent\MyEvent\obj\Debug\net8.0\scopedcss\Views\Shared\_MemberLayout.cshtml.rz.scp.css
 C:\Users\user\Documents\GitHub\MyEvent\MyEvent\obj\Debug\net8.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
+C:\Users\user\Documents\GitHub\MyEvent\MyEvent\obj\Debug\net8.0\scopedcss\Views\Shared\_EHLayout.cshtml.rz.scp.css

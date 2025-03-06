@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MyEvent.Models;
+using System.Diagnostics;
 
 namespace MyEvent.Controllers
 {
@@ -49,8 +51,6 @@ namespace MyEvent.Controllers
         // GET: Events/Create
         public IActionResult Create()
         {
-            
-            ViewData["EventHolderID"] = new SelectList(_context.EventHolder, "EventHolderID", "EventHolderName");
             ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1");
             ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName");
             return View();
@@ -61,44 +61,65 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Price,Discount,Note,EventTypeID")] Event @event, IFormFile newPhoto)
+        public async Task<IActionResult> Create(Event event1, IFormFile? newPhoto)
         {
-            if (newPhoto != null && newPhoto.Length != 0)
-            {
+            var eventID = event1.Date.ToString("yyyyMMdd");
+            var eventDay = event1.Date.Day;
+            var eventYear = event1.Date.Year;
+            var eventMonth = event1.Date.Month;
 
-                if (newPhoto.ContentType != "image/jpeg" && newPhoto.ContentType != "image/png") //限定上傳的檔案類型
+            var lastEvent = _context.Event.Where(m => m.Date.Year == eventYear && m.Date.Month == eventMonth && m.Date.Day == eventDay).OrderByDescending(m => m.EventID).FirstOrDefault();
+            var newEventID = lastEvent != null ? (int.Parse(lastEvent.EventID) + 1).ToString() : "E" + eventID + "01";
+            event1.EventID = newEventID;
+
+            if (newPhoto != null && newPhoto.Length > 0)
+            {
+                // **確保目錄存在**
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos");
+                if (!Directory.Exists(uploadsFolder))
                 {
-                    ViewData["Message"] = "請選擇jpeg/png上傳";
-                    return View(@event);
+                    Directory.CreateDirectory(uploadsFolder);
                 }
 
-                //取得檔案名稱
-                string fileName = @event.EventID + ".jpg";
+                // **生成唯一檔名 (避免覆蓋舊檔案)**
+                string fileExtension = Path.GetExtension(newPhoto.FileName); // 取得副檔名
+                string fileName = event1.EventID + fileExtension; // 確保檔名符合 EventID
 
-                //用一個filePath變數儲存路徑，Directory.GetCurrentDirectory():取得目前的工作目錄路徑
-                string EventPhotosPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos", fileName);
+                string filePath = Path.Combine(uploadsFolder, fileName);
 
-                //把檔案儲存於伺服器上(新增一個通道的建構子) using: 使用完後刪除通道，不佔資源
-                using (FileStream stream = new FileStream(EventPhotosPath, FileMode.Create))
-                { newPhoto.CopyTo(stream); }
+                // **刪除舊檔案，避免累積垃圾檔案**
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
 
-                //把值傳進屬性
-                @event.Pic = fileName;
+                // **儲存新檔案**
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await newPhoto.CopyToAsync(stream);
+                }
+
+                // **更新圖片名稱**
+                event1.Pic = fileName;
             }
 
             var id = HttpContext.Session.GetString("EventHolderID");
-            @event.EventHolderID = id;
+            event1.EventHolderID = id;
+
+
+            ModelState.Remove("EventHolderID");
+            ModelState.Remove("EventID");
+            ModelState.Remove("Pic");
 
             if (ModelState.IsValid)
             {
-                _context.Add(@event);
+                _context.Add(event1);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "EHLogin");
             }
-            ViewData["EventHolderID"] = new SelectList(_context.EventHolder, "EventHolderID", "EventHolderName", @event.EventHolderID);
-            ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1", @event.EventTypeID);
-            ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName", @event.VenueID);
-            return View(@event);
+            ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1", event1.EventTypeID);
+            ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName", event1.VenueID);
+            return View(event1);
         }
 
         // GET: Events/Edit/5
@@ -114,7 +135,6 @@ namespace MyEvent.Controllers
             {
                 return NotFound();
             }
-            ViewData["EventHolderID"] = new SelectList(_context.EventHolder, "EventHolderID", "EventHolderName", @event.EventHolderID);
             ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1", @event.EventTypeID);
             ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName", @event.VenueID);
             return View(@event);
@@ -132,29 +152,59 @@ namespace MyEvent.Controllers
                 return NotFound();
             }
 
-            if (newPhoto != null && newPhoto.Length != 0)
+            var existingEvent = await _context.Event.AsNoTracking().FirstOrDefaultAsync(e => e.EventID == id);
+            if (existingEvent == null)
             {
-
-                if (newPhoto.ContentType != "image/jpeg" && newPhoto.ContentType != "image/png") //限定上傳的檔案類型
+                return NotFound();
+            }
+            if (newPhoto != null && newPhoto.Length > 0)
+            {
+                // **允許的檔案格式 (忽略大小寫)**
+                var allowedFormats = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "image/jpeg", "image/png" };
+                if (!allowedFormats.Contains(newPhoto.ContentType))
                 {
-                    ViewData["Message"] = "請選擇jpeg/png上傳";
+                    ViewData["Message"] = "請選擇 JPEG/PNG 檔案上傳";
                     return View(@event);
                 }
 
-                //取得檔案名稱
-                string fileName = @event.EventID + ".jpg";
+                // **確保目錄存在**
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
 
-                //用一個filePath變數儲存路徑，Directory.GetCurrentDirectory():取得目前的工作目錄路徑
-                string EventPhotosPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "EventPhotos", fileName);
+                // **生成唯一檔名 (避免覆蓋舊檔案)**
+                string fileExtension = Path.GetExtension(newPhoto.FileName); // 取得副檔名
+                string fileName = @event.EventID + fileExtension; // 確保檔名符合 EventID
 
-                //把檔案儲存於伺服器上(新增一個通道的建構子) using: 使用完後刪除通道，不佔資源
-                using (FileStream stream = new FileStream(EventPhotosPath, FileMode.Create))
-                { newPhoto.CopyTo(stream); }
+                string filePath = Path.Combine(uploadsFolder, fileName);
 
-                //把值傳進屬性
+                // **刪除舊檔案，避免累積垃圾檔案**
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+
+                // **儲存新檔案**
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await newPhoto.CopyToAsync(stream);
+                }
+
+                // **更新圖片名稱**
                 @event.Pic = fileName;
             }
+            else
+            {
+                // **如果使用者沒上傳新照片，保留原本的照片**
+                @event.Pic = existingEvent.Pic;
+            }
+            var EHID = HttpContext.Session.GetString("EventHolderID");
+            @event.EventHolderID = EHID;
 
+            ModelState.Remove("EventHolderID");
+            ModelState.Remove("Pic");
 
             if (ModelState.IsValid)
             {
@@ -174,9 +224,8 @@ namespace MyEvent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "EHLogin");
             }
-            ViewData["EventHolderID"] = new SelectList(_context.EventHolder, "EventHolderID", "EventHolderName", @event.EventHolderID);
             ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1", @event.EventTypeID);
             ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName", @event.VenueID);
             return View(@event);
@@ -215,7 +264,7 @@ namespace MyEvent.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "EHLogin");
         }
 
         private bool EventExists(string id)

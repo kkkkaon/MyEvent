@@ -16,7 +16,7 @@ namespace MyEvent.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string seatID)
         {
             string eventId = HttpContext.Session.GetString("EventID");
-            var discounts = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).ToListAsync();
+            var discounts = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).OrderBy(t => t.TicketTypeID).ToListAsync();
 
             var seat = await _context.Seat.Where(o => o.SeatID == seatID).FirstOrDefaultAsync();
             ViewBag.Seat = seat;

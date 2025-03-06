@@ -29,8 +29,14 @@
 						@{
 							var price = Convert.ToDecimal(ViewBag.Seat.Price);
 							var discount = Convert.ToDecimal(item.TicketTypeList.Discount);
+							var discountValue = (discount * 100).ToString("0"); // 轉成整數字串
+							discountValue = discountValue.EndsWith("0") ? discountValue.TrimEnd('0') : discountValue;
 						}
 						<p id="price_@(item.TicketTypeList.TicketTypeID)">$@Convert.ToInt32(price * discount)</p>
+						@if (discount < 1)
+						{
+							<p class="text-primary"><i class="bi bi-tag-fill"></i>@(discountValue)折</p>
+						}
 					</div>
 					<div class="col-4 my-auto">
 						<i class="bi bi-patch-minus qty_minus" data-id="@item.TicketTypeList.TicketTypeID"></i>

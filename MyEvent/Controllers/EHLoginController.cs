@@ -53,7 +53,6 @@ namespace MyEvent.Controllers
                 HttpContext.Session.SetString("EventHolderID", result.EventHolder.EventHolderID);
 
                 return RedirectToAction("Index", "EHLogin");
-                ;
             }
             else
             {
@@ -67,7 +66,6 @@ namespace MyEvent.Controllers
             //5.4.2
             //HttpContext.Session.Clear():清除所有session
             HttpContext.Session.Remove("EventHolderID");
-            HttpContext.Session.Remove("Role");
 
             return RedirectToAction("Index", "Home");
         }
@@ -79,7 +77,7 @@ namespace MyEvent.Controllers
             {
                 return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
             }
-            var orders = await _context.Order.Include(o => o.Member).Include(t=>t.TicketMethod).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
+            var orders = await _context.Order.Include(o => o.Member).Include(m=>m.Method).Include(t=>t.Payment).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
             return View(orders);
         }
     }

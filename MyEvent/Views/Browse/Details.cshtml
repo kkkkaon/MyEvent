@@ -32,14 +32,15 @@
 
 <h4>Event</h4>
 <section class="row align-items-start">
-    <div class="col-3">
+    <div class="col-xl-3">
         <img src="~/EventPhotos/@Model.Pic" class="card-img-top" />
     </div>
-    <div class="col-9">
+    <div class="col-xl-5">
         <h3>@Model.EventName</h3>
         <p style="color:darkcyan">@Model.EventType.EventType1</p>
         <p>時間： @Model.Date @Model.StartTime</p>
-        <p>地點： @Model.Venue.VenueName</p>
+        <input type="hidden" id="address" value="@Model.Venue.City@Model.Venue.Area@Model.Venue.Address" />
+        <p>地點： @Model.Venue.VenueName<i onclick="geocodeAddress()" class="bi bi-geo-alt-fill text-primary"></i></p>
         <p>票價： @Model.Price</p>
         @if (Model.EventTag != null)
         {
@@ -48,6 +49,9 @@
                 <p class="d-inline-block">#@(et.Tag)</p>
             }
         }
+    </div>
+    <div class="col-xl-4" id="map">
+
     </div>
 </section>
 <section>
@@ -78,7 +82,7 @@
 
 
 <div>
-    @if (Context.Session.GetString("Member") != null)
+    @if (Context.Session.GetString("MemberID") != null)
     {
         @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1){
             <button type="button" id="@(ViewBag.Seat.SeatID)" data-seat-row-num="@(ViewBag.Seat.SeatType)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#OrderModal">下訂</button>
@@ -202,6 +206,39 @@
             }else{
                 $("input[type='submit']").addClass("disabled");
             }
+        }
+
+        let map;
+        let geocoder;
+        let marker;
+
+        function initMap() {
+            // 初始化地圖，設置中心點為台北市
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: { lat: 25.0330, lng: 121.5654 } // 預設中心點
+            });
+            geocoder = new google.maps.Geocoder();
+        }
+
+        function geocodeAddress() {
+            const address = document.getElementById("address").value;
+
+            geocoder.geocode({ address: address }, function(results, status) {
+                if (status === "OK") {
+                    // 成功獲得地理位置
+                    const location = results[0].geometry.location;
+                    map.setCenter(location); // 更新地圖中心
+                    if (!marker) {
+                        marker = new google.maps.Marker({
+                            map: map
+                        });
+                    }
+                    marker.setPosition(location); // 放置標記
+                } else {
+                    alert("Geocode failed: " + status);
+                }
+            });
         }
     </script>
 }

@@ -9,6 +9,7 @@ public partial class Venue
     public string VenueID { get; set; } = null!;
 
     [Display(Name = "場館")]
+    [Required(ErrorMessage = "必填")]
     public string VenueName { get; set; } = null!;
 
     public string Region { get; set; } = null!;

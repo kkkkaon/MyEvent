@@ -6,7 +6,7 @@ namespace MyEvent.Models;
 
 public partial class Member
 {
-    
+    [Display(Name = "會員")]
     public string MemberID { get; set; } = null!;
 
     [Display(Name = "姓名")]

@@ -13,12 +13,14 @@ public partial class Event
     public string EventName { get; set; } = null!;
 
     [Display(Name = "演出日期")]
+    [Required(ErrorMessage = "必填")]
     public DateOnly Date { get; set; }
 
     [Display(Name = "開始時間")]
+    [Required(ErrorMessage = "必填")]
     public TimeOnly StartTime { get; set; }
 
-    
+    [Display(Name = "場館")]
     [Required(ErrorMessage = "必填")]
     public string VenueID { get; set; } = null!;
 
@@ -46,17 +48,18 @@ public partial class Event
     [DataType(DataType.MultilineText)]
     public string? Note { get; set; }
 
+    [Display(Name = "演出類型")]
     [Required(ErrorMessage = "必填")]
     public string EventTypeID { get; set; } = null!;
 
     public virtual EventHolder? EventHolder { get; set; }
 
-    public virtual EventType EventType { get; set; } = null!;
-    public virtual Venue Venue { get; set; } = null!;
+    public virtual EventType? EventType { get; set; } = null!;
+    public virtual Venue? Venue { get; set; } = null!;
 
-    public virtual ICollection<Order> Order { get; set; } = new List<Order>();
+    public virtual ICollection<Order>? Order { get; set; } = new List<Order>();
 
-    public virtual ICollection<EventTag> EventTag{ get; set; } = new List<EventTag>();
-    public virtual ICollection<TicketType> TicketType { get; set; } = new List<TicketType>();
+    public virtual ICollection<EventTag>? EventTag{ get; set; } = new List<EventTag>();
+    public virtual ICollection<TicketType>? TicketType { get; set; } = new List<TicketType>();
 
 }

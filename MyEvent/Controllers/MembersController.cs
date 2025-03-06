@@ -62,7 +62,7 @@ namespace MyEvent.Controllers
             var currentMonth = DateTime.Now.Month;
 
             var lastMember = _context.Member.Where(m => m.JoinDate.Year == currentYear && m.JoinDate.Month == currentMonth).OrderByDescending(m => m.MemberID).FirstOrDefault();
-            var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : DateTime.Now.ToString("yyyyMM") + "0001";
+            var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : memberID + "0001";
             member.MemberID = newMemberID;
             ModelState.Remove("MemberID");
 
@@ -158,7 +158,6 @@ namespace MyEvent.Controllers
                     {
                         return NotFound();
                     }
-
                     // 如果前端未傳遞 Birthday，則保持原本的值
                     if (Birthday.HasValue)
                     {

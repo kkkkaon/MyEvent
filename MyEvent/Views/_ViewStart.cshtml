@@ -7,11 +7,15 @@
     if (Context.Request.RouteValues["controller"]?.ToString() == "Members" || Context.Request.RouteValues["controller"]?.ToString() == "EventHolders")
     {
         Layout = "_AdminLayout";
-
+        if (Context.Request.RouteValues["controller"]?.ToString() == "Events" || Context.Request.RouteValues["controller"]?.ToString() == "EHLogin")
+        {
+			Layout = "_EHLayout";
+		
         //5.3.5
         if (Context.Session.GetString("MemberID") == null)
         {
             Context.Response.Redirect("/Home/Index");
+        }
         }
     }
 

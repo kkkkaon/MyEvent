@@ -22,6 +22,9 @@
 	.col-3 {
 		border-radius: 10px;
 	}
+	a{
+		text-decoration:none;
+	}
 </style>
 
 <h1>@ViewData["Title"]</h1>
@@ -45,6 +48,9 @@
 	</div>
 	<div class="tab-content col-8" id="myTabContent">
 		<div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+			<div>
+				<a asp-action="Create" asp-controller="Events" class="btn btn-dark mb-3">新增演出</a>
+			</div>
 			@foreach (var e in ViewBag.Events)
 			{
 				<div class="card mb-3">
@@ -57,10 +63,10 @@
 								<p>日期：@e.Date.ToString("yyyy-MM-dd")</p>
 								<p>場館：@e.Venue.VenueName</p>
 							</div>
-							<div class="col-xl-3 d-flex justify-content-center align-items-center">
-								<a asp-action="Details" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-search text-secondary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="詳細內容"></i> </a> |
-								<a asp-action="Edit" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i> </a> |
-								<a asp-action="CheckOrder" asp-route-id="@e.EventID"><i class="bi bi-journal-text text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="查看訂單"></i></a>
+							<div class="col-xl-3 d-flex justify-content-center align-items-center" >
+								<a asp-action="Edit" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i> &nbsp;</a> | &nbsp;
+								<a asp-action="CheckOrder" asp-route-id="@e.EventID"><i class="bi bi-journal-text text-secondary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="查看訂單"></i></a> &nbsp; | &nbsp;
+								<a asp-action="Delete" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
 							</div>
 						</div>
 					</div>
