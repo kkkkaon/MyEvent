@@ -4,31 +4,45 @@
 }
 <style>
 	.bi:hover {
-		cursor: pointer;
+	cursor: pointer;
+	}
+
+	.text-bg-dark{
+	background-color:black;
+	color: white;
+	width: 400px;
+	height: 50px;
+	font-size: 1.2rem;
 	}
 </style>
 
 <h1>Select</h1>
+
+@{
+	var venueId = ViewBag.VenueID;
+	
+}
 <form asp-action="Confirm" asp-controller="Order">
-	<div class="row">
-		<div class="col-md-8">
-			@foreach (var seat in Model)
-			{
-				<div class="form-check-inline mx-3">
-					@if (@seat.Status == "1")
-					{
-						<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
-					}
-					else
-					{
-						<input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
-					}
+	 <div class="row"> 
+	 	<div class="col-md-8">
+			@await Component.InvokeAsync("Seats"+venueId.ToString(), new { venueId = venueId });
+	@* 		@foreach (var seat in Model) *@
+	@* 		{ *@
+	@* 			<div class="form-check-inline mx-3"> *@
+	@* 				@if (@seat.Status == "1") *@
+	@* 				{ *@
+	@* 					<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off"> *@
+	@* 				} *@
+	@* 				else *@
+	@* 				{ *@
+	@* 					<input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off"> *@
+	@* 				} *@
 
-					<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
+	@* 				<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label> *@
 
-				</div>
-			}
-		</div>
+	@* 			</div> *@
+	@* 		} *@
+	 	</div> 
 
 		<div class="col-md-4">
 			<div class="card p-4 d-flex flex-column" style="min-height:500px;">
@@ -39,7 +53,9 @@
 					<span>已選 <b id="totalQty"></b> 個座位</span>
 					<span>金額：</span><b id="totalPrice">$</b>
 				</div>
-				<input type="submit" value="下訂" class="btn btn-primary mt-3 disabled" />
+				<div class="justify-content-center">
+					<input type="submit" value="下訂" class="btn btn-primary mt-3 w-50 disabled" />
+				</div>
 			</div>
 		</div>
 
@@ -69,6 +85,14 @@
 	</div>
 </div>
 
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div id="addToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay='3000'>
+		<div class="text-center">
+			<div class="toast-body d-inline-block">
+			</div>
+		</div>
+	</div>
+</div>
 
 @section Scripts {
 	<script>
@@ -95,6 +119,7 @@
 				// **取消座位時，直接從列表中移除**
 				list.find("li[data-seat-id='" + seatId + "']").remove();
 				updateTotal();
+				removeTix(seatLabel);
 			}
 		});
 
@@ -105,8 +130,6 @@
 			var seatLabel = $("#OrderModal").data("selectedSeatLabel"); // 取得座位標籤
 
 			if (!seatId) return; // **如果沒有選座位，則不執行**
-
-			var seatCheckbox = $("#" + seatId); // 找到對應的座位 checkbox
 
 			// **移除該座位的舊 listItem (避免重複)**
 			list.find("li[data-seat-id='" + seatId + "']").remove();
@@ -128,6 +151,7 @@
 			$("#OrderModal").modal("hide"); // **關閉 Modal**
 
 			updateTotal();
+			addTix(seatLabel);//Toast
 		});
 
 		$(document).on("change", ".ticket-select", function () {
@@ -137,7 +161,7 @@
 		// **3. 當點擊刪除按鈕時**
 		list.on("click", '.bi-x-circle-fill', function () {
 			var seatId = $(this).closest("li").attr("data-seat-id");
-
+			var seatLabel = $("#OrderModal").data("selectedSeatLabel");
 			// **取消對應的座位 checkbox**
 			var seatCheckbox = $("#" + seatId);
 			if (seatCheckbox.length) {
@@ -147,8 +171,9 @@
 
 			// **從列表中移除該座位**
 			$(this).closest("li").remove();
-
+			
 			updateTotal();
+			removeTix(seatLabel);
 		});
 
 		//按close會取消checked
@@ -203,7 +228,17 @@
 			}
 		}
 
+		const addToast = document.getElementById('addToast')
+		const toastBootstrap = bootstrap.Toast.getOrCreateInstance(addToast)
+		function addTix(SeatName){
+			$('#addToast .toast-body').html('<i class="bi bi-check-circle"></i>&nbsp; 已選擇座位【'+ SeatName +'】');
+			toastBootstrap.show()
+		}
 
+		function removeTix(SeatName){
+			$('#addToast .toast-body').html('<i class="bi bi-trash3"></i>&nbsp; 已取消座位【'+ SeatName +'】');
+			toastBootstrap.show()
+		}
 	</script>
 }
 

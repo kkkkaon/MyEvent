@@ -31,16 +31,11 @@ namespace MyEvent.Controllers
             ViewBag.TicketTypes = tt;
 
             ViewBag.EventID = eventId;
+            ViewBag.VenueID = eventItem.VenueID;
             return View(seats);
+
         }
 
-        //redirect to confirm頁面
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Select(Seat seat)
-        //{
-        //    return View(seat);
-        //}
 
 
         public IActionResult LoadDiscount(string SeatID)
