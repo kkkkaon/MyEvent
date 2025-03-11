@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MyEvent.Models.Seat>
+
+
+@foreach (var seat in Model)
+{
+	<div class="form-check-inline mx-3">
+		@if (@seat.Status == "1")
+		{
+			<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+		}
+		else
+		{
+			<input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat" autocomplete="off">
+		}
+
+		<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
+
+	</div>
+}

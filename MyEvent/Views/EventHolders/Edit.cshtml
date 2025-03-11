@@ -3,7 +3,16 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<style>
+    .backToBrowse {
+        color: #5c5c5c;
+        text-decoration: #5c5c5c solid 2px underline;
+    }
+    .backToBrowse:hover {
+        color: #323232;
+        text-decoration: #323232 solid 2px underline;
+    }
+</style>
 <h1>Edit</h1>
 
 <h4>EventHolder</h4>
@@ -49,14 +58,12 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="儲存" class="btn btn-primary" />
+                <a asp-action="Index" class="backToBrowse">返回列表</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
 @section Scripts {

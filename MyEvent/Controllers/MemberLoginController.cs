@@ -149,6 +149,13 @@ namespace MyEvent.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public bool MemberAccountCheck(string account)
+        {
+            var result = _context.Credentials.Where(m => m.Account == account).FirstOrDefault();
+
+            return result == null;
+            //帳號不重複回傳true
+        }
 
         private void callViewBagData()
         {

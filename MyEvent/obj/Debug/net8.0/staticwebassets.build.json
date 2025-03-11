@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qyksazq411GhctAlWvvGb5GsTMdFeA+dFZnqvagk59E=",
+  "Hash": "c7QzdqmfYwxc7NqPsohrb9kHHcT+YRRouFRvLfRoeb8=",
   "Source": "MyEvent",
   "BasePath": "_content/MyEvent",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "46yxtfq5s3",
-      "Integrity": "xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=",
+      "Fingerprint": "t8admezifa",
+      "Integrity": "HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "46yxtfq5s3",
-      "Integrity": "xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=",
+      "Fingerprint": "t8admezifa",
+      "Integrity": "HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css"
@@ -409,8 +409,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mi7tpv9zww",
-      "Integrity": "sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=",
+      "Fingerprint": "giwt4iq01x",
+      "Integrity": "2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
@@ -451,8 +451,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "61ilp6phgl",
-      "Integrity": "iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8=",
+      "Fingerprint": "gpms1e922r",
+      "Integrity": "DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
@@ -2916,7 +2916,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "215369"
+          "Value": "215366"
         },
         {
           "Name": "Content-Type",
@@ -2924,11 +2924,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=\""
+          "Value": "\"2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 03:43:57 GMT"
+          "Value": "Tue, 11 Mar 2025 05:18:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2938,7 +2938,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI="
+          "Value": "sha256-2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ="
         }
       ]
     },
@@ -3025,7 +3025,7 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.mi7tpv9zww.css",
+      "Route": "lib/bootstrap/dist/css/bootstrap.giwt4iq01x.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3035,7 +3035,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "215369"
+          "Value": "215366"
         },
         {
           "Name": "Content-Type",
@@ -3043,11 +3043,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=\""
+          "Value": "\"2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Feb 2025 03:43:57 GMT"
+          "Value": "Tue, 11 Mar 2025 05:18:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3057,7 +3057,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mi7tpv9zww"
+          "Value": "giwt4iq01x"
         },
         {
           "Name": "label",
@@ -3065,52 +3065,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.min.61ilp6phgl.css",
-      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "162714"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 02:06:12 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "61ilp6phgl"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8="
+          "Value": "sha256-2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ="
         }
       ]
     },
@@ -3133,11 +3088,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8=\""
+          "Value": "\"DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 02:06:12 GMT"
+          "Value": "Tue, 11 Mar 2025 05:15:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3147,7 +3102,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8="
+          "Value": "sha256-DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k="
         }
       ]
     },
@@ -3230,6 +3185,51 @@
         {
           "Name": "integrity",
           "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap.min.gpms1e922r.css",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162714"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 05:15:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gpms1e922r"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k="
         }
       ]
     },
@@ -7580,96 +7580,6 @@
       ]
     },
     {
-      "Route": "MyEvent.46yxtfq5s3.bundle.scp.css",
-      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3382"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 08:14:35 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "46yxtfq5s3"
-        },
-        {
-          "Name": "label",
-          "Value": "MyEvent.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s="
-        }
-      ]
-    },
-    {
-      "Route": "MyEvent.46yxtfq5s3.styles.css",
-      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3382"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 08:14:35 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "46yxtfq5s3"
-        },
-        {
-          "Name": "label",
-          "Value": "MyEvent.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s="
-        }
-      ]
-    },
-    {
       "Route": "MyEvent.bundle.scp.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
       "Selectors": [],
@@ -7680,7 +7590,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3382"
+          "Value": "5646"
         },
         {
           "Name": "Content-Type",
@@ -7688,11 +7598,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=\""
+          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 08:14:35 GMT"
+          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7702,7 +7612,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s="
+          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
         }
       ]
     },
@@ -7717,7 +7627,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3382"
+          "Value": "5646"
         },
         {
           "Name": "Content-Type",
@@ -7725,11 +7635,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=\""
+          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 08:14:35 GMT"
+          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7739,7 +7649,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s="
+          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+        }
+      ]
+    },
+    {
+      "Route": "MyEvent.t8admezifa.bundle.scp.css",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5646"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t8admezifa"
+        },
+        {
+          "Name": "label",
+          "Value": "MyEvent.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+        }
+      ]
+    },
+    {
+      "Route": "MyEvent.t8admezifa.styles.css",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5646"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t8admezifa"
+        },
+        {
+          "Name": "label",
+          "Value": "MyEvent.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
         }
       ]
     }

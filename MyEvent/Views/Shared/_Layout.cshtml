@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyEvent.styles.css" asp-append-version="true" />
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNd_l9KsrYEi88eCrWgDFkOVk_tHVnHCg&callback=initMap&libraries=&v=weekly" defer></script>
 </head>
 <style>
+    body {
+        overflow-x: hidden; /* 禁止水平滾動 */
+        max-width: 100vw; /* 避免超出視窗 */
+    }
     .navbar-dark {
     background-color: black;
     color: lightgray;
@@ -24,7 +27,6 @@
     text-decoration: none;
     color: lightgray;
     }
-
 
 </style>
 <body>
@@ -50,22 +52,26 @@
                             @if (role == "2")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-success" asp-area="" asp-controller="Members" asp-action="Index">後台管理</a>
+                                    <a class="nav-link text-secondary" asp-area="" asp-controller="Members" asp-action="Index">後台管理</a>
                                 </li>
                             }
                         </ul>
                         <div>
                             @if (Context.Session.GetString("MemberID") == null)
                             {
-                                <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn btn-outline-success"><i class="bi bi-person-fill"></i> 登入</a>
-                            }
-                            else
-                            {
+                                @if (Context.Session.GetString("EventHolderID") == null)
+                                {
+                                    <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"><i class="bi bi-person-fill"></i> 登入</a>
+                                }else{
+                                    <a asp-action="Index" asp-controller="EHLogin" class="text-dark"><i class="bi bi-person-circle fs-3"></i></a>
+                                }
+                            }else{
                                 if (role != "2")
                                 {
-                                    <a asp-action="Index" asp-controller="MemberLogin" class="text-success"><i class="bi bi-person-circle fs-3"></i></a>
+                                    <a asp-action="Index" asp-controller="MemberLogin" class="@(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")"><i class="bi bi-person-circle fs-3"></i></a>
                                 }
                             }
+
                         </div>
                     </div>
                 </div>
@@ -78,8 +84,16 @@
             </main>
         </div>
         <footer class="border-top footer text-muted @(ViewBag.IsDarkbg == true ? "navbar-dark" : "")">
-            <div class="container">
-                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a><a asp-area="" asp-controller="EHLogin" asp-action="Login" class="btn btn-outline-dark">上架通道</a>
+            <div class="container d-flex justify-content-between">
+                <div>
+                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+                <div class="text-end">
+                    @if (Context.Session.GetString("MemberID") != null || Context.Session.GetString("EventHolderID") != null){
+                    }else{
+                        <a asp-area="" asp-controller="EHLogin" asp-action="Login" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")">後台登入</a>
+                    }
+                </div>
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

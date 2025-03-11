@@ -6,26 +6,29 @@
 }
 <style>
     .nav-item a {
-    color: black
+        color: black;
     }
-    .nav-underline .nav-link.active {
-    border-bottom: 2px solid black;
+    .nav-item a:hover, .nav-link.active {
+        color:var(--bs-success);
     }
+
     .name{
-    background-color: rgba(0,153,153,.25);
-    padding-top:40px;
-    padding-bottom: 40px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+        background-color: rgba(0,153,153,.25);
+        padding-top:40px;
+        padding-bottom: 40px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
     .col-3{
-    border-radius: 10px;
+        border-radius: 10px;
+        height: 360px
+    }
+    .col-8 {
+        border-radius: 10px;
     }
 </style>
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="container row g-0">
+<div class="container row g-0 mt-5">
     <div class="col-3 shadow me-3">
         <div class="name text-center">
             <h5>嗨！@(Model.MemberName)</h5>
@@ -45,11 +48,12 @@
             </li>
         </ul>
     </div>
-    <div class="tab-content col-8" id="myTabContent">
+    <div class="tab-content col-8 shadow p-4" id="myTabContent">
         <div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+            <h5 class="text-success fw-bold">訂購紀錄</h5>
             @foreach (var order in ViewBag.Orders)
             {
-                <div class="card mb-3">
+                <div class="card mt-3">
                     <div class="card-header">
                         <p class="fw-bold">訂單編號：@order.OrderID</p>
                     </div>
@@ -61,6 +65,8 @@
             }
         </div>
         <div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+            <h5 class="text-success fw-bold">個人資料</h5>
+            <hr class="w-100 my-3" />
             <p>帳號：@Model.Credentials.Account</p>
             <p>密碼：@Model.Credentials.Password</p>
             @foreach (var mt in Model.MemberTel)
@@ -73,6 +79,7 @@
             <p>加入日期：@Model.JoinDate</p>
         </div>
         <div class="tab-pane fade" id="creditcard-tab-pane" role="tabpanel" aria-labelledby="creditcard-tab" tabindex="0">
+            <h5 class="text-success fw-bold">信用卡</h5>
             @foreach (var cc in Model.CreditCard)
             {
             <div class="card mt-3">

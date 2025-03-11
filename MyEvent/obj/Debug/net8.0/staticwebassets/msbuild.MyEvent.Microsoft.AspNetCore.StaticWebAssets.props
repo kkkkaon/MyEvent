@@ -300,8 +300,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>mi7tpv9zww</Fingerprint>
-      <Integrity>sk82oPN5OCGQjcCxeoVY4gvbHF11bwTzMi5PSj6f/qI=</Integrity>
+      <Fingerprint>giwt4iq01x</Fingerprint>
+      <Integrity>2PVXck8OweFewJjYYcVYoT3GCX/i+2rjLzSXNTFOrbQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css'))</OriginalItemSpec>
@@ -768,8 +768,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61ilp6phgl</Fingerprint>
-      <Integrity>iq/eQdPf0lxQez/c5njIJNZao6J7op5pReA9Wi4+XV8=</Integrity>
+      <Fingerprint>gpms1e922r</Fingerprint>
+      <Integrity>DPXqkHM/Lb2Hr+Y6Ju5zAGQ/b5WL691dhYHdmY9AW3k=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.min.css'))</OriginalItemSpec>
@@ -1314,23 +1314,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MyEvent.46yxtfq5s3.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MyEvent.t8admezifa.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>MyEvent.46yxtfq5s3.bundle.scp.css</RelativePath>
+      <RelativePath>MyEvent.t8admezifa.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>46yxtfq5s3</Fingerprint>
-      <Integrity>xBvq6QGuykz8Lwu969dSydlfvo4C3ZsNEFDVJkWhL9s=</Integrity>
+      <Fingerprint>t8admezifa</Fingerprint>
+      <Integrity>HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MyEvent.46yxtfq5s3.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MyEvent.t8admezifa.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

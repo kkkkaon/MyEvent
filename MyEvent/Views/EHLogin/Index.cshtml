@@ -4,11 +4,10 @@
 }
 <style>
 	.nav-item a {
-		color: black
+		color: black;
 	}
-
-	.nav-underline .nav-link.active {
-		border-bottom: 2px solid black;
+	.nav-item a:hover, .nav-link.active {
+		color: var(--bs-primary);
 	}
 
 	.name {
@@ -21,16 +20,18 @@
 
 	.col-3 {
 		border-radius: 10px;
+		height: 325px
+	}
+	.col-8{
+		border-radius: 10px;
 	}
 	a{
 		text-decoration:none;
 	}
 </style>
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="container row g-0">
-	<div class="col-3 shadow me-3">
+<div class="container row g-0 mt-5">
+	<div class="col-3 shadow me-3" >
 		<div class="name text-center">
 			<h5>嗨！@(Model.EventHolderName)</h5>
 		</div>
@@ -42,14 +43,15 @@
 				<a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
 			</li>
 			<li class="text-center mt-5 mb-2">
-				<a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-primary w-75">登出</a>
+				<a asp-action="Logout" asp-controller="EHLogin" type="button" class="btn btn-outline-primary w-75">登出</a>
 			</li>
 		</ul>
 	</div>
-	<div class="tab-content col-8" id="myTabContent">
+	<div class="tab-content col-8 shadow p-4" id="myTabContent">
 		<div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
-			<div>
-				<a asp-action="Create" asp-controller="Events" class="btn btn-dark mb-3"><i class="bi bi-patch-plus"></i> &nbsp; 新增演出</a>
+			<div class="d-flex justify-content-between align-items-center">
+				<h5 class="text-primary fw-bold">演出列表</h5>
+				<a asp-action="Create" asp-controller="Events" class="btn btn-dark mb-3">新增演出 &nbsp;<i class="bi bi-patch-plus"></i></a>
 			</div>
 			@foreach (var e in ViewBag.Events)
 			{
@@ -74,6 +76,8 @@
 			}
 		</div>
 		<div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+			<h5 class="text-primary fw-bold">個人資料</h5>
+			<hr class="w-100 my-3"/>
 			<p>帳號：@Model.ECredentials.Account</p>
 			<p>密碼：@Model.ECredentials.Password</p>
 			<p>電話：@Model.Tel</p>
