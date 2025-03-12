@@ -66,6 +66,7 @@ namespace MyEvent.Controllers
 
             eventHolder.JoinDate = DateTime.Now;
             eventHolder.EventHolderID = Guid.NewGuid().ToString();
+            ModelState.Remove("EventHolderID");
 
             if (ModelState.IsValid)
             {

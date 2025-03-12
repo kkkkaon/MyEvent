@@ -21,15 +21,12 @@ public partial class Order
 
     public int PaymentID { get; set; }
 
-    public int MethodID { get; set; }
-
     public string? CollectionID { get; set; }
 
     public virtual Event Event { get; set; } = null!;
 
     public virtual Member Member { get; set; } = null!;
 
-    public virtual TicketMethod Method { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetail { get; set; } = new List<OrderDetail>();
 

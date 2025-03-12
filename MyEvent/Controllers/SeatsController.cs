@@ -27,15 +27,6 @@ namespace MyEvent.Controllers
                 .Where(s => s.VenueID == eventItem.VenueID)
                 .ToListAsync();
 
-            if (eventItem == null)
-            {
-                throw new Exception($"⚠ 查無 EventID 為 {eventId} 的活動，請確認資料庫中是否存在該活動");
-            }
-
-            if (eventItem.VenueID == null)
-            {
-                throw new Exception("⚠ eventItem.VenueID 為 null，請確認 Event 資料是否有正確關聯 Venue");
-            }
 
             var tt = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).ToListAsync();
             ViewBag.TicketTypes = tt;

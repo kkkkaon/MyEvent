@@ -6,7 +6,7 @@ namespace MyEvent.Models;
 
 public partial class Member
 {
-    [Display(Name = "會員")]
+    [Display(Name = "會員ID")]
     public string MemberID { get; set; } = null!;
 
     [Display(Name = "姓名")]
@@ -36,6 +36,7 @@ public partial class Member
     [Required(ErrorMessage = "此欄為必填")]
     public string Address { get; set; } = null!;
 
+    [Display(Name = "權限")]
     public string Role { get; set; } = null!;
 
     public virtual Credentials? Credentials { get; set; } = null!;

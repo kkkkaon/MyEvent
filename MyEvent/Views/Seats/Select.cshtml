@@ -22,7 +22,8 @@
 	var venueId = ViewBag.VenueID;
 	
 }
-<form asp-action="Confirm" asp-controller="Order">
+@* <form asp-action="Confirm" asp-controller="Order"> *@
+
 	 <div class="row"> 
 	 	<div class="col-md-8">
 			@await Component.InvokeAsync("Seats_"+venueId.ToString(), new { venueId = venueId })
@@ -39,22 +40,20 @@
 							<span>已選 <b id="totalQty"></b> 個座位</span>
 							<span>金額：</span><b id="totalPrice">$</b>
 						</div>
-						<input type="submit" value="下訂" class="btn btn-primary disabled" />
+					<input type="submit" value="下訂" class="btn btn-primary disabled" onclick="addCart()"/>
 					</div>
 				</div>
 			</div>
 		</div>
 
-	</div>
-
 	<select id="ticketTypeList" class="form-select d-none">
 		@foreach (var tt in ViewBag.TicketTypes)
 		{
-			<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
+		<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
 		}
 	</select>
-
-</form>
+</div>
+@* </form> *@
 
 
 <div class="modal fade" id="OrderModal">
@@ -99,8 +98,6 @@
 				$("#OrderModal").data("selectedSeatLabel", seatLabel);
 				// **開啟票種選擇 Modal**
 				$("#OrderModal").modal("show");
-
-				
 			} else {
 				// **取消座位時，直接從列表中移除**
 				list.find("li[data-seat-id='" + seatId + "']").remove();
@@ -114,8 +111,7 @@
 			var ticketTypeId = $(this).attr("id"); // 取得選中的票種 ID
 			var seatId = $("#OrderModal").data("selectedSeatId"); // 取得之前選的座位 ID
 			var seatLabel = $("#OrderModal").data("selectedSeatLabel"); // 取得座位標籤
-
-			if (!seatId) return; // **如果沒有選座位，則不執行**
+			if (!seatId) return; //**如果沒有選座位，則不執行**
 
 			// **移除該座位的舊 listItem (避免重複)**
 			list.find("li[data-seat-id='" + seatId + "']").remove();
@@ -225,6 +221,28 @@
 			$('#addToast .toast-body').html('<i class="bi bi-trash3"></i>&nbsp; 已取消座位【'+ SeatName +'】');
 			toastBootstrap.show()
 		}
+
+		let arrCart=[];
+		//切換頁後讀取local storage裡的東西
+		if(localStorage.getItem("cart"))
+		arrCart = JSON.parse(localStorage.getItem("cart"));
+
+		$('#CartStatus span').text(arrCart.length);
+		function addCart(){
+
+
+			$("#selectedSeatsList li").each(function () {
+			let seatId = $(this).attr("data-seat-id"); //**取 SeatID**
+			let ticketTypeId = $(this).find("select.ticket-select").val();
+				arrCart.push({
+					TicketTypeID: ticketTypeId,
+					SeatID: seatId,
+					Qty: 1
+				});
+			});
+
+			localStorage.setItem("cart", JSON.stringify(arrCart));
+			}
 	</script>
 }
 

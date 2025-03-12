@@ -48,6 +48,12 @@
                             <li>
                                 <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="EHLogin" asp-action="Index">後台</a>
                             </li>
+                            <li id="CartStatus" >
+                                <a asp-action="Cart">
+                                    <i class="bi bi-cart4 fs-2"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">3</span>
+                                </a>
+                            </li>
 
                             @if (role == "2")
                             {
@@ -102,6 +108,12 @@
         <script>
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+            // let arrCart=[];
+            // 切換頁後讀取local storage裡的東西
+            // if(localStorage.getItem("cart"))
+            // arrCart = JSON.parse(localStorage.getItem("cart"));
+
+            // $("#CartStatus span").text(arrCart.length).toggle(arrCart.length > 0);
         </script>
         @await RenderSectionAsync("Scripts", required: false)
     </div>

@@ -201,6 +201,31 @@
             }
         }
 
-        
+
+        //購物車
+        let arrCart=[];
+        //切換頁後讀取local storage裡的東西
+        if(localStorage.getItem("cart"))
+        arrCart = JSON.parse(localStorage.getItem("cart"));
+
+        $('#CartStatus span').text(arrCart.length);
+
+        function addCart(){
+
+            document.querySelectorAll(".ticket-item").forEach(function (el) {
+            let TicketTypeID = document.getElementById("data-id");
+            let SeatID = el.getAttribute("data-seatID");
+            let Qty = document.getElementById(`qty_${TicketTypeID}`);
+                 if (parseInt(Qty.value) > 0) {  //只存入有選擇數量的項目
+                    arrCart.push({
+                        TicketTypeID: TicketTypeID,
+                        SeatID: SeatID,
+                        Qty: Qty.value
+                    });
+                }
+            });
+
+            localStorage.setItem("cart", JSON.stringify(arrCart));
+            }
     </script>
 }

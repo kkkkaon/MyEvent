@@ -18,11 +18,13 @@
 	}
 
 </style>
-<form asp-action="ConfirmQty" asp-controller="Order">
+@* <form asp-action="ConfirmQty" asp-controller="Order"> *@
 	<div class="modal-body">
 		@foreach (var item in Model)
 		{
-			<div class="btn-outline-dark mt-3 p-3 col">
+			<div class="btn-outline-dark mt-3 p-3 col ticket-item"
+			 data-id="@item.TicketTypeList.TicketTypeID"
+			 data-seatID="@(ViewBag.Seat.SeatID)">
 				<div class="row">
 					<div class="col-8">
 						<h6 style="font-weight:800;">@item.TicketTypeList.Name</h6>
@@ -40,8 +42,8 @@
 					</div>
 					<div class="col-4 my-auto">
 						<i class="bi bi-patch-minus qty_minus" data-id="@item.TicketTypeList.TicketTypeID"></i>
-						<input type="hidden" name="Price" value="@(ViewBag.Seat.Price)" />
-						<input type="hidden" name="TicketTypeID" value="@(item.TicketTypeList.TicketTypeID)" />
+						@* <input type="hidden" name="Price" value="@(ViewBag.Seat.Price)" /> *@
+						@* <input type="hidden" name="TicketTypeID" value="@(item.TicketTypeList.TicketTypeID)" /> *@
 						<input id="qty_@(item.TicketTypeList.TicketTypeID)" style="width:50px;" value="0" class="qty_change" name="qty" />
 						<i class="bi bi-patch-plus qty_plus" data-id="@item.TicketTypeList.TicketTypeID"></i>
 					</div>
@@ -57,7 +59,7 @@
 			<span>金額：</span><b id="totalPrice"></b>
 		</div>
 
-		<input type="submit" value="下訂" class="btn btn-primary disabled" />
+		<input type="submit" value="下訂" class="btn btn-primary disabled" onclick="addCart()"/>
 	</div>
-</form>
+@* </form> *@
 

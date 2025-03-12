@@ -77,7 +77,7 @@ namespace MyEvent.Controllers
             {
                 return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
             }
-            var orders = await _context.Order.Include(o => o.Member).Include(m=>m.Method).Include(t=>t.Payment).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
+            var orders = await _context.Order.Include(o => o.Member).Include(t=>t.Payment).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
             return View(orders);
         }
     }

@@ -40,12 +40,6 @@ namespace MyEvent.Controllers
         {
             callViewBagData();
 
-            ViewBag.RoleList = await _context.RoleList
-                .Select(r => new SelectListItem
-                {
-                    Value = r.RoleID.ToString(),
-                    Text = r.RoleName
-                }).ToListAsync();
             return View();
         }
 
@@ -93,12 +87,7 @@ namespace MyEvent.Controllers
             }
 
             //要寫City跟Area跟角色 (如果沒有value)顯示errormessage
-            ViewBag.RoleList = await _context.RoleList
-                .Select(r => new SelectListItem
-                {
-                    Value = r.RoleID.ToString(),
-                    Text = r.RoleName
-                }).ToListAsync();
+
 
             return View(member);
         }

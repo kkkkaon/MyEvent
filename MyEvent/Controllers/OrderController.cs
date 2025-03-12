@@ -27,7 +27,6 @@ namespace MyEvent.Controllers
                 return RedirectToAction("Select"); // 若無座位選擇，重新導向
             }
 
-            // 假設有 Seat 和 TicketType 的資料庫表
             var selectedSeats = await  _context.Seat
                                         .Where(s => SeatID.Contains(s.SeatID))
                                         .ToListAsync();

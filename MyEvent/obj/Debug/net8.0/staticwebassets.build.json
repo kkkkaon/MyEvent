@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c7QzdqmfYwxc7NqPsohrb9kHHcT+YRRouFRvLfRoeb8=",
+  "Hash": "um71Qjs2KI3Z/CWgs3PjrM015J/koEWHt4L0CVTXBvc=",
   "Source": "MyEvent",
   "BasePath": "_content/MyEvent",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "t8admezifa",
-      "Integrity": "HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=",
+      "Fingerprint": "yo2xrghyt9",
+      "Integrity": "Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "t8admezifa",
-      "Integrity": "HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=",
+      "Fingerprint": "yo2xrghyt9",
+      "Integrity": "Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css"
@@ -7590,7 +7590,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5646"
+          "Value": "4513"
         },
         {
           "Name": "Content-Type",
@@ -7598,11 +7598,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+          "Value": "\"Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+          "Value": "Wed, 12 Mar 2025 07:58:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7612,7 +7612,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+          "Value": "sha256-Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I="
         }
       ]
     },
@@ -7627,7 +7627,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5646"
+          "Value": "4513"
         },
         {
           "Name": "Content-Type",
@@ -7635,11 +7635,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+          "Value": "\"Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+          "Value": "Wed, 12 Mar 2025 07:58:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7649,12 +7649,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+          "Value": "sha256-Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I="
         }
       ]
     },
     {
-      "Route": "MyEvent.t8admezifa.bundle.scp.css",
+      "Route": "MyEvent.yo2xrghyt9.bundle.scp.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyEvent.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -7664,7 +7664,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5646"
+          "Value": "4513"
         },
         {
           "Name": "Content-Type",
@@ -7672,11 +7672,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+          "Value": "\"Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+          "Value": "Wed, 12 Mar 2025 07:58:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7686,7 +7686,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "t8admezifa"
+          "Value": "yo2xrghyt9"
         },
         {
           "Name": "label",
@@ -7694,12 +7694,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+          "Value": "sha256-Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I="
         }
       ]
     },
     {
-      "Route": "MyEvent.t8admezifa.styles.css",
+      "Route": "MyEvent.yo2xrghyt9.styles.css",
       "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MyEvent.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -7709,7 +7709,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5646"
+          "Value": "4513"
         },
         {
           "Name": "Content-Type",
@@ -7717,11 +7717,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI=\""
+          "Value": "\"Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 07:50:41 GMT"
+          "Value": "Wed, 12 Mar 2025 07:58:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7731,7 +7731,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "t8admezifa"
+          "Value": "yo2xrghyt9"
         },
         {
           "Name": "label",
@@ -7739,7 +7739,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-HfMIJ6Imc1Un7qKG2l/b6rMLyVIYRgJClS+9a9sAgxI="
+          "Value": "sha256-Hqn09kEzDQfeJ9CsKo2wpRMZCzFTv3FWy3MehN+iu5I="
         }
       ]
     }

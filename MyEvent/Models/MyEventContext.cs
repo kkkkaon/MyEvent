@@ -42,8 +42,6 @@ public partial class MyEventContext : DbContext
 
     public virtual DbSet<Ticket> Ticket { get; set; }
 
-    public virtual DbSet<TicketMethod> TicketMethod { get; set; }
-
     public virtual DbSet<TicketType> TicketType { get; set; } 
 
     public virtual DbSet<TicketTypeList> TicketTypeList { get; set; }
@@ -275,11 +273,6 @@ public partial class MyEventContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__MemberID__30C33EC3");
 
-            entity.HasOne(d => d.Method).WithMany(p => p.Order)
-                .HasForeignKey(d => d.MethodID)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Order__MethodID__32AB8735");
-
             entity.HasOne(d => d.Payment).WithMany(p => p.Order)
                 .HasForeignKey(d => d.PaymentID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -365,14 +358,6 @@ public partial class MyEventContext : DbContext
                 .HasForeignKey(d => d.TicketTypeID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Ticket__TypeID__71D1E811");
-        });
-
-        modelBuilder.Entity<TicketMethod>(entity =>
-        {
-            entity.HasKey(e => e.MethodID).HasName("PK__TicketMe__FC681FB1A621CC57");
-
-            entity.Property(e => e.MethodID).ValueGeneratedNever();
-            entity.Property(e => e.Method).HasMaxLength(15);
         });
 
         modelBuilder.Entity<TicketType>(entity =>

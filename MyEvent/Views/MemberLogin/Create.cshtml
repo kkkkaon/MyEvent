@@ -46,7 +46,6 @@
 			<hr style="color:#099;" />
 			<form asp-action="Create" method="post">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="text-danger">@ViewData["ErrorMessage"]</div>
 				<div class="form-group">
 					<label asp-for="Credentials.Account" class="control-label"></label>
 					<input asp-for="Credentials.Account" id="Account" class="form-control" />

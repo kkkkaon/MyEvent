@@ -1,71 +1,62 @@
 ﻿@model MyEvent.Models.EventHolder
 
 @{
-    ViewData["Title"] = "Edit";
+	ViewData["Title"] = "Edit";
 }
-<style>
-    .backToBrowse {
-        color: #5c5c5c;
-        text-decoration: #5c5c5c solid 2px underline;
-    }
-    .backToBrowse:hover {
-        color: #323232;
-        text-decoration: #323232 solid 2px underline;
-    }
-</style>
-<h1>Edit</h1>
 
-<h4>EventHolder</h4>
+<h4 class="fw-bold text-center mt-4">編輯主辦團體</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="EventHolderID" />
-            <div class="form-group">
-                <label asp-for="EventHolderName" class="control-label"></label>
-                <input asp-for="EventHolderName" class="form-control" />
-                <span asp-validation-for="EventHolderName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JoinDate" class="control-label"></label>
-                <input asp-for="JoinDate" class="form-control" />
-                <span asp-validation-for="JoinDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tel" class="control-label"></label>
-                <input asp-for="Tel" class="form-control" />
-                <span asp-validation-for="Tel" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ZipCode" class="control-label"></label>
-                <input asp-for="ZipCode" class="form-control" />
-                <span asp-validation-for="ZipCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Area" class="control-label"></label>
-                <input asp-for="Area" class="form-control" />
-                <span asp-validation-for="Area" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="儲存" class="btn btn-primary" />
-                <a asp-action="Index" class="backToBrowse">返回列表</a>
-            </div>
-        </form>
-    </div>
-    
+<div class="d-flex justify-content-center">
+	<div class="row mx-auto" style="width:300px;">
+		<div class="col-md-12">
+			<form asp-action="Edit">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="EventHolderID" class="control-label"></label>
+					<input asp-for="EventHolderID" class="form-control" readonly/>
+					<span asp-validation-for="EventHolderID" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="EventHolderName" class="control-label"></label>
+					<input asp-for="EventHolderName" class="form-control" />
+					<span asp-validation-for="EventHolderName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Tel" class="control-label"></label>
+					<input asp-for="Tel" class="form-control" />
+					<span asp-validation-for="Tel" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ZipCode" class="control-label"></label>
+					<input asp-for="ZipCode" class="form-control" />
+					<span asp-validation-for="ZipCode" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="City" class="control-label"></label>
+					<input asp-for="City" class="form-control" />
+					<span asp-validation-for="City" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Area" class="control-label"></label>
+					<input asp-for="Area" class="form-control" />
+					<span asp-validation-for="Area" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Address" class="control-label"></label>
+					<input asp-for="Address" class="form-control" />
+					<span asp-validation-for="Address" class="text-danger"></span>
+				</div>
+				<div class="form-group mt-3 align-items-center d-flex justify-content-center">
+					<input type="submit" value="儲存" class="btn btn-secondary" />
+					<a asp-action="Index" class="btn btn-outline-secondary ms-2">返回列表</a>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }
