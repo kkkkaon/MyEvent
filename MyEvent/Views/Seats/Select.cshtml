@@ -16,14 +16,11 @@
 	}
 </style>
 
-<h1>Select</h1>
 
 @{
 	var venueId = ViewBag.VenueID;
-	
 }
-@* <form asp-action="Confirm" asp-controller="Order"> *@
-
+<form asp-action="Confirm" asp-controller="Order">
 	 <div class="row"> 
 	 	<div class="col-md-8">
 			@await Component.InvokeAsync("Seats_"+venueId.ToString(), new { venueId = venueId })
@@ -40,20 +37,21 @@
 							<span>已選 <b id="totalQty"></b> 個座位</span>
 							<span>金額：</span><b id="totalPrice">$</b>
 						</div>
-					<input type="submit" value="下訂" class="btn btn-primary disabled" onclick="addCart()"/>
+						<input type="submit" value="下訂" class="btn btn-primary disabled" />
 					</div>
 				</div>
 			</div>
 		</div>
 
-	<select id="ticketTypeList" class="form-select d-none">
-		@foreach (var tt in ViewBag.TicketTypes)
-		{
-		<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
-		}
-	</select>
-</div>
-@* </form> *@
+		<select id="ticketTypeList" class="form-select d-none">
+			@foreach (var tt in ViewBag.TicketTypes)
+			{
+			<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
+			}
+		</select>
+	</div>
+</form>
+
 
 
 <div class="modal fade" id="OrderModal">
@@ -192,9 +190,10 @@
 			$("#selectedSeatsList li").each(function () {
 				var ticketSelect = $(this).find("select.ticket-select"); // 找到該座位的票種選擇器
 				var ticketTypeID = ticketSelect.val(); // 取得票種 ID
-				
+
 				// 根據票種 ID 取得對應 label 中 p 的文字內容
 				var priceText = $("label[for='" + ticketTypeID + "'] p").text();
+
 				// 移除 $ 符號及空格，轉換成數字
 				var price = parseFloat(priceText.replace('$', '').trim()) || 0;
 				totalPrice += price;
@@ -222,27 +221,27 @@
 			toastBootstrap.show()
 		}
 
-		let arrCart=[];
-		//切換頁後讀取local storage裡的東西
-		if(localStorage.getItem("cart"))
-		arrCart = JSON.parse(localStorage.getItem("cart"));
+		// let arrCart=[];
+		// if(localStorage.getItem("cart"))
+		// arrCart = JSON.parse(localStorage.getItem("cart"));
 
-		$('#CartStatus span').text(arrCart.length);
-		function addCart(){
+		// $('#CartStatus span').text(arrCart.length);
+		// function addCart(){
 
-
-			$("#selectedSeatsList li").each(function () {
-			let seatId = $(this).attr("data-seat-id"); //**取 SeatID**
-			let ticketTypeId = $(this).find("select.ticket-select").val();
-				arrCart.push({
-					TicketTypeID: ticketTypeId,
-					SeatID: seatId,
-					Qty: 1
-				});
-			});
-
-			localStorage.setItem("cart", JSON.stringify(arrCart));
-			}
+		// 	$("#selectedSeatsList li").each(function () {
+		// 	let eventId = $(this).attr("data-eventID");
+		// 	let seatId = $(this).attr("data-seat-id"); //**取 SeatID**
+		// 	let ticketTypeId = $(this).find("select.ticket-select").val();
+		// 		arrCart.push({
+		// 			EventID: eventId,
+		// 			TicketTypeID: ticketTypeId,
+		// 			SeatID: seatId,
+		// 			Qty: 1
+		// 		});
+		// 	});
+		// 	$('#CartStatus span').text(arrCart.length);
+		// 	localStorage.setItem("cart", JSON.stringify(arrCart));
+		// 	}
 	</script>
 }
 

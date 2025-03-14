@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Confirm";
+    var eventID = Context.Session.GetString("EventID");
 }
 
 <h1>訂單確認</h1>
@@ -19,9 +20,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Seat.Row - @item.Seat.Number</td>
-                <td>@item.TicketType.Name</td>
-                <td>$@Convert.ToInt32(Convert.ToDecimal(item.Seat.Price) * Convert.ToDecimal(item.TicketType.Discount))</td>
+                <td>@item.SeatRow - @item.SeatNum</td>
+                <td>@item.TicketTypeName</td>
+                <td>$@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))</td>
                 <td><i class="bi bi-trash3-fill"></i></td>
             </tr>
         }
@@ -29,22 +30,71 @@
 </table>
 
 <div>
-    <h4>總金額: <b>$@(Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.Seat.Price) * Convert.ToDecimal(i.TicketType.Discount))))</b></h4>
+    <h4>總金額: <b>$@(Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.price) * Convert.ToDecimal(i.discount))))</b></h4>
 </div>
 
  <form asp-action="PlaceOrder" asp-controller="Order" method="post"> 
     @foreach (var item in Model)  
     {  
-        <input type="hidden" name="SeatID" value="@item.Seat.SeatID" />  
-        <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" />  
+        <input type="hidden" name="SeatID" value="@item.SeatID" />  
+        <input type="hidden" name="TicketTypeID" value="@item.TicketTypeID" />
+        <input type="hidden" name="Price" value="@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))" />
     }  
      <button type="submit" class="btn btn-primary text-end">確認訂單</button> 
  </form> 
 
-<a asp-action="Select" class="btn btn-secondary">返回</a>
+<a asp-action="Select" asp-controller="Seats" asp-route-id="@eventID" class="btn btn-secondary">返回</a>
+
+
+
+
 
 @section Scripts {
-    <script>
+   @*  <script>
+        let arrCart = JSON.parse(localStorage.getItem("cart"));
+        
+        if(arrCart==null){
+            $('#myCart').html(`<h4 class="text-primary fw-bold mt-3 text-center">購物車目前是空的</h4>`);
+        }else{
 
+            let itemsToSend = arrCart.map(item => ({
+                EventID: item.EventID,
+                SeatID: item.SeatID,
+                TicketTypeID: item.TicketTypeID,
+				Qty: item.Qty
+            }));
+            // 發送 AJAX 請求到後端
+            $.ajax({
+                url: "/Order/Confirm",
+                type: "POST",
+                data: JSON.stringify({ items: itemsToSend }),
+                contentType: "application/json",  // 設定內容類型為 JSON
+                success: function(response) {
+                    // 接收到後端回傳資料後，渲染至畫面
+                    renderCartItems(response);
+                },
+                error: function(error) {
+                    console.error("發生錯誤:", error);
+                }
+            });
+        }
+
+        function renderCartItems(items) {
+            const cartListContainer = $('#cart-list');  // 假設有一個容器來顯示品項
+
+            items.forEach(item => {
+                const itemElement = `
+                    <div class="cart-item">
+                        <h5>${item.EventName}</h5>
+                        <p>座位號: ${item.SeatName}</p>
+                        <p>票種: ${item.TicketTypeName}</p>
+                        <p>數量: ${item.Quantity}</p>
+                        <hr />
+                    </div>
+                `;
+                cartListContainer.append(itemElement);  // 顯示每一項品項
+            });
+        } *@
+            
     </script>
 }

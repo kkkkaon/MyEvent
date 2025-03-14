@@ -21,7 +21,6 @@ public partial class Order
 
     public int PaymentID { get; set; }
 
-    public string? CollectionID { get; set; }
 
     public virtual Event Event { get; set; } = null!;
 

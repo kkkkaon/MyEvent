@@ -36,7 +36,7 @@ namespace MyEvent.Controllers
             return View(member);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             callViewBagData();
 

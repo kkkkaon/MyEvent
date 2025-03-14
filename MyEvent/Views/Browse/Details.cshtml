@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     ViewData["BrowseBackground"] = "background-color: black; color: lightgray;";
+    var eventID = Context.Session.GetString("EventID");
 }
 <style>
      h5{
@@ -80,7 +81,7 @@
         @if (ViewData["seatTypeCount"] != null && (int)ViewData["seatTypeCount"] == 1){
             <button type="button" id="@(ViewBag.Seat.SeatID)" data-seat-row-num="@(ViewBag.Seat.SeatType)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#OrderModal">下訂</button>
         }else{
-            <a asp-action="Select" asp-controller="Seats" type="button" class="btn btn-primary">選位</a>
+            <a asp-action="Select" asp-controller="Seats" asp-route-id="@eventID" type="button" class="btn btn-primary">選位</a>
         }
     }
     else
@@ -95,7 +96,6 @@
     <a asp-action="Index" class="btn btn-dark">其他演出</a>
 </div>
 
-<form asp-action="">
     <div class="modal fade" id="OrderModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -109,7 +109,6 @@
             </div>
         </div>
     </div>
-</form>
 
 @section Scripts {
     @{
@@ -202,30 +201,32 @@
         }
 
 
-        //購物車
-        let arrCart=[];
-        //切換頁後讀取local storage裡的東西
-        if(localStorage.getItem("cart"))
-        arrCart = JSON.parse(localStorage.getItem("cart"));
+        // 購物車
+        // let arrCart=[];
+        // 切換頁後讀取local storage裡的東西
+        // if(localStorage.getItem("cart"))
+        // arrCart = JSON.parse(localStorage.getItem("cart"));
 
-        $('#CartStatus span').text(arrCart.length);
+        // $('#CartStatus span').text(arrCart.length);
 
-        function addCart(){
-
-            document.querySelectorAll(".ticket-item").forEach(function (el) {
-            let TicketTypeID = document.getElementById("data-id");
-            let SeatID = el.getAttribute("data-seatID");
-            let Qty = document.getElementById(`qty_${TicketTypeID}`);
-                 if (parseInt(Qty.value) > 0) {  //只存入有選擇數量的項目
-                    arrCart.push({
-                        TicketTypeID: TicketTypeID,
-                        SeatID: SeatID,
-                        Qty: Qty.value
-                    });
-                }
-            });
-
-            localStorage.setItem("cart", JSON.stringify(arrCart));
-            }
+        // function addCart(){
+        //     document.querySelectorAll(".ticket-item").forEach(function (el) {
+        //         let EventID = el.getAttribute("data-eventID");
+        //         let TicketTypeID = el.getAttribute("data-id");
+        //         let SeatID = el.getAttribute("data-seatID");
+        //         let Qty = document.getElementById(`qty_${TicketTypeID}`);
+        //              if (parseInt(Qty.value) > 0) {  只存入有選擇數量的項目
+        //                 arrCart.push({
+        //                     EventID: EventID,
+        //                     TicketTypeID: TicketTypeID,
+        //                     SeatID: SeatID,
+        //                     Qty: parseInt(Qty.value)
+        //                 });
+        //              }
+        //     });
+        //     $('#CartStatus span').text(arrCart.length);
+        //     localStorage.setItem("cart", JSON.stringify(arrCart));
+        //     $("#OrderModal").modal("hide");
+        // }
     </script>
 }

@@ -18,23 +18,22 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Select()
+        public async Task<IActionResult> Select(string id)
         {
-            string? eventId = HttpContext.Session.GetString("EventID");
-            var eventItem = await _context.Event.Where(e => e.EventID == eventId).FirstOrDefaultAsync();
+            //string? eventId = HttpContext.Session.GetString("EventID");
+            var eventItem = await _context.Event.Where(e => e.EventID == id).FirstOrDefaultAsync();
 
             var seats = await _context.Seat
                 .Where(s => s.VenueID == eventItem.VenueID)
                 .ToListAsync();
 
 
-            var tt = await _context.TicketType.Where(t => t.EventID == eventId).Include(t => t.TicketTypeList).ToListAsync();
+            var tt = await _context.TicketType.Where(t => t.EventID == id).Include(t => t.TicketTypeList).ToListAsync();
             ViewBag.TicketTypes = tt;
 
-            ViewBag.EventID = eventId;
+            ViewBag.EventID = id;
             ViewBag.VenueID = eventItem.VenueID;
             return View(seats);
-
         }
 
 

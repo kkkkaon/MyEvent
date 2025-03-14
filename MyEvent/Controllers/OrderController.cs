@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
 using MyEvent.ViewComponents;
+using MyEvent.ViewModels;
 
 namespace MyEvent.Controllers
 {
@@ -24,30 +25,56 @@ namespace MyEvent.Controllers
         {
             if (SeatID == null || TicketTypeID == null || SeatID.Count == 0)
             {
-                return RedirectToAction("Select"); // 若無座位選擇，重新導向
+                string eventId = HttpContext.Session.GetString("EventID");
+
+                return RedirectToAction("Details", new { eventId = eventId }); // 若無座位選擇，重新導向
             }
 
-            var selectedSeats = await  _context.Seat
-                                        .Where(s => SeatID.Contains(s.SeatID))
-                                        .ToListAsync();
+            var seatIds = SeatID.Select(x => x).ToList();
+            var ticketTypeIds = TicketTypeID.Select(x => x).ToList();
 
-            var ticketTypes = await _context.TicketTypeList
-                                      .Where(t => TicketTypeID.Contains(t.TicketTypeID))
+            var seatList = await _context.Seat
+                                      .Where(t => seatIds.Contains(t.SeatID))
                                       .ToListAsync();
+            //var ticketTypeList = await _context.TicketTypeList
+            //                          .Where(t => ticketTypeIds.Contains(t.TicketTypeID))
+            //                          .ToListAsync();
 
-            // 組合座位與票種資訊
-            var orderDetails = selectedSeats.Select((seat, index) => new
+            var result = new List<dynamic>();
+            for (int i = 0; i < seatList.Count; i++)
             {
-                Seat = seat,
-                TicketType = ticketTypes.ElementAtOrDefault(index) // 確保索引不超出範圍
-            }).ToList();
+                var seat = seatList.FirstOrDefault(t => t.SeatID == seatIds[i]);
+                var ticketType = await _context.TicketTypeList.FirstOrDefaultAsync(t => t.TicketTypeID == ticketTypeIds[i]);
 
-            return View(orderDetails);
+                if (ticketType != null && seat!=null)
+                {
+                    result.Add(new
+                    {
+                        TicketTypeID = ticketType.TicketTypeID,
+                        TicketTypeName = ticketType.Name,
+                        discount = Convert.ToDecimal(ticketType.Discount),
+                        Qty = 1,
+                        price = Convert.ToDecimal(seat.Price),
+                        SeatID = seat.SeatID,
+                        SeatRow = seat.Row,
+                        SeatNum = seat.Number
+                    });
+                }
+            }
+
+            return View(result);
         }
 
         //給不分區的confirm
-        public async Task<IActionResult> ConfirmQty(List<string> TicketTypeID, List<string> qty, decimal Price)
+        public async Task<IActionResult> ConfirmQty(List<string> TicketTypeID, List<string> qty, string SeatID)
         {
+            var seat = await _context.Seat.FirstOrDefaultAsync(s => s.SeatID == SeatID);
+            if (seat == null)
+            {
+                // 如果找不到對應的座位資料，則返回錯誤頁面或處理
+                return NotFound();
+            }
+
             var ticketTypeIds = TicketTypeID.Select(x => x).ToList();
             var quantities = qty.Select(x => x).ToList();
 
@@ -66,10 +93,12 @@ namespace MyEvent.Controllers
                 {
                     result.Add(new
                     {
-                        TicketTypeName = ticketType.Name,  
-                        discount = Convert.ToDecimal(ticketType.Discount),  
+                        TicketTypeID = ticketType.TicketTypeID,
+                        TicketTypeName = ticketType.Name,
+                        discount = Convert.ToDecimal(ticketType.Discount),
                         Qty = Convert.ToDecimal(quantities[i]),
-                        price = Convert.ToDecimal(Price)
+                        price = Convert.ToDecimal(seat.Price),
+                        SeatID = seat.SeatID
                     });
                 }
             }

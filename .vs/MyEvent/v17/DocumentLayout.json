@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\order\\confirmqty.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\order\\confirmqty.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\seats\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\order\\confirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\order\\confirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,12 +19,20 @@
       "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\controllers\\seatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\eventholders\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\eventholders\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\components\\vcdiscount\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\eventholders\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\eventholders\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\views\\shared\\components\\vcdiscount\\qty.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\views\\shared\\components\\vcdiscount\\qty.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|c:\\users\\user\\documents\\github\\myevent\\myevent\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AE2B72-3076-41F5-8A78-A9FB04FCACC1}|MyEvent\\MyEvent.csproj|solutionrelative:myevent\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,71 +42,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\Browse\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\Browse\\Details.cshtml",
-              "ViewState": "AgIAAMYAAAAAAAAAAAApwNIAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T08:09:39.867Z",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "MyEvent\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Models\\Order.cs",
+              "RelativeToolTip": "MyEvent\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T07:24:28.187Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T07:34:54.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Select.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Seats\\Select.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\Seats\\Select.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Seats\\Select.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\Seats\\Select.cshtml",
-              "ViewState": "AgIAANIAAAAAAAAAAAAowOAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T05:58:11.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "MyEvent\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "MyEvent\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAswBwAAAAAAAAAAAAAAA==",
+              "Title": "SeatsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
+              "RelativeDocumentMoniker": "MyEvent\\Controllers\\SeatsController.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
+              "RelativeToolTip": "MyEvent\\Controllers\\SeatsController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA2wCMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T05:19:48.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\EventHolders\\Edit.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\EventHolders\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\EventHolders\\Edit.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\EventHolders\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T05:17:08.512Z",
+              "WhenOpened": "2025-03-14T06:54:31.393Z",
               "EditorCaption": ""
             },
             {
@@ -115,41 +76,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\EventHolders\\Delete.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\EventHolders\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\EventHolders\\Delete.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\EventHolders\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ConfirmQty.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Order\\ConfirmQty.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Order\\ConfirmQty.cshtml",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Order\\ConfirmQty.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Order\\ConfirmQty.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAACAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T05:17:04.375Z",
+              "WhenOpened": "2025-03-14T06:48:35.157Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "MyEvent\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADcAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Confirm.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Order\\Confirm.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Order\\Confirm.cshtml",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Order\\Confirm.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Order\\Confirm.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T07:06:44.607Z",
+              "WhenOpened": "2025-03-13T01:24:00.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "MyEvent\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "MyEvent\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAqwB0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T05:19:48.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Qty.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Qty.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAIA2wBkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-13T00:55:02.212Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SeatsController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
-              "RelativeDocumentMoniker": "MyEvent\\Controllers\\SeatsController.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Controllers\\SeatsController.cs",
-              "RelativeToolTip": "MyEvent\\Controllers\\SeatsController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA0wBwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T07:16:36.942Z",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Browse\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Browse\\Details.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Browse\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-12T08:09:39.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
+              "RelativeDocumentMoniker": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
+              "RelativeToolTip": "MyEvent\\Views\\Shared\\Components\\VCDiscount\\Default.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-12T07:34:54.884Z",
               "EditorCaption": ""
             }
           ]

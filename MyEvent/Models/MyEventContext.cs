@@ -251,9 +251,6 @@ public partial class MyEventContext : DbContext
             entity.Property(e => e.OrderID)
                 .HasMaxLength(12)
                 .IsFixedLength();
-            entity.Property(e => e.CollectionID)
-                .HasMaxLength(7)
-                .IsFixedLength();
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.EventID)
                 .HasMaxLength(11)

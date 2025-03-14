@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<dynamic>
 @{
     ViewData["Title"] = "ConfirmQty";
+    var eventID = Context.Session.GetString("EventID");
 }
-
-<h1>ConfirmQty</h1>
 
 
 <h1>確認票種數量</h1>
@@ -26,7 +25,7 @@
             {
             <tr>
                 <td>@item.TicketTypeName</td>
-                <td>@Convert.ToInt32(item.price)</td>
+                <td>@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))</td>
                 <td>@item.Qty</td>
                 <td><i class="bi bi-trash3-fill"></i></td>
             </tr>
@@ -43,11 +42,13 @@
 <form asp-action="PlaceOrder" asp-controller="Order" method="post">
      @foreach (var item in Model) 
      { 
-         <input type="hidden" name="SeatID" value="@item.Seat.SeatID" /> 
-         <input type="hidden" name="TicketTypeID" value="@item.TicketType.TicketTypeID" /> 
+         <input type="hidden" name="SeatID" value="@item.SeatID" /> 
+         <input type="hidden" name="TicketTypeID" value="@item.TicketTypeID" />
+        <input type="hidden" name="Price" value="@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))" />
+
      } 
      <button type="submit" class="btn btn-primary text-end">確認訂單</button> 
 </form>
 
-<a asp-action="Select" class="btn btn-secondary">返回</a>
+<a asp-action="Details" asp-controller="Browse" asp-route-id="@eventID" class="btn btn-secondary">返回</a>
 
