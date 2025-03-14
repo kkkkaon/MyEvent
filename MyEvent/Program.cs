@@ -9,6 +9,12 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("MyEventConnectio
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(); 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/MemberLogin/Login"; // 設定登入頁面
+});
 
 var app = builder.Build();
 
@@ -17,6 +23,9 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+app.UseSession();
+
 app.UseStaticFiles();
 
 app.UseRouting();

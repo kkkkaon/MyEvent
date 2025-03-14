@@ -1,0 +1,105 @@
+﻿@model MyEvent.Models.Member
+@{
+    ViewData["Title"] = "Login Index";
+    int tc = 1;
+    var role = ViewContext.HttpContext.Session.GetString("Role");
+}
+<style>
+    .nav-item a {
+        color: black;
+    }
+    .nav-item a:hover, .nav-link.active {
+        color:var(--bs-success);
+    }
+
+    .name{
+        background-color: rgba(0,153,153,.25);
+        padding-top:40px;
+        padding-bottom: 40px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .col-3{
+        border-radius: 10px;
+        height: 360px
+    }
+    .col-8 {
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container row g-0 mt-5">
+    <div class="col-3 shadow me-3">
+        <div class="name text-center">
+            <h5>嗨！@(Model.MemberName)</h5>
+        </div>
+        <ul class="nav flex-column" role="tablist">
+            <li class="nav-item mt-3" role="presentation">
+                <a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 訂購紀錄</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="creditcard-tab" data-bs-toggle="tab" data-bs-target="#creditcard-tab-pane" type="button" role="tab" aria-controls="creditcard-tab-pane" aria-selected="false"><i class="bi bi-credit-card"></i> 信用卡</a>
+            </li>
+            <li class="text-center mt-5 mb-2">
+                <a asp-action="Logout" asp-controller="MemberLogin" type="button" class="btn btn-outline-success w-75">登出</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content col-8 shadow p-4" id="myTabContent">
+        <div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+            <h5 class="text-success fw-bold">訂購紀錄</h5>
+            @foreach (var order in ViewBag.Orders)
+            {
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <p class="fw-bold">訂單編號：@order.OrderID</p>
+                    </div>
+                    <div class="card-body">
+                        <p>演出日期：@order.Date.ToString("yyyy-MM-dd")</p>
+                        <p>演出名稱：@order.Event.EventName</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+            <h5 class="text-success fw-bold">個人資料</h5>
+            <hr class="w-100 my-3" />
+            <p>帳號：@Model.Credentials.Account</p>
+            <p>密碼：@Model.Credentials.Password</p>
+            @foreach (var mt in Model.MemberTel)
+            {
+                <p>電話@(tc)：@mt.Tel</p>
+                tc++;
+            }
+            <p>生日：@Model.Birthday</p>
+            <p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
+            <p>加入日期：@Model.JoinDate</p>
+        </div>
+        <div class="tab-pane fade" id="creditcard-tab-pane" role="tabpanel" aria-labelledby="creditcard-tab" tabindex="0">
+            <h5 class="text-success fw-bold">信用卡</h5>
+            @foreach (var cc in Model.CreditCard)
+            {
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p>卡號：@cc.CardNo</p>
+                    <p>安全碼：@cc.SecurityNo</p>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+
+    </script>
+}

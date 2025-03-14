@@ -1,0 +1,99 @@
+﻿@model MyEvent.Models.EventHolder
+@{
+	ViewData["Title"] = "Login Index";
+}
+<style>
+	.nav-item a {
+		color: black;
+	}
+	.nav-item a:hover, .nav-link.active {
+		color: var(--bs-primary);
+	}
+
+	.name {
+		background-color: rgba(235,79,105,.25);
+		padding-top: 40px;
+		padding-bottom: 40px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.col-3 {
+		border-radius: 10px;
+		height: 325px
+	}
+	.col-8{
+		border-radius: 10px;
+	}
+	a{
+		text-decoration:none;
+	}
+</style>
+
+<div class="container row g-0 mt-5">
+	<div class="col-3 shadow me-3" >
+		<div class="name text-center">
+			<h5>嗨！@(Model.EventHolderName)</h5>
+		</div>
+		<ul class="nav flex-column" role="tablist">
+			<li class="nav-item mt-3" role="presentation">
+				<a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 演出列表</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
+			</li>
+			<li class="text-center mt-5 mb-2">
+				<a asp-action="Logout" asp-controller="EHLogin" type="button" class="btn btn-outline-primary w-75">登出</a>
+			</li>
+		</ul>
+	</div>
+	<div class="tab-content col-8 shadow p-4" id="myTabContent">
+		<div class="tab-pane fade show active" id="order-tab-pane" role="tabpanel" aria-labelledby="order-tab" tabindex="0">
+			<div class="d-flex justify-content-between align-items-center">
+				<h5 class="text-primary fw-bold">演出列表</h5>
+				<a asp-action="Create" asp-controller="Events" class="btn btn-dark mb-3">新增演出 &nbsp;<i class="bi bi-patch-plus"></i></a>
+			</div>
+			@foreach (var e in ViewBag.Events)
+			{
+				<div class="card mb-3">
+					<div class="card-header pt-3">
+						<h5 class="fw-bold">演出名稱：@e.EventName</h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-xl-9">
+								<p>日期：@e.Date.ToString("yyyy-MM-dd")</p>
+								<p>場館：@e.Venue.VenueName</p>
+							</div>
+							<div class="col-xl-3 d-flex justify-content-center align-items-center" >
+								<a asp-action="Edit" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i> &nbsp;</a> | &nbsp;
+								<a asp-action="CheckOrder" asp-route-id="@e.EventID"><i class="bi bi-journal-text text-secondary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="查看訂單"></i></a> &nbsp; | &nbsp;
+								<a asp-action="Delete" asp-controller="Events" asp-route-id="@e.EventID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+			<h5 class="text-primary fw-bold">個人資料</h5>
+			<hr class="w-100 my-3"/>
+			<p>帳號：@Model.ECredentials.Account</p>
+			<p>密碼：@Model.ECredentials.Password</p>
+			<p>電話：@Model.Tel</p>
+			<p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
+			<p>加入日期：@Model.JoinDate</p>
+		</div>
+
+	</div>
+</div>
+
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	<script>
+
+	</script>
+}

@@ -1,0 +1,63 @@
+﻿@model MyEvent.Models.EventHolder
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h4 class="fw-bold text-primary text-center mt-4">確定刪除此主辦團體?</h4>
+<div>
+    <hr />
+    <div class="d-flex justify-content-center">
+        <dl class="row mx-auto" style="width:300px;">
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.EventHolderName)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.EventHolderName)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.JoinDate)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.JoinDate)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+        <dt class = "col-xl-4">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-xl-8">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+    </div>
+    <form asp-action="Delete" class="mt-3 align-items-center d-flex justify-content-center">
+        <input type="hidden" asp-for="EventHolderID" />
+        <input type="submit" value="確認刪除" class="btn btn-secondary" />
+        <a asp-action="Index" class="btn btn-outline-secondary ms-2">返回列表</a>
+    </form>
+</div>

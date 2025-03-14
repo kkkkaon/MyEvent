@@ -5,11 +5,10 @@ namespace MyEvent.Models;
 
 public partial class TicketType
 {
-    public string TypeID { get; set; } = null!;
+    public string EventID { get; set; } = null!;
 
-    public string Name { get; set; } = null!;
+    public string TicketTypeID { get; set; } = null!;
 
-    public double Discount { get; set; }
-
-    public virtual ICollection<Ticket> Ticket { get; set; } = new List<Ticket>();
+    public virtual Event Event { get; set; } = null!;
+    public virtual TicketTypeList TicketTypeList { get; set; }
 }

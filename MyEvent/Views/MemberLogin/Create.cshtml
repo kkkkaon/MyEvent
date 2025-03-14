@@ -1,0 +1,193 @@
+﻿@using System.Text.Json;
+@model MyEvent.Models.Member;
+
+@{
+
+	ViewData["Title"] = "Create";
+	var areaData = ViewBag.AreaData as Dictionary<string, Dictionary<string, AreaInfo>>;
+	var cities = ViewBag.Cities as List<string>;
+	var districts = ViewBag.Districts as List<string>;
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - MyEvent</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/MyEvent.styles.css" asp-append-version="true" />
+</head>
+<style>
+	.backToBrowse {
+		color: #5c5c5c;
+		text-decoration: #5c5c5c solid 2px underline;
+	}
+	.backToBrowse:hover {
+		color: #323232;
+		text-decoration: #323232 solid 2px underline;
+	}
+	.btn-success {
+		background-color: #099;
+		border-color: #099;
+	}
+	.btn-success:hover {
+		background-color: #098d8d;
+		border-color: #098d8d;
+	}
+</style>
+<body class="container">
+	<h1 class="text-center mt-4">註冊帳號</h1>
+
+	<div class="row d-flex justify-content-center">
+		<div class="col-xl-4 col-md-6">
+			<hr style="color:#099;" />
+			<form asp-action="Create" method="post">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="Credentials.Account" class="control-label"></label>
+					<input asp-for="Credentials.Account" id="Account" class="form-control" />
+					<span asp-validation-for="Credentials.Account" class="text-danger"></span>
+					<span class="text-danger" id="AccountCheck"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Credentials.Password" class="control-label"></label>
+					<input asp-for="Credentials.Password" type="password" class="form-control" />
+					<span asp-validation-for="Credentials.Password" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="MemberName" class="control-label"></label>
+					<input asp-for="MemberName" class="form-control" />
+					<span asp-validation-for="MemberName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Birthday" class="control-label"></label>
+					<input asp-for="Birthday" class="form-control" type="date" />
+					<span asp-validation-for="Birthday" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ZipCode" class="control-label"></label>
+					<input asp-for="ZipCode" class="form-control" />
+					<span asp-validation-for="ZipCode" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="City" class="control-label"></label>
+					<select id="city" name="City" class="form-control" onchange="updateDistricts()">
+						@* <option value="-1" selected>請選擇城市</option>  *@
+						@foreach (var city in cities)
+						{
+
+							@if (Model?.City == city)
+							{
+								<option value="@city" selected>@city</option>
+							}
+							else
+							{
+								<option value="@city">@city</option>
+							}
+						}
+					</select>
+					<span asp-validation-for="City" class="text-danger"></span>
+					@* <span class="text-danger">@ViewData["ErrorMessage"]</span> *@
+				</div>
+				<div class="form-group">
+					<label asp-for="Area" class="control-label"></label>
+					<select id="district" name="Area" class="form-control" disabled>
+						@* <option value="">請先選擇城市</option> *@
+					</select>
+					<span asp-validation-for="Area" class="text-danger"></span>
+					@* <span class="text-danger">@ViewData["ErrorMessage"]</span> *@
+				</div>
+				<div class="form-group">
+					<label asp-for="Address" class="control-label"></label>
+					<input asp-for="Address" class="form-control" />
+					<span asp-validation-for="Address" class="text-danger"></span>
+				</div>
+				<div class="form-group mt-3 d-flex justify-content-center">
+					<input type="submit" value="註冊" class="btn btn-success w-25"/>
+				</div>
+				<div class="d-flex justify-content-center mt-2">
+					<a asp-action="Login" class="backToBrowse me-3">我要登入</a>
+					<a asp-action="Index" asp-controller="Browse" class="backToBrowse">返回瀏覽</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+		const areaData = @Html.Raw(JsonSerializer.Serialize(areaData));
+		const selectedArea = "@(Model?.Area)";
+
+			function updateDistricts() {
+				const city = document.getElementById('city').value;
+				const districtSelect = document.getElementById('district');
+
+				// 清空區域選單
+				districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+
+				if (city && areaData[city]) {
+					// 根據選擇的城市填充區域選單
+					for (const district in areaData[city]) {
+						const option = document.createElement('option');
+						option.value = district; // 區域名稱作為值
+						option.textContent = district; // 顯示區域名稱
+
+						if (district == selectedArea) {
+							option.selected = true;
+						}
+
+						districtSelect.appendChild(option);
+					}
+					districtSelect.disabled = false;
+				} else {
+					districtSelect.disabled = true;
+				}
+
+				$(districtSelect).removeData("unobtrusiveValidation");
+				$.validator.unobtrusive.parse(districtSelect);
+			}
+
+			window.onload = function() {
+				if (document.getElementById('city').value) {
+					updateDistricts();
+				}
+			}
+			
+
+		//檢查帳號是否重複的ajax
+		 $('#Account').on('change',function(){
+
+		//判斷如果model驗證無誤才出現檢查帳號重複的提示，若驗證有誤要取消重複的提示
+		if($('#Account').next('.text-danger').text()==''){
+			$.ajax({
+				url:`Login/MemberAccountCheck?account=` + $('#Account').val(),
+				type:'get',
+				success:function(data){
+					if(data){
+						//回傳true為帳號可用
+					}else{
+						$('#AccountCheck').text('帳號重複，請重新輸入');
+					}
+				}
+
+			});
+		}else{
+			$('#AccountCheck').text('');
+		}
+		});
+
+		$('#registerForm').on('submit', function(e){
+			if('#AccountCheck').text()=='帳號重複，請重新輸入'){
+				e.preventDefault(); //不送出表單
+			}
+		});
+	</script>
+

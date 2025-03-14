@@ -1,0 +1,247 @@
+﻿@model IEnumerable<MyEvent.Models.Seat>
+@{
+	// ViewData["Title"] = "Select";
+}
+<style>
+	.bi:hover {
+	cursor: pointer;
+	}
+
+	.text-bg-dark{
+	background-color:black;
+	color: white;
+	width: 450px;
+	height: 50px;
+	font-size: 1.2rem;
+	}
+</style>
+
+
+@{
+	var venueId = ViewBag.VenueID;
+}
+<form asp-action="Confirm" asp-controller="Order">
+	 <div class="row"> 
+	 	<div class="col-md-8">
+			@await Component.InvokeAsync("Seats_"+venueId.ToString(), new { venueId = venueId })
+	 	</div> 
+
+		<div class="col-md-4">
+			<div class="card p-4 d-flex flex-column" style="min-height:500px;">
+				<h5>已選座位</h5>
+				<ul id="selectedSeatsList" class="list-group">
+				</ul>
+				<div class="mt-auto">
+					<div class="d-flex justify-content-between align-items-center">
+						<div>
+							<span>已選 <b id="totalQty"></b> 個座位</span>
+							<span>金額：</span><b id="totalPrice">$</b>
+						</div>
+						<input type="submit" value="下訂" class="btn btn-primary disabled" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<select id="ticketTypeList" class="form-select d-none">
+			@foreach (var tt in ViewBag.TicketTypes)
+			{
+			<option value="@tt.TicketTypeID">@tt.TicketTypeList.Name</option>
+			}
+		</select>
+	</div>
+</form>
+
+
+
+<div class="modal fade" id="OrderModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="selectedSeat"></h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" id="modal-content">
+				...
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div id="addToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay='3000'>
+		<div class="text-center">
+			<div class="toast-body d-inline-block">
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+	
+		//已選座位列表
+		var list = $("#selectedSeatsList");
+
+		// **1. 監聽座位 (SeatID) 變更**
+		$(document).on("change", "input[name='SeatID']", function () {
+			
+			var seatId = $(this).attr("id");
+			var seatLabel = $("label[for='" + seatId + "']").attr("data-seat-row-num");
+
+			if ($(this).is(":checked")) {	
+				
+				// **標記當前選擇的座位**
+				$("#OrderModal").data("selectedSeatId", seatId);
+				$("#OrderModal").data("selectedSeatLabel", seatLabel);
+				// **開啟票種選擇 Modal**
+				$("#OrderModal").modal("show");
+			} else {
+				// **取消座位時，直接從列表中移除**
+				list.find("li[data-seat-id='" + seatId + "']").remove();
+				updateTotal();
+				removeTix(seatLabel);
+			}
+		});
+
+		// **2. 監聽票種 (TicketTypeID) 變更**
+		$(document).on("change", '.seat-checkbox', function () {
+			var ticketTypeId = $(this).attr("id"); // 取得選中的票種 ID
+			var seatId = $("#OrderModal").data("selectedSeatId"); // 取得之前選的座位 ID
+			var seatLabel = $("#OrderModal").data("selectedSeatLabel"); // 取得座位標籤
+			if (!seatId) return; //**如果沒有選座位，則不執行**
+
+			// **移除該座位的舊 listItem (避免重複)**
+			list.find("li[data-seat-id='" + seatId + "']").remove();
+
+			// **新增新的 listItem**
+			var ticketSelect = $("#ticketTypeList").clone();
+			ticketSelect.removeAttr("id").removeClass("d-none").addClass("ticket-select");
+
+			ticketSelect.attr("name", "TicketTypeID").val(ticketTypeId);
+
+			var listItem = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
+				.attr("data-seat-id", seatId)
+				.append($("<b>").text(seatLabel))
+				.append($("<div>").append(ticketSelect).css("width", "200px"))
+				.append($("<input type='hidden' name='SeatID' value='" + seatId + "'>"))
+				.append($("<i>").addClass("bi bi-x-circle-fill"));
+
+			list.append(listItem);
+			$("#OrderModal").modal("hide"); // **關閉 Modal**
+
+			updateTotal();
+			addTix(seatLabel);//Toast
+		});
+
+		$(document).on("change", ".ticket-select", function () {
+			updateTotal(); // 重新計算總價
+		});
+
+		// **3. 當點擊刪除按鈕時**
+		list.on("click", '.bi-x-circle-fill', function () {
+			var seatId = $(this).closest("li").attr("data-seat-id");
+			var seatLabel = $("#OrderModal").data("selectedSeatLabel");
+			// **取消對應的座位 checkbox**
+			var seatCheckbox = $("#" + seatId);
+			if (seatCheckbox.length) {
+				seatCheckbox.prop("checked", false);
+				seatCheckbox.removeAttr("data-ticket-id");
+			}
+
+			// **從列表中移除該座位**
+			$(this).closest("li").remove();
+			
+			updateTotal();
+			removeTix(seatLabel);
+		});
+
+		//按close會取消checked
+		$(document).on("click", "#OrderModal .btn-close", function () {
+			var seatId = $("#OrderModal").data("selectedSeatId"); 
+			if (seatId) {
+			$("#" + seatId).prop("checked", false); 
+			$("#OrderModal").removeData("selectedSeatId").removeData("selectedSeatLabel"); // 清除暫存數據
+			}
+		});
+
+
+		$('#OrderModal').on('show.bs.modal', function (event) {
+			var seatId = $(this).data('selectedSeatId'); // 取得選擇的座位 ID
+			var seatLabel = $(this).data('selectedSeatLabel'); // 取得座位標籤
+			var modal = $(this);
+
+			// 顯示座位標籤
+			modal.find('#selectedSeat').text(seatLabel);
+
+			// 請求票種資料
+			var url = '/Seats/LoadDiscount?seatID=' + seatId;
+			$.get(url, function (data) {
+				modal.find('#modal-content').html(data);
+			});
+		});
+		
+		
+		function updateTotal() {
+			var total = $("#selectedSeatsList li").length;
+			$("#totalQty").text(total);
+
+			var totalPrice = 0;
+			$("#selectedSeatsList li").each(function () {
+				var ticketSelect = $(this).find("select.ticket-select"); // 找到該座位的票種選擇器
+				var ticketTypeID = ticketSelect.val(); // 取得票種 ID
+
+				// 根據票種 ID 取得對應 label 中 p 的文字內容
+				var priceText = $("label[for='" + ticketTypeID + "'] p").text();
+
+				// 移除 $ 符號及空格，轉換成數字
+				var price = parseFloat(priceText.replace('$', '').trim()) || 0;
+				totalPrice += price;
+			});
+
+			$('#totalPrice').text("$"+totalPrice);
+
+			//未選票不能按下訂
+			if(total !=0){
+				$("input[type='submit']").removeClass("disabled");
+			}else{
+				$("input[type='submit']").addClass("disabled");
+			}
+		}
+
+		const addToast = document.getElementById('addToast')
+		const toastBootstrap = bootstrap.Toast.getOrCreateInstance(addToast)
+		function addTix(SeatName){
+			$('#addToast .toast-body').html('<i class="bi bi-check-circle"></i>&nbsp; 已選擇座位【'+ SeatName +'】');
+			toastBootstrap.show()
+		}
+
+		function removeTix(SeatName){
+			$('#addToast .toast-body').html('<i class="bi bi-trash3"></i>&nbsp; 已取消座位【'+ SeatName +'】');
+			toastBootstrap.show()
+		}
+
+		// let arrCart=[];
+		// if(localStorage.getItem("cart"))
+		// arrCart = JSON.parse(localStorage.getItem("cart"));
+
+		// $('#CartStatus span').text(arrCart.length);
+		// function addCart(){
+
+		// 	$("#selectedSeatsList li").each(function () {
+		// 	let eventId = $(this).attr("data-eventID");
+		// 	let seatId = $(this).attr("data-seat-id"); //**取 SeatID**
+		// 	let ticketTypeId = $(this).find("select.ticket-select").val();
+		// 		arrCart.push({
+		// 			EventID: eventId,
+		// 			TicketTypeID: ticketTypeId,
+		// 			SeatID: seatId,
+		// 			Qty: 1
+		// 		});
+		// 	});
+		// 	$('#CartStatus span').text(arrCart.length);
+		// 	localStorage.setItem("cart", JSON.stringify(arrCart));
+		// 	}
+	</script>
+}
+

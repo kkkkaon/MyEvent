@@ -1,5 +1,17 @@
 wwwroot\css\site.css
 wwwroot\data\area_data.json
+wwwroot\EventPhotos\.jpg
+wwwroot\EventPhotos\2025030001.jpg
+wwwroot\EventPhotos\2025030001.png
+wwwroot\EventPhotos\E2023120202.jpg
+wwwroot\EventPhotos\E2024122410.jpg
+wwwroot\EventPhotos\E2024122835.jpg
+wwwroot\EventPhotos\E2025030101.jpg
+wwwroot\EventPhotos\E2025030701.jpg
+wwwroot\EventPhotos\E2025030801.jpg
+wwwroot\EventPhotos\E2025031501.jpg
+wwwroot\EventPhotos\E2025032101.jpg
+wwwroot\EventPhotos\E2025041101.jpg
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MyEvent.Models.EventHolder>
+
+@{
+    ViewData["Title"] = "主辦團體帳號管理";
+}
+
+
+<div class="d-flex justify-content-between align-items-center my-3"> 
+    <h4 class="fw-bold">@ViewData["Title"]</h4>
+    <a asp-action="Create" asp-controller="EventHolders" class="btn btn-outline-dark mt-3">新增主辦團體 &nbsp;<i class="bi bi-patch-plus"></i></a>
+</div>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventHolderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JoinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventHolderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EventHolderID"><i class="bi bi-pencil-fill text-success" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="編輯"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.EventHolderID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -28,7 +28,6 @@ namespace MyEvent.Controllers
             var events = _context.Event.Include(h => h.EventHolder).Include(t => t.EventType).Include(v => v.Venue).AsQueryable();
 
 
-
             if (EventTypeID != null && EventTypeID.Any())
             {
                 events = events.Where(e => EventTypeID.Contains(e.EventType.EventTypeID));
@@ -51,29 +50,40 @@ namespace MyEvent.Controllers
 
             ViewBag.Region = new SelectList(_context.Venue, "Region", "Region");
 
+            ViewBag.IsDarkbg = true;
             return View(result);
         }
 
         // GET: Browse/Details/5
         public async Task<IActionResult> Details(string id)
         {
+            HttpContext.Session.SetString("EventID", id);
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var @event = await _context.Event
+            var event1 = await _context.Event
                 .Include(h => h.EventHolder)
                 .Include(t => t.EventType)
                 .Include(v => v.Venue)
                 .Include(a => a.EventTag)
                 .FirstOrDefaultAsync(m => m.EventID == id);
-            if (@event == null)
+            if (event1 == null)
             {
                 return NotFound();
             }
 
-            return View(@event);
+            var eventItem = await _context.Event.Where(e => e.EventID == id).FirstOrDefaultAsync();
+
+            var seat = await _context.Seat.Where(t => t.VenueID == event1.VenueID).FirstOrDefaultAsync();
+            var seats = await _context.Seat.Where(t => t.VenueID == event1.VenueID).ToListAsync();
+            ViewData["seatTypeCount"] = seats.Count();
+            ViewBag.Seat = seat;
+            
+            ViewBag.IsDarkbg = true;
+            return View(event1);
         }
 
       
