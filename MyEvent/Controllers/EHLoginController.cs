@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GoodStore.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -20,15 +21,10 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
-
+        [ServiceFilter(typeof(EHLoginFilter))]
         public async Task<IActionResult> Index()
         {
             var id = HttpContext.Session.GetString("EventHolderID");
-            if (string.IsNullOrEmpty(id))
-            {
-                return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
-            }
-
             var EH = await _context.EventHolder.Include(m => m.ECredentials).FirstOrDefaultAsync();
 
             ViewBag.Events = await _context.Event.Include(v => v.Venue).Where(o => o.EventHolderID == id).ToListAsync();
@@ -70,15 +66,18 @@ namespace MyEvent.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [ServiceFilter(typeof(EHLoginFilter))]
         public async Task<IActionResult> CheckOrder(string id)
         {
-            var EHID = HttpContext.Session.GetString("EventHolderID");
-            if (string.IsNullOrEmpty(EHID))
-            {
-                return RedirectToAction("Login", "EHLogin"); // 未登入，導向登入頁
-            }
             var orders = await _context.Order.Include(o => o.Member).Include(t=>t.Payment).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
             return View(orders);
+        }
+
+        public async Task<IActionResult> OrderIndex()
+        {
+            //var myEventContext = _context.OrderDetail.Include(o => o.Order).Include(o => o.Seat);
+            var myEventContext = _context.Order.Include(e => e.Event).Include(m => m.Member);
+            return View(await myEventContext.ToListAsync());
         }
     }
 }

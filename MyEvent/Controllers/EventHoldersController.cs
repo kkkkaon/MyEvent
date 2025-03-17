@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoodStore.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace MyEvent.Controllers
 {
+    [ServiceFilter(typeof(AdminLoginFilter))]
     public class EventHoldersController : Controller
     {
         private readonly MyEventContext _context;

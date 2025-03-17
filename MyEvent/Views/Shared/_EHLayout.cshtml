@@ -46,9 +46,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Browse" asp-action="Index">瀏覽演出</a>
                             </li>
-                            <li>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Events" asp-action="Index">演出</a>
-                            </li>
                         </ul>
                         <div>
                             <a asp-action="Index" asp-controller="EHLogin" class="text-light"><i class="bi bi-person-circle fs-3"></i></a>
@@ -65,7 +62,7 @@
         </div>
         <footer class="border-top footer text-muted @(ViewBag.IsDarkbg == true ? "navbar-dark" : "")">
             <div class="container">
-                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; @DateTime.Now.Year - MyEvent
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

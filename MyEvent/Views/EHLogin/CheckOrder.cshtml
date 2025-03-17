@@ -6,10 +6,14 @@
 
 <h1>CheckOrder</h1>
 
-
+@if (Model != null && Model.Any())
+{
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -17,26 +21,20 @@
                 @Html.DisplayNameFor(model => model.Qty)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Memo)
             </th>
-
             <th>
-                @Html.DisplayNameFor(model => model.Member.MemberID)
+                @Html.DisplayNameFor(model => model.Member)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Payment.Type)
-            </th>
-            <th>
-                移除
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
@@ -44,23 +42,21 @@
                 @Html.DisplayFor(modelItem => item.Qty)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Memo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Member.MemberName)
             </td>
-
             <td>
-                @Html.DisplayFor(modelItem => item.Payment.Type)
-            </td>
-            <td>
-                    <a asp-action="Delete" asp-controller="Order" asp-route-id="@item.OrderID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
+                <a asp-action="Delete" asp-controller="Order" asp-route-id="@item.OrderID"><i class="bi bi-trash3-fill text-primary" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="刪除"></i></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+}
+else
+{
+    <p class="text-center fs-4 fw-bold mt-3">目前沒有任何訂單</p>
+}
 <a asp-action="Index" asp-controller="EHLogin">Back to List</a>

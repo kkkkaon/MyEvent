@@ -13,9 +13,11 @@ public partial class OrderDetail
 
     public decimal Price { get; set; }
 
+    public string TicketTypeID { get; set; } = null!;
+
     public virtual Order Order { get; set; } = null!;
 
     public virtual Seat Seat { get; set; } = null!;
 
-    public virtual Ticket Ticket { get; set; } = null!;
+    public virtual TicketTypeList TicketTypeList { get; set; }
 }

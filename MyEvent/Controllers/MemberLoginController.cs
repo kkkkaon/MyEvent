@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GoodStore.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -20,19 +21,41 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
-
+        [ServiceFilter(typeof(MemberLoginFilter))]
         public async Task<IActionResult> Index()
         {
             var id = HttpContext.Session.GetString("MemberID");
-            if (string.IsNullOrEmpty(id))
+
+            var member = await _context.Member.Include(m => m.MemberTel).Include(m => m.CreditCard).Include(m => m.Credentials).Include(o=>o.Order).Where(o => o.MemberID == id).FirstOrDefaultAsync();
+            var orders = await _context.Order.Where(o => o.MemberID == id).Include(o => o.Event).OrderByDescending(o => o.Date).ToListAsync();
+            
+
+            var orderDetails = await _context.OrderDetail
+                .Where(od => od.Order.MemberID == id)
+                .Include(od => od.TicketTypeList)
+                .Include(od => od.Seat)
+                .Include(od => od.Order)  // 關聯 Order 資料
+                .ThenInclude(o => o.Event)
+                .Select(od => new
+                {
+                    EventName = od.Order.Event.EventName,
+                    EventTime = od.Order.Event.StartTime,
+                    EventDate = od.Order.Event.Date,
+                    Seat = $"{od.Seat.Row}-{od.Seat.Number}",
+                    TicketID = od.TicketID,
+                    TicketType = od.TicketTypeList.Name,
+                    Price = od.Price
+                })
+                .OrderByDescending(od => od.EventDate)  // 如果需要，根據日期排序
+                .ToListAsync();
+
+            ViewBag.OrderDetails = orderDetails;
+            ViewBag.Orders = orders;
+
+            if (TempData.ContainsKey("OrderMessage"))
             {
-                return RedirectToAction("Login", "MemberLogin"); // 未登入，導向登入頁
+                ViewBag.OrderMessage = TempData["OrderMessage"];
             }
-
-            var member = await _context.Member.Include(m => m.MemberTel).Include(m => m.CreditCard).Include(m => m.Credentials).Include(m => m.Order).Where(o => o.MemberID == id).FirstOrDefaultAsync();
-
-
-            ViewBag.Orders = await _context.Order.Where(o => o.MemberID == id).Include(o => o.Event).ToListAsync();
             return View(member);
         }
 
@@ -68,6 +91,7 @@ namespace MyEvent.Controllers
             var newMemberID = lastMember != null ? (int.Parse(lastMember.MemberID) + 1).ToString() : DateTime.Now.ToString("yyyyMM") + "0001";
             member.MemberID = newMemberID;
             ModelState.Remove("MemberID");
+            ModelState.Remove("Role");
 
             if (ModelState.IsValid)
             {

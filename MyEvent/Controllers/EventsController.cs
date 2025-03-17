@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyEvent.Models;
 using System.Diagnostics;
+using GoodStore.Filters;
 
 namespace MyEvent.Controllers
 {
+    [ServiceFilter(typeof(EHLoginFilter))]
     public class EventsController : Controller
     {
         private readonly MyEventContext _context;

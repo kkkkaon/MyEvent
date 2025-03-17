@@ -1,5 +1,4 @@
-﻿using MyEvent.DTOs;
-using MyEvent.Models;
+﻿using MyEvent.Models;
 
 namespace MyEvent.ViewModels
 {

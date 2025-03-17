@@ -58,6 +58,9 @@
                                     <li><a class="dropdown-item" asp-controller="EventHolders" asp-action="Index">主辦團體帳號</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="EHLogin" asp-action="OrderIndex">訂單管理</a>
+                            </li>
                         </ul>
                         <div>
                             <a asp-action="Logout" asp-controller="MemberLogin" class="btn btn-outline-light">登出</a>
@@ -74,7 +77,7 @@
         </div>
         <footer class="border-top footer text-muted @(ViewBag.IsDarkbg == true ? "navbar-dark" : "")">
             <div class="container">
-                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; @DateTime.Now.Year - MyEvent
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

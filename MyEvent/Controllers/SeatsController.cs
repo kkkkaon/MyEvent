@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoodStore.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
+        [ServiceFilter(typeof(MemberLoginFilter))]
         public async Task<IActionResult> Select(string id)
         {
             //string? eventId = HttpContext.Session.GetString("EventID");
@@ -27,7 +29,6 @@ namespace MyEvent.Controllers
                 .Where(s => s.VenueID == eventItem.VenueID)
                 .ToListAsync();
 
-
             var tt = await _context.TicketType.Where(t => t.EventID == id).Include(t => t.TicketTypeList).ToListAsync();
             ViewBag.TicketTypes = tt;
 
@@ -36,8 +37,7 @@ namespace MyEvent.Controllers
             return View(seats);
         }
 
-
-
+        [ServiceFilter(typeof(MemberLoginFilter))]
         public IActionResult LoadDiscount(string SeatID)
         { 
             return ViewComponent("VCDiscount", new { seatID = SeatID });

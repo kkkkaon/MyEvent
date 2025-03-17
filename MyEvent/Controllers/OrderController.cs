@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoodStore.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MyEvent.Models;
 using MyEvent.ViewComponents;
 using MyEvent.ViewModels;
@@ -21,14 +23,11 @@ namespace MyEvent.Controllers
         }
 
         //給有座位的confirm
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(MemberLoginFilter))]
         public async Task<IActionResult> Confirm(List<string> SeatID, List<string> TicketTypeID)
         {
-            if (SeatID == null || TicketTypeID == null || SeatID.Count == 0)
-            {
-                string eventId = HttpContext.Session.GetString("EventID");
-
-                return RedirectToAction("Details", new { eventId = eventId }); // 若無座位選擇，重新導向
-            }
 
             var seatIds = SeatID.Select(x => x).ToList();
             var ticketTypeIds = TicketTypeID.Select(x => x).ToList();
@@ -39,7 +38,7 @@ namespace MyEvent.Controllers
             //var ticketTypeList = await _context.TicketTypeList
             //                          .Where(t => ticketTypeIds.Contains(t.TicketTypeID))
             //                          .ToListAsync();
-
+            ViewBag.QtyTotal = seatList.Count;
             var result = new List<dynamic>();
             for (int i = 0; i < seatList.Count; i++)
             {
@@ -53,7 +52,6 @@ namespace MyEvent.Controllers
                         TicketTypeID = ticketType.TicketTypeID,
                         TicketTypeName = ticketType.Name,
                         discount = Convert.ToDecimal(ticketType.Discount),
-                        Qty = 1,
                         price = Convert.ToDecimal(seat.Price),
                         SeatID = seat.SeatID,
                         SeatRow = seat.Row,
@@ -65,7 +63,46 @@ namespace MyEvent.Controllers
             return View(result);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(MemberLoginFilter))]
+        public async Task<IActionResult> PlaceOrder(int QtyTotal, string EventID, string MemberID, decimal TotalPrice, string OrderDetails)
+        {
+
+            ModelState.Remove("OrderID");
+            ModelState.Remove("MemberID");
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //呼叫寫在dbcontext2的SP
+                    var result = await _context.ExecSPAddNewOrderAsync(QtyTotal, EventID, MemberID, TotalPrice, OrderDetails);
+
+                    //_context.Add(order);
+                    //await _context.SaveChangesAsync();
+                    if (result > 0)
+                    {
+                        TempData["OrderMessage"] = "OK";
+                        return RedirectToAction("Index","Memberlogin");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    string eventId1 = HttpContext.Session.GetString("EventID");
+
+                    return RedirectToAction("Details", "Browse", new { id = eventId1 });
+                }
+            }
+            string eventId = HttpContext.Session.GetString("EventID");
+
+            return RedirectToAction("Details", "Browse", new { id = eventId });
+        }
+
         //給不分區的confirm
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(MemberLoginFilter))]
         public async Task<IActionResult> ConfirmQty(List<string> TicketTypeID, List<string> qty, string SeatID)
         {
             var seat = await _context.Seat.FirstOrDefaultAsync(s => s.SeatID == SeatID);
@@ -108,7 +145,8 @@ namespace MyEvent.Controllers
         // GET: Order
         public async Task<IActionResult> Index()
         {
-            var myEventContext = _context.OrderDetail.Include(o => o.Order).Include(o => o.Seat).Include(o => o.Ticket);
+            //var myEventContext = _context.OrderDetail.Include(o => o.Order).Include(o => o.Seat);
+            var myEventContext = _context.Order.Include(e=>e.Event).Include(m=>m.Member);
             return View(await myEventContext.ToListAsync());
         }
 
@@ -123,7 +161,6 @@ namespace MyEvent.Controllers
             var orderDetail = await _context.OrderDetail
                 .Include(o => o.Order)
                 .Include(o => o.Seat)
-                .Include(o => o.Ticket)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (orderDetail == null)
             {
@@ -138,7 +175,6 @@ namespace MyEvent.Controllers
         {
             ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID");
             ViewData["SeatID"] = new SelectList(_context.Seat, "SeatID", "SeatID");
-            ViewData["TicketID"] = new SelectList(_context.Ticket, "TicketID", "TicketID");
             return View();
         }
 
@@ -157,7 +193,6 @@ namespace MyEvent.Controllers
             }
             ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", orderDetail.OrderID);
             ViewData["SeatID"] = new SelectList(_context.Seat, "SeatID", "SeatID", orderDetail.SeatID);
-            ViewData["TicketID"] = new SelectList(_context.Ticket, "TicketID", "TicketID", orderDetail.TicketID);
             return View(orderDetail);
         }
 
@@ -176,7 +211,6 @@ namespace MyEvent.Controllers
             }
             ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", orderDetail.OrderID);
             ViewData["SeatID"] = new SelectList(_context.Seat, "SeatID", "SeatID", orderDetail.SeatID);
-            ViewData["TicketID"] = new SelectList(_context.Ticket, "TicketID", "TicketID", orderDetail.TicketID);
             return View(orderDetail);
         }
 
@@ -214,7 +248,6 @@ namespace MyEvent.Controllers
             }
             ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", orderDetail.OrderID);
             ViewData["SeatID"] = new SelectList(_context.Seat, "SeatID", "SeatID", orderDetail.SeatID);
-            ViewData["TicketID"] = new SelectList(_context.Ticket, "TicketID", "TicketID", orderDetail.TicketID);
             return View(orderDetail);
         }
 
@@ -229,7 +262,6 @@ namespace MyEvent.Controllers
             var orderDetail = await _context.OrderDetail
                 .Include(o => o.Order)
                 .Include(o => o.Seat)
-                .Include(o => o.Ticket)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (orderDetail == null)
             {

@@ -42,12 +42,6 @@
                             <li class="nav-item">
                                 <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Browse" asp-action="Index">瀏覽演出</a>
                             </li>
-                            <li>
-                                <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="Events" asp-action="Index">演出</a>
-                            </li>
-                            <li>
-                                <a class="nav-link @(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")" asp-area="" asp-controller="EHLogin" asp-action="Index">後台</a>
-                            </li>
 
                             @if (role == "2")
                             {
@@ -86,7 +80,7 @@
         <footer class="border-top footer text-muted @(ViewBag.IsDarkbg == true ? "navbar-dark" : "")">
             <div class="container d-flex justify-content-between">
                 <div>
-                &copy; @DateTime.Now.Year - MyEvent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; @DateTime.Now.Year - MyEvent
                 </div>
                 <div class="text-end">
                     @if (Context.Session.GetString("MemberID") != null || Context.Session.GetString("EventHolderID") != null){
@@ -102,14 +96,6 @@
         <script>
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-            $(document).ready(function () {
-                let arrCart = [];
-                if (localStorage.getItem("cart")) {
-                    arrCart = JSON.parse(localStorage.getItem("cart"));
-                }
-
-                $("#CartStatus span").text(arrCart.length).toggle(arrCart.length > 0);
-            });
         </script>
         @await RenderSectionAsync("Scripts", required: false)
     </div>

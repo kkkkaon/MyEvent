@@ -160,34 +160,6 @@
 					updateDistricts();
 				}
 			}
-			
-
-		//檢查帳號是否重複的ajax
-		 $('#Account').on('change',function(){
-
-		//判斷如果model驗證無誤才出現檢查帳號重複的提示，若驗證有誤要取消重複的提示
-		if($('#Account').next('.text-danger').text()==''){
-			$.ajax({
-				url:`Login/MemberAccountCheck?account=` + $('#Account').val(),
-				type:'get',
-				success:function(data){
-					if(data){
-						//回傳true為帳號可用
-					}else{
-						$('#AccountCheck').text('帳號重複，請重新輸入');
-					}
-				}
-
-			});
-		}else{
-			$('#AccountCheck').text('');
-		}
-		});
-
-		$('#registerForm').on('submit', function(e){
-			if('#AccountCheck').text()=='帳號重複，請重新輸入'){
-				e.preventDefault(); //不送出表單
-			}
-		});
+		
 	</script>
 

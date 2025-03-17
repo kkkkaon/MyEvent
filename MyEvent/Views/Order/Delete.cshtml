@@ -30,11 +30,18 @@
             @Html.DisplayFor(model => model.Seat.SeatID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ticket)
+            @Html.DisplayNameFor(model => model.TicketTypeID)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ticket.TicketID)
+            @Html.DisplayFor(model => model.TicketTypeID)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TicketID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TicketID)
+        </dd>
+        
     </dl>
     
     <form asp-action="Delete">

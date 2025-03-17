@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Confirm";
     var eventID = Context.Session.GetString("EventID");
+    var memberID = Context.Session.GetString("MemberID");
+    var TotalPrice = Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.price) * Convert.ToDecimal(i.discount)));
 }
 
 <h1>訂單確認</h1>
@@ -29,27 +31,49 @@
     </tbody>
 </table>
 
-<div>
-    <h4>總金額: <b>$@(Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.price) * Convert.ToDecimal(i.discount))))</b></h4>
+<div class="d-flex justify-content-between">
+    <div>
+        <span class="fs-5">總票數: <span class="text-primary fw-bold">@ViewBag.QtyTotal</span></span>
+        <span class="fs-5 ms-3">總金額: <span class="text-primary fw-bold">$@(TotalPrice)</span></span>
+    </div>
+
+    <div class="d-inline-flex gap-2">
+    <form asp-action="PlaceOrder" asp-controller="Order" method="post" id="orderForm">
+        <input type="hidden" name="QtyTotal" value="@ViewBag.QtyTotal" />
+        <input type="hidden" name="EventID" value="@eventID" />
+        <input type="hidden" name="MemberID" value="@memberID" />
+        <input type="hidden" name="TotalPrice" value="@(TotalPrice)" />
+
+        <input type="hidden" id="OrderDetails" name="OrderDetails" />
+        <button type="button" onclick="submitForm()" class="btn btn-primary text-end">確認訂單</button>
+    </form>
+
+    <a asp-action="Select" asp-controller="Seats" asp-route-id="@eventID" class="btn btn-secondary d-inline-block">返回</a>
+    </div>
 </div>
-
- <form asp-action="PlaceOrder" asp-controller="Order" method="post"> 
-    @foreach (var item in Model)  
-    {  
-        <input type="hidden" name="SeatID" value="@item.SeatID" />  
-        <input type="hidden" name="TicketTypeID" value="@item.TicketTypeID" />
-        <input type="hidden" name="Price" value="@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))" />
-    }  
-     <button type="submit" class="btn btn-primary text-end">確認訂單</button> 
- </form> 
-
-<a asp-action="Select" asp-controller="Seats" asp-route-id="@eventID" class="btn btn-secondary">返回</a>
-
 
 
 
 
 @section Scripts {
+    <script>
+        let orderDetails = [];
+        @foreach (var item in Model)
+        {
+            <text>
+                orderDetails.push({
+                    SeatID: "@(item.SeatID)",
+                    Price: @Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount)),
+                    TicketTypeID: "@(item.TicketTypeID)"
+                });
+            </text>
+        }
+
+        function submitForm() {
+            document.getElementById("OrderDetails").value = JSON.stringify(orderDetails);
+            document.getElementById("orderForm").submit();
+        }
+    </script>
    @*  <script>
         let arrCart = JSON.parse(localStorage.getItem("cart"));
         
@@ -94,7 +118,8 @@
                 `;
                 cartListContainer.append(itemElement);  // 顯示每一項品項
             });
-        } *@
+        } 
+        </script>*@
             
-    </script>
+    
 }

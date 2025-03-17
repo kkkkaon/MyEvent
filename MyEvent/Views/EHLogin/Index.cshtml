@@ -20,7 +20,7 @@
 
 	.col-3 {
 		border-radius: 10px;
-		height: 325px
+		height: 360px
 	}
 	.col-8{
 		border-radius: 10px;
@@ -37,10 +37,13 @@
 		</div>
 		<ul class="nav flex-column" role="tablist">
 			<li class="nav-item mt-3" role="presentation">
-				<a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i> 演出列表</a>
+				<a class="nav-link active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true"><i class="bi bi-journal-text"></i>&nbsp; 演出列表</a>
 			</li>
 			<li class="nav-item" role="presentation">
-				<a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i> 個人資料</a>
+				<a class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false"><i class="bi bi-person-fill"></i>&nbsp; 基本資料</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="creditentials-tab" data-bs-toggle="tab" data-bs-target="#creditentials-tab-pane" type="button" role="tab" aria-controls="creditentials-tab-pane" aria-selected="false"><i class="bi bi-key"></i></i>&nbsp; 修改帳密</a>
 			</li>
 			<li class="text-center mt-5 mb-2">
 				<a asp-action="Logout" asp-controller="EHLogin" type="button" class="btn btn-outline-primary w-75">登出</a>
@@ -76,15 +79,19 @@
 			}
 		</div>
 		<div class="tab-pane fade" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
-			<h5 class="text-primary fw-bold">個人資料</h5>
+			<h5 class="text-primary fw-bold">基本資料</h5>
 			<hr class="w-100 my-3"/>
-			<p>帳號：@Model.ECredentials.Account</p>
-			<p>密碼：@Model.ECredentials.Password</p>
 			<p>電話：@Model.Tel</p>
 			<p>地址：@Model.ZipCode@Model.City@Model.Area@Model.Address</p>
 			<p>加入日期：@Model.JoinDate</p>
 		</div>
-
+		<div class="tab-pane fade" id="creditentials-tab-pane" role="tabpanel" aria-labelledby="creditentials-tab" tabindex="0">
+			<h5 class="text-primary fw-bold">修改帳密</h5>
+			<hr class="w-100 my-3"/>
+			<p>帳號：@Model.ECredentials.Account</p>
+			<p>密碼：@Model.ECredentials.Password</p>
+			<button class="btn btn-primary my-auto" style="height:40px">修改</button>
+		</div>
 	</div>
 </div>
 

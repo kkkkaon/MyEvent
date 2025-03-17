@@ -9,9 +9,11 @@ using MyEvent.Models;
 using MyEvent.ViewModels;
 using System.Text.Json;
 using Newtonsoft.Json;
+using GoodStore.Filters;
 
 namespace MyEvent.Controllers
 {
+    [ServiceFilter(typeof(AdminLoginFilter))]
     public class MembersController : Controller
     {
         private readonly MyEventContext _context;

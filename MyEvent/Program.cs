@@ -1,3 +1,4 @@
+using GoodStore.Filters;
 using Microsoft.EntityFrameworkCore;
 using MyEvent.Models;
 
@@ -15,6 +16,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/MemberLogin/Login"; // 設定登入頁面
 });
+
+//過濾器
+builder.Services.AddScoped<AdminLoginFilter>();
+builder.Services.AddScoped<MemberLoginFilter>();
+builder.Services.AddScoped<EHLoginFilter>();
 
 var app = builder.Build();
 

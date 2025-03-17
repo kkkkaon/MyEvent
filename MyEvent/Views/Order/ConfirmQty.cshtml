@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "ConfirmQty";
     var eventID = Context.Session.GetString("EventID");
+    var memberID = Context.Session.GetString("MemberID");
 }
 
 
@@ -11,44 +12,75 @@
     <thead>
         <tr>
             <th>票種名稱</th>
-			<th>價格</th>
+            <th>價格</th>
             <th>數量</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @{
-        decimal totalAmount = 0;
-        foreach (var item in Model)
-        {
-            if (item.Qty > 0)
+            decimal totalAmount = 0;
+            int QtyTotal = 0;
+            foreach (var item in Model)
             {
-            <tr>
-                <td>@item.TicketTypeName</td>
-                <td>@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))</td>
-                <td>@item.Qty</td>
-                <td><i class="bi bi-trash3-fill"></i></td>
-            </tr>
-			    totalAmount += item.price * item.discount * item.Qty;
-            }   
-        }
+                if (item.Qty > 0)
+                {
+                    <tr>
+                        <td>@item.TicketTypeName</td>
+                        <td>@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))</td>
+                        <td>@item.Qty</td>
+                        <td><i class="bi bi-trash3-fill"></i></td>
+                    </tr>
+                    totalAmount += item.price * item.discount * item.Qty;
+                    QtyTotal += item.Qty;
+                }
+            }
         }
     </tbody>
 </table>
-<div>
-    <h4>總金額: <b>$@Convert.ToInt32(totalAmount)</b></h4>
+
+<div class="d-flex justify-content-between">
+    <div>
+        <span class="fs-5">總票數: <span class="text-primary fw-bold">@QtyTotal</span></span>
+        <span class="fs-5 ms-3">總金額: <span class="text-primary fw-bold">$@Convert.ToInt32(totalAmount)</span></span>
+    </div>
+    <div class="d-inline-flex gap-2">
+        <form asp-action="PlaceOrder" asp-controller="Order" method="post" id="orderForm">
+            <input type="hidden" name="QtyTotal" value="@QtyTotal" />
+            <input type="hidden" name="EventID" value="@eventID" />
+            <input type="hidden" name="MemberID" value="@memberID" />
+            <input type="hidden" name="TotalPrice" value="@Convert.ToInt32(totalAmount)" />
+
+            <input type="hidden" id="OrderDetails" name="OrderDetails" />
+            <button type="button" onclick="submitForm()" class="btn btn-primary text-end">確認訂單</button>
+        </form>
+
+        <a asp-action="Details" asp-controller="Browse" asp-route-id="@eventID" class="btn btn-secondary d-inline-block">返回</a>
+    </div>
 </div>
 
-<form asp-action="PlaceOrder" asp-controller="Order" method="post">
-     @foreach (var item in Model) 
-     { 
-         <input type="hidden" name="SeatID" value="@item.SeatID" /> 
-         <input type="hidden" name="TicketTypeID" value="@item.TicketTypeID" />
-        <input type="hidden" name="Price" value="@Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount))" />
+@section Scripts {
+    <script>
+        let orderDetails = [];
+        @foreach (var item in Model)
+        {
+            for (int i = 0; i < item.Qty; i++) // 根據 Qty 數量重複 push 物件
+            {
+                <text>
+                    orderDetails.push({
+                        SeatID: "@(item.SeatID)",
+                        Price: @Convert.ToInt32(Convert.ToDecimal(item.price) * Convert.ToDecimal(item.discount)),
+                        TicketTypeID: "@(item.TicketTypeID)"
+                    });
+                </text>
+            }
+        }
 
-     } 
-     <button type="submit" class="btn btn-primary text-end">確認訂單</button> 
-</form>
 
-<a asp-action="Details" asp-controller="Browse" asp-route-id="@eventID" class="btn btn-secondary">返回</a>
+        function submitForm() {
+            document.getElementById("OrderDetails").value = JSON.stringify(orderDetails);
+            document.getElementById("orderForm").submit();
+        }
+    </script>
+}
 

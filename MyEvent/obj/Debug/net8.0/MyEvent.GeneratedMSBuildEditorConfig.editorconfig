@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUhMb2dpblxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EHLogin/OrderIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUhMb2dpblxPcmRlckluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/EventHolders/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIb2xkZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,10 +154,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Order/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Order/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/Documents/GitHub/MyEvent/MyEvent/Views/Seats/Create.cshtml]
