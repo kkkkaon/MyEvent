@@ -69,15 +69,9 @@ namespace MyEvent.Controllers
         [ServiceFilter(typeof(EHLoginFilter))]
         public async Task<IActionResult> CheckOrder(string id)
         {
-            var orders = await _context.Order.Include(o => o.Member).Include(t=>t.Payment).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
+            var orders = await _context.Order.Include(o => o.Member).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
             return View(orders);
         }
 
-        public async Task<IActionResult> OrderIndex()
-        {
-            //var myEventContext = _context.OrderDetail.Include(o => o.Order).Include(o => o.Seat);
-            var myEventContext = _context.Order.Include(e => e.Event).Include(m => m.Member);
-            return View(await myEventContext.ToListAsync());
-        }
     }
 }

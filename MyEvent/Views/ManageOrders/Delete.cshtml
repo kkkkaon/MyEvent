@@ -1,0 +1,56 @@
+﻿@model MyEvent.Models.Order
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h4 class="fw-bold text-primary text-center mt-4">確定刪除此訂單?</h4>
+<div>
+	<hr />
+	<div class="d-flex justify-content-center">
+		<dl class="row mx-auto" style="width:400px;">
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.Event)
+			</dt>
+			<dd class="col-sm-8">
+				@Html.DisplayFor(model => model.Event.EventID)
+			</dd>
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.Date)
+			</dt>
+			<dd class="col-sm-8">
+				@Html.DisplayFor(model => model.Date)
+			</dd>
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.Qty)
+			</dt>
+			<dd class="col-sm-8">
+				@Html.DisplayFor(model => model.Qty)
+			</dd>
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.TotalPrice)
+			</dt>
+			<dd class="col-sm-8">
+				@(Convert.ToInt32(Model.TotalPrice))
+			</dd>
+
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.Member)
+			</dt>
+			<dd class="col-sm-8">
+				@Html.DisplayFor(model => model.Member.MemberName)
+			</dd>
+			<dt class="col-sm-4">
+				@Html.DisplayNameFor(model => model.Memo)
+			</dt>
+			<dd class="col-sm-8">
+				@Html.DisplayFor(model => model.Memo)
+			</dd>
+		</dl>
+	</div>
+	<form asp-action="Delete" class="mt-3 align-items-center d-flex justify-content-center">
+		<input type="hidden" asp-for="OrderID" />
+		<input type="submit" value="確認刪除" class="btn btn-secondary"/>
+		<a asp-action="Index" class="btn btn-outline-secondary ms-2">返回列表</a>
+	</form>
+</div>

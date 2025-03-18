@@ -6,7 +6,6 @@
     ViewData["BrowseBackground"] = "background-color: black; color: lightgray;";
 }
 <style>
-
     .eventCards a {
     background-color: black;
     border: #1f1f1f, 1px, solid;
@@ -19,22 +18,30 @@
     color: lightgray;
     background-color: #1f1f1f;
     }
-   
 
-    .form-check-inline .btn-check:checked{
-    color: #1f1f1f;
-    background-color: lightgray;
+    .form-check-inline .btn-check:checked + .btn {
+        background-color: lightgray;
+        color: black;
+        border-color: black;
     }
 
+    /* 確保未勾選時回到原本狀態 */
+    /* .form-check-inline .btn-check:not(:checked) + .btn {
+        background-color: black;
+        color: lightgray;
+        border: 1px solid #1f1f1f;
+    } */
+
+    /* .form-check-inline .btn-check:checked{
+    color: black;
+    background-color: white;
+    } */
     p{
         margin-top: 1px;
         font-size: 14px;
     }
 
 </style>
-
-
-<h1>@ViewData["Title"] </h1>
 
 <div class="row">
     <div class="col-md-8 filter">

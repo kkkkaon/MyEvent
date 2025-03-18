@@ -26,10 +26,13 @@ public partial class Order
 
     public int PaymentID { get; set; }
 
+    [Display(Name = "總金額")]
     public decimal TotalPrice { get; set; }
 
+    [Display(Name = "演出名稱")]
     public virtual Event Event { get; set; } = null!;
-    
+
+    [Display(Name = "會員姓名")]
     public virtual Member Member { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetail { get; set; } = new List<OrderDetail>();

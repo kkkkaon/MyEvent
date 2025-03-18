@@ -4,7 +4,8 @@
     Layout = "_Layout";
 
     //5.3.1
-    if (Context.Request.RouteValues["controller"]?.ToString() == "Members" || Context.Request.RouteValues["controller"]?.ToString() == "EventHolders")
+    if (Context.Request.RouteValues["controller"]?.ToString() == "Members" || Context.Request.RouteValues["controller"]?.ToString() == "EventHolders"
+    || Context.Request.RouteValues["controller"]?.ToString() == "ManageOrders")
     {
         Layout = "_AdminLayout";
     }

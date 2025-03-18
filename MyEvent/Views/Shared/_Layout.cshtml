@@ -57,7 +57,7 @@
                                 {
                                     <a asp-action="Login" asp-controller="MemberLogin" type="button" class="btn @(ViewBag.IsDarkbg == true ? "btn-outline-light" : "btn-outline-dark")"><i class="bi bi-person-fill"></i> 登入</a>
                                 }else{
-                                    <a asp-action="Index" asp-controller="EHLogin" class="text-dark"><i class="bi bi-person-circle fs-3"></i></a>
+                                    <a asp-action="Index" asp-controller="EHLogin" class="@(ViewBag.IsDarkbg == true ? "text-light" : "text-dark")"><i class="bi bi-person-circle fs-3"></i></a>
                                 }
                             }else{
                                 if (role != "2")
