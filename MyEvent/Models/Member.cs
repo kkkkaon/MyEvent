@@ -37,6 +37,7 @@ public partial class Member
     public string Address { get; set; } = null!;
 
     [Display(Name = "權限")]
+    [Required(ErrorMessage = "此欄為必填")]
     public string Role { get; set; } = null!;
 
     public virtual Credentials? Credentials { get; set; } = null!;

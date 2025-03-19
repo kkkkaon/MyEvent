@@ -41,6 +41,7 @@ namespace MyEvent.Controllers
                     EventName = od.Order.Event.EventName,
                     EventTime = od.Order.Event.StartTime,
                     EventDate = od.Order.Event.Date,
+                    EventPic = od.Order.Event.Pic,
                     Seat = $"{od.Seat.Row}-{od.Seat.Number}",
                     TicketID = od.TicketID,
                     TicketType = od.TicketTypeList.Name,

@@ -100,7 +100,7 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EventHolderID,EventHolderName,JoinDate,Tel,ZipCode,City,Area,Address")] EventHolder eventHolder)
+        public async Task<IActionResult> Edit(string id, EventHolder eventHolder)
         {
             if (id != eventHolder.EventHolderID)
             {
@@ -111,7 +111,20 @@ namespace MyEvent.Controllers
             {
                 try
                 {
-                    _context.Update(eventHolder);
+                    var existingEventHolder = await _context.EventHolder.FindAsync(id);
+                    if (existingEventHolder == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // 保持 JoinDate 不變
+                    eventHolder.JoinDate = existingEventHolder.JoinDate;
+                    existingEventHolder.EventHolderName = eventHolder.EventHolderName;
+                    existingEventHolder.Tel = eventHolder.Tel;
+                    existingEventHolder.ZipCode = eventHolder.ZipCode;
+                    existingEventHolder.City = eventHolder.City;
+                    existingEventHolder.Area = eventHolder.Area;
+                    existingEventHolder.Address = eventHolder.Address;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

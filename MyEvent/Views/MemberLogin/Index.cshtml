@@ -33,6 +33,10 @@
         height: 50px;
         font-size: 1.2rem;
     }
+    .card {
+        border-radius: 1rem !important; 
+        overflow: hidden;
+    }
 </style>
 
 <div class="container row g-0 mt-5">
@@ -85,22 +89,29 @@
             <h5 class="text-success fw-bold">票匣</h5>
             @foreach (var detail in ViewBag.OrderDetails)
             {
-                <div class="card mt-3">
-                    <div class="card-header">
-                        @* <p class="fw-bold">訂單編號：@detail.OrderID</p> *@
-                    </div>
-                    <div class="card-body">
-                        <div><span class="fw-bold text-success">@detail.EventDate.ToString("yyyy-MM-dd")</span><span class="fw-bold text-success ms-1"> @detail.EventTime</span></div>
-                        <p class="fw-bold">@detail.EventName</p>
-                        <hr/>
-                        @if (@detail.Seat!="-"){
-                            <p>座位：@detail.Seat</p>
-                        }else{
-							<p>座位：自由入座</p>
-                        }
-                        <p>票種：@detail.TicketType</p>
-                        <p>票價：$@Convert.ToInt32(detail.Price)</p>
-                        @* <p>票ID：@detail.TicketID</p> *@
+                <div class="card mb-3 rounded-4 rounded">
+                    <div class="row g-0">
+                        <div class="col-md-3 card-header py-3 d-flex justify-content-center" style="border-right: 2px dashed #ccc;">
+                            <img src="~/EventPhotos/@detail.EventPic" class="card-img-top" style="height: 200px; width:150px; object-fit: cover; object-position: center;" />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <div><span class="fw-bold text-success">@detail.EventDate.ToString("yyyy-MM-dd")</span><span class="fw-bold text-success ms-1"> @detail.EventTime</span></div>
+                                <p class="fw-bold">@detail.EventName</p>
+                                <hr />
+                                @if (@detail.Seat != "-")
+                                {
+                                    <p>座位：@detail.Seat</p>
+                                }
+                                else
+                                {
+                                    <p>座位：自由入座</p>
+                                }
+                                <p>票種：@detail.TicketType</p>
+                                <p>票價：$@Convert.ToInt32(detail.Price)</p>
+                                @* <p>票ID：@detail.TicketID</p> *@                           
+                            </div>
+                        </div>
                     </div>
                 </div>
             }

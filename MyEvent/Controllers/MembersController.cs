@@ -146,7 +146,7 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MemberID,MemberName,JoinDate,ZipCode,City,Area,Address")] Member member, DateOnly? Birthday)
+        public async Task<IActionResult> Edit(string id, Member member, DateOnly? Birthday)
         {
             if (id != member.MemberID)
             {

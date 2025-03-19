@@ -22,8 +22,8 @@ namespace MyEvent.Controllers
         // GET: ManageOrders
         public async Task<IActionResult> Index()
         {
-            var myEventContext = _context.Order.Include(o => o.Event).Include(o => o.Member).Include(o => o.Payment);
-            return View(await myEventContext.ToListAsync());
+            var myEventContext = await _context.Order.Include(o => o.Event).Include(o => o.Member).OrderByDescending(o => o.Date).ToListAsync();
+            return View( myEventContext);
         }
 
         // GET: ManageOrders/Details/5

@@ -43,6 +43,22 @@ namespace MyEvent.Controllers
             return ViewComponent("VCDiscount", new { seatID = SeatID });
         }
 
+        [HttpGet]
+        public IActionResult GetSeatPriceWithDiscount(string seatID, string ticketTypeID)
+        {
+            var seat = _context.Seat.FirstOrDefault(s => s.SeatID == seatID);
+            var ticketType = _context.TicketType.FirstOrDefault(tt => tt.TicketTypeID == ticketTypeID);
+            var discount = ticketType != null ? _context.TicketTypeList.FirstOrDefault(tl => tl.TicketTypeID == ticketTypeID)?.Discount ?? 1 : 1;
+
+            if (seat != null)
+            {
+                return Json(new { success = true, price = seat.Price, discount = discount });
+            }
+            return Json(new { success = false });
+        }
+
+
+
         // GET: Seats
         public async Task<IActionResult> Index()
         {
