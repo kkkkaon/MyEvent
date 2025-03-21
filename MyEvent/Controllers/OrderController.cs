@@ -35,9 +35,7 @@ namespace MyEvent.Controllers
             var seatList = await _context.Seat
                                       .Where(t => seatIds.Contains(t.SeatID))
                                       .ToListAsync();
-            //var ticketTypeList = await _context.TicketTypeList
-            //                          .Where(t => ticketTypeIds.Contains(t.TicketTypeID))
-            //                          .ToListAsync();
+
             ViewBag.QtyTotal = seatList.Count;
             var result = new List<dynamic>();
             for (int i = 0; i < seatList.Count; i++)
@@ -47,6 +45,7 @@ namespace MyEvent.Controllers
 
                 if (ticketType != null && seat!=null)
                 {
+                    seat.Status = "2";
                     result.Add(new
                     {
                         TicketTypeID = ticketType.TicketTypeID,
@@ -59,6 +58,7 @@ namespace MyEvent.Controllers
                     });
                 }
             }
+
 
             return View(result);
         }

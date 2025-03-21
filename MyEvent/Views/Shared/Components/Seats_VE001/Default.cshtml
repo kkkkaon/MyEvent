@@ -1,19 +1,40 @@
 ﻿@model IEnumerable<MyEvent.Models.Seat>
 
 
-@foreach (var seat in Model)
+@* @foreach (var seat in Model)
 {
 	<div class="form-check-inline mx-3">
-		@if (@seat.Status == "1")
-		{
-			<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off">
-		}
-		else
-		{
-			<input class="btn-check disabled" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off">
-		}
+		<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off"
+		@(seat.Status != "1" ? "disabled" : "")>
 
 		<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
 
 	</div>
+} *@
+
+@{
+    var groupedSeats = Model.GroupBy(seat => seat.Row).OrderBy(g => g.Key);
+}
+
+@foreach (var group in groupedSeats)
+{
+    <div class="d-flex align-items-center my-2">
+        <!-- 座位排標示 -->
+        <span class="fw-bold me-2">@group.Key 排</span>
+
+        <!-- 座位選擇 -->
+        <div class="d-flex flex-wrap">
+            @foreach (var seat in group)
+            {
+                <div class="form-check-inline mx-2">
+                    <input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off"
+                    @(seat.Status != "1" ? "disabled" : "")>
+
+                    <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">
+                        @seat.Number
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
 }
