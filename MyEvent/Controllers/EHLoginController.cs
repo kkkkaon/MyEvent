@@ -25,7 +25,7 @@ namespace MyEvent.Controllers
         public async Task<IActionResult> Index()
         {
             var id = HttpContext.Session.GetString("EventHolderID");
-            var EH = await _context.EventHolder.Include(m => m.ECredentials).FirstOrDefaultAsync();
+            var EH = await _context.EventHolder.Where(o => o.EventHolderID == id).Include(m => m.ECredentials).FirstOrDefaultAsync();
 
             ViewBag.Events = await _context.Event.Include(v => v.Venue).Where(o => o.EventHolderID == id).ToListAsync();
             return View(EH);
@@ -69,7 +69,7 @@ namespace MyEvent.Controllers
         [ServiceFilter(typeof(EHLoginFilter))]
         public async Task<IActionResult> CheckOrder(string id)
         {
-            var orders = await _context.Order.Include(o => o.Member).Include(o => o.Event).Where(o => o.EventID == id).ToListAsync();
+            var orders = await _context.Order.Include(o => o.Member).Include(o => o.Event).Where(o => o.EventID == id).OrderByDescending(o => o.Date).ToListAsync();
             return View(orders);
         }
 

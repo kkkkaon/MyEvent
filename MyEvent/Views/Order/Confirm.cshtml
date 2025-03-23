@@ -7,7 +7,7 @@
     var TotalPrice = Model.Sum(i => Convert.ToInt32(Convert.ToDecimal(i.price) * Convert.ToDecimal(i.discount)));
 }
 
-<h4 class="text-center fw-bold">@ViewData["Title"]</h4>
+<h4 class="text-center fw-bold mb-3">@ViewData["Title"]</h4>
 
 <table class="table">
     <thead>
@@ -79,7 +79,7 @@
 
         $("#row-" + rowId).remove();
         
-        });
+        }
 
     </script>
    

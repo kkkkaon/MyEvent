@@ -2,13 +2,16 @@
 
 @{
 	ViewData["Title"] = "查看訂單";
-	var firstOrder = Model.FirstOrDefault();
+	
 }
 
-<h4 class="fw-bold text-center mt-4">@ViewData["Title"]</h4>
-<div class="my-3"><span class="fw-bold">【@(firstOrder.Event.EventName)】</span><span class="fw-bold">&nbsp; 演出編號：@(firstOrder.Event.EventID)</span></div>
 @if (Model != null && Model.Any())
 {
+	var firstOrder = Model.FirstOrDefault();
+	<h4 class="fw-bold text-center mt-4">@ViewData["Title"]</h4>
+
+	<div class="my-3"><span class="fw-bold">【@(firstOrder.Event.EventName)】</span><span class="fw-bold">&nbsp; 演出編號：@(firstOrder.Event.EventID)</span></div>
+
 	<table class="table table-striped">
 		<thead class="table-dark">
 			<tr>
@@ -59,7 +62,7 @@
 }
 else
 {
-	<p class="text-center fs-4 fw-bold mt-3">目前沒有任何訂單</p>
+	<p class="text-center fs-4 fw-bold mt-3">【目前沒有任何訂單】</p>
 }
 <div class="d-flex justify-content-center">
 <a asp-action="Index" asp-controller="EHLogin" class="btn btn-outline-primary">返回列表</a>

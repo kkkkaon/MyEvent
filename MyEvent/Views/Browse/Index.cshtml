@@ -7,16 +7,17 @@
 }
 <style>
     .eventCards a {
-    background-color: black;
-    border: #1f1f1f, 1px, solid;
-    color: lightgray;
-    text-decoration: none;
-    min-height: 450px;
+        background-color: black;
+        border: #1f1f1f, 1px, solid;
+        color: lightgray;
+        text-decoration: none;
+        min-height: 350px;
     }
+
     .eventCards a:hover {
-    text-decoration: none;
-    color: lightgray;
-    background-color: #1f1f1f;
+        text-decoration: none;
+        color: lightgray;
+        background-color: #1f1f1f;
     }
 
     .form-check-inline .btn-check:checked + .btn {
@@ -25,18 +26,7 @@
         border-color: black;
     }
 
-    /* 確保未勾選時回到原本狀態 */
-    /* .form-check-inline .btn-check:not(:checked) + .btn {
-        background-color: black;
-        color: lightgray;
-        border: 1px solid #1f1f1f;
-    } */
-
-    /* .form-check-inline .btn-check:checked{
-    color: black;
-    background-color: white;
-    } */
-    p{
+    p {
         margin-top: 1px;
         font-size: 14px;
     }
@@ -61,7 +51,6 @@
                 |
             </div>
             <div class="form-group mt-2 mb-4">
-                @* <label class="form-label">活動類型</label> *@
                 @{
                     string[] icon = { "bi-card-image", "bi-music-note-beamed", "bi-person-arms-up", "bi-balloon", "bi-bank", "bi-camera-reels" };
                     var eventTypes = ((SelectList)ViewBag.EventType).ToList();
@@ -73,30 +62,28 @@
                         <label class="btn btn-dark" for="EventType_@eventTypes[i].Value" style="width:70px; font-size:14px;"> <i class="bi @icon[i]"></i> <div class="mt-1">@eventTypes[i].Text</div></label>
                     </div>
                 }
-                <input class="mx-6 p-2 btn btn-primary" type="submit" value="篩選"/>
+                <input class="ms-3 p-2 btn btn-primary" type="submit" value="篩選" />
+                <a asp-action="Index" asp-controller="Browse" class="ms-2 py-2 px-3 btn btn-outline-primary"><i class="bi bi-arrow-clockwise"></i></a>
             </div>
-            
+
 
         </form>
     </div>
 </div>
 <div class="row">
-@foreach (var item in Model)
-{
-    <div class="col-xl-3 col-md-6 eventCards">
-        <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="card mt-3">
-            @* overflow auto:超出就出現scroll bar *@
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 eventCards">
+            <a asp-action="Details" asp-controller="Browse" asp-route-id="@item.EventID" class="card mt-3">
                 <img src="~/EventPhotos/@item.Pic" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center;" />
-				<div class="p-3">
-                <p class="mt-3 text-success">@item.EventType.EventType1</p>
-                <h5>@item.EventName</h5>
-                <p>@item.Date</p>
-                <p>@item.Venue.City.Substring(0, 2)</p>
-                <p class="text-end">@item.Price</p>
-             </div> 
-        </a>
-    </div>
-}
+                <div class="px-3 pt-3">
+                    <p>@item.Date</p>
+                    <h5>@item.EventName</h5>
+                    <p class="text-success">@item.EventType.EventType1</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>
 @section Scripts {
 

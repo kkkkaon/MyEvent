@@ -46,6 +46,8 @@ namespace MyEvent.Controllers
                 if (ticketType != null && seat!=null)
                 {
                     seat.Status = "2";
+                    _context.Update(seat);
+                    await _context.SaveChangesAsync();
                     result.Add(new
                     {
                         TicketTypeID = ticketType.TicketTypeID,
@@ -58,7 +60,6 @@ namespace MyEvent.Controllers
                     });
                 }
             }
-
 
             return View(result);
         }

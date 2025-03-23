@@ -42,7 +42,7 @@ namespace MyEvent.Controllers
                 events = events.Where(e => e.Date >= StartDate && e.Date <= EndDate);
             }
 
-            var result = await events.OrderByDescending(b => b.Date).ToListAsync();
+            var result = await events.OrderBy(e => e.Date).ToListAsync();
 
 
             ViewBag.EventType = new SelectList(await _context.EventType.ToListAsync(), "EventTypeID", "EventType1");

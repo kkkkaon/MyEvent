@@ -9,9 +9,10 @@
 <div class="d-flex justify-content-center mt-2">
 	<div class="row mx-auto" style="width:1000px;">
 		<div class="col-md-12">
-			<form asp-action="Edit">
+			<form asp-action="Edit" enctype="multipart/form-data">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<input type="hidden" asp-for="EventID" />
+				<label asp-for="EventID" class="control-label"></label>
+				<input asp-for="EventID" class="form-control" readonly/>
 				<div class="form-group">
 					<label asp-for="EventName" class="control-label"></label>
 					<input asp-for="EventName" class="form-control" />

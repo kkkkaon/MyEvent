@@ -49,8 +49,6 @@ namespace MyEvent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Member member)
         {
-            callViewBagData();
-
             if (_context.Credentials.Find(member.Credentials.Account) != null)
             {
                 ViewData["ErrorMessage"] = "帳號已存在";
@@ -83,15 +81,10 @@ namespace MyEvent.Controllers
                     //瀏覽的演出
                     return RedirectToAction("Details", "Browse", new { id = eventId });
                 }
-
                 return RedirectToAction("Index", "Members"); 
-
-                ;
-
             }
 
             //要寫City跟Area跟角色 (如果沒有value)顯示errormessage
-
 
             return View(member);
         }
@@ -120,6 +113,7 @@ namespace MyEvent.Controllers
         // GET: Members/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
+            callViewBagData();
             if (id == null)
             {
                 return NotFound();

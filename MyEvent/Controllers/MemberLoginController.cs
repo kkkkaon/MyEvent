@@ -47,7 +47,7 @@ namespace MyEvent.Controllers
                     TicketType = od.TicketTypeList.Name,
                     Price = od.Price
                 })
-                .OrderByDescending(od => od.EventDate)  // 如果需要，根據日期排序
+                .OrderBy(od => od.EventDate)
                 .ToListAsync();
 
             ViewBag.OrderDetails = orderDetails;

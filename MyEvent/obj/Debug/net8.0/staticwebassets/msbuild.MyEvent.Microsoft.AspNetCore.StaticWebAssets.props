@@ -36,221 +36,185 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\data\area_data.json'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025032901.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025032901.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61q20epzbr</Fingerprint>
-      <Integrity>SjiZm2saPBklD0VPUjrRgPAx+tFub+9g/CaijC4+6xw=</Integrity>
+      <Fingerprint>5ph4vq3fxy</Fingerprint>
+      <Integrity>mUl+UvsQmx0yj4aLoN02ncyTyANDdLC2vKoScvfQ9F8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025032901.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\2025030001.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025040301.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/2025030001.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025040301.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61q20epzbr</Fingerprint>
-      <Integrity>SjiZm2saPBklD0VPUjrRgPAx+tFub+9g/CaijC4+6xw=</Integrity>
+      <Fingerprint>ygqbpli24p</Fingerprint>
+      <Integrity>Ptjjec6qZJ3i5QGz+WzwrOIdswFRO5/7TYHdD0U0tBg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\2025030001.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025040301.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\2025030001.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025041001.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/2025030001.png</RelativePath>
+      <RelativePath>EventPhotos/E2025041001.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>0h0momebcl</Fingerprint>
-      <Integrity>HIS/oTiufG2OG7b75J/uvwkivjz1eQv7YzxXGCEhAt8=</Integrity>
+      <Fingerprint>khrquuilop</Fingerprint>
+      <Integrity>WHyWSLR/yKG1abAvVG8JYG1ZzQGIVTbVNe/HU8D4yto=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\2025030001.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025041001.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2023120202.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025042006.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2023120202.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025042006.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>f3b7oawxwo</Fingerprint>
-      <Integrity>FQzxlsBBPDaL4izCogQ4cwax1cbEn+GotbdNYY6zWv0=</Integrity>
+      <Fingerprint>b3hnba13iu</Fingerprint>
+      <Integrity>uSZnM0oB5+38kjMWoBAPvullriTkuN4hc0pfOGJ6JDQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2023120202.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025042006.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2024122410.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025042301.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2024122410.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025042301.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61q20epzbr</Fingerprint>
-      <Integrity>SjiZm2saPBklD0VPUjrRgPAx+tFub+9g/CaijC4+6xw=</Integrity>
+      <Fingerprint>2so9h23cap</Fingerprint>
+      <Integrity>TvFJNkwXIzGr69qGmFgOWoTThpmMGK3AZJUr5JbIM9U=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2024122410.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025042301.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2024122835.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025050822.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2024122835.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025050822.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rjji15u2t3</Fingerprint>
-      <Integrity>iZdaKrfF587kZ4OlVTiVBZVOAckqaE4blueJxNUgy10=</Integrity>
+      <Fingerprint>bjgrbc91zz</Fingerprint>
+      <Integrity>d/fx+7XTP+dg3dUfM8Gdu+IhsTRg4jTvcSFnLMxkEjk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2024122835.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025050822.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030101.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025051201.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025030101.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025051201.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rjji15u2t3</Fingerprint>
-      <Integrity>iZdaKrfF587kZ4OlVTiVBZVOAckqaE4blueJxNUgy10=</Integrity>
+      <Fingerprint>dhptgbs5yt</Fingerprint>
+      <Integrity>QUJHPxAlCDpDwCbiT3tY2tItXxZL0bSa05qQPv/vld8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030101.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025051201.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030701.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025052001.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025030701.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025052001.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61q20epzbr</Fingerprint>
-      <Integrity>SjiZm2saPBklD0VPUjrRgPAx+tFub+9g/CaijC4+6xw=</Integrity>
+      <Fingerprint>zfi898mrpc</Fingerprint>
+      <Integrity>oQfZ0anyDlH2kkxpsONcF6gtJlA7vTiPLNjwvVnIWMg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030701.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025052001.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030801.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025052801.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025030801.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025052801.JPG</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>z4fcm0xsmt</Fingerprint>
-      <Integrity>o70G2YS9rsIcex7t6lBFb3cls00Mp2tF+zz15Rb6I2g=</Integrity>
+      <Fingerprint>a02x431u5o</Fingerprint>
+      <Integrity>lnfC9cSqtUz3s3VDJzOhcxm6gGeI5MdATJxwZ3ppEjM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025030801.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025052801.JPG'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025031501.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025062910.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>MyEvent</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025031501.jpg</RelativePath>
+      <RelativePath>EventPhotos/E2025062910.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>61q20epzbr</Fingerprint>
-      <Integrity>SjiZm2saPBklD0VPUjrRgPAx+tFub+9g/CaijC4+6xw=</Integrity>
+      <Fingerprint>6ygxgp9vtl</Fingerprint>
+      <Integrity>8sfhQLGFC4H2Vz4KByynCxnisJDoGkQRsywqoLuzhzQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025031501.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025032101.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>MyEvent</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025032101.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rjji15u2t3</Fingerprint>
-      <Integrity>iZdaKrfF587kZ4OlVTiVBZVOAckqaE4blueJxNUgy10=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025032101.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025041101.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>MyEvent</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/MyEvent</BasePath>
-      <RelativePath>EventPhotos/E2025041101.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>l99hi0lfnb</Fingerprint>
-      <Integrity>Kat+Opcgqk1HzR4dzN9enT9dwuYwiIzujV1Ji7vAILM=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025041101.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\EventPhotos\E2025062910.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))">
       <SourceType>Package</SourceType>

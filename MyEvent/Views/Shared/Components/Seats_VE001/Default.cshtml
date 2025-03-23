@@ -1,28 +1,22 @@
 ﻿@model IEnumerable<MyEvent.Models.Seat>
 
-
-@* @foreach (var seat in Model)
-{
-	<div class="form-check-inline mx-3">
-		<input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off"
-		@(seat.Status != "1" ? "disabled" : "")>
-
-		<label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">@seat.Row@seat.Number</label>
-
-	</div>
-} *@
-
 @{
     var groupedSeats = Model.GroupBy(seat => seat.Row).OrderBy(g => g.Key);
 }
-
+<style>
+    .shadow-sm {
+        border-radius: 1rem !important;
+    }
+</style>
+<div class="bg-secondary bg-opacity-10 p-3 shadow-sm mb-4 h-25 d-flex align-items-center justify-content-center">
+    <div>全區200元</div>
+</div>
+<div style="height:50px" class="border w-25 text-center p-3 mb-3 mx-auto">螢幕</div>
 @foreach (var group in groupedSeats)
 {
-    <div class="d-flex align-items-center my-2">
-        <!-- 座位排標示 -->
-        <span class="fw-bold me-2">@group.Key 排</span>
+    <div class="d-flex align-items-center justify-content-center my-3">
+        <span class="fw-bold me-2">@group.Key</span>
 
-        <!-- 座位選擇 -->
         <div class="d-flex flex-wrap">
             @foreach (var seat in group)
             {
@@ -30,11 +24,12 @@
                     <input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off"
                     @(seat.Status != "1" ? "disabled" : "")>
 
-                    <label class="btn btn-outline-dark" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">
-                        @seat.Number
+                    <label class="btn btn-outline-dark rounded-circle" for="@seat.SeatID" data-seat-row-num="@(seat.Row)-@(seat.Number)">
+                        @seat.Number.Replace("號", "")
                     </label>
                 </div>
             }
         </div>
+        <span class="fw-bold me-2">@group.Key</span>
     </div>
 }

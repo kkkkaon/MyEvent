@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<dynamic>
 @{
-    ViewData["Title"] = "ConfirmQty";
+    ViewData["Title"] = "確認票種數量";
     var eventID = Context.Session.GetString("EventID");
     var memberID = Context.Session.GetString("MemberID");
 }
 
-
-<h1>確認票種數量</h1>
+<h4 class="text-center fw-bold mb-3">@ViewData["Title"]</h4>
 
 <table class="table">
     <thead>

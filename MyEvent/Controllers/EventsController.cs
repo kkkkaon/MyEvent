@@ -147,7 +147,7 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EventID,EventName,Date,StartTime,VenueID,EventHolderID,Description,Pic,Price,Discount,Note,EventTypeID")] Event @event, IFormFile? newPhoto)
+        public async Task<IActionResult> Edit(string id, Event @event, IFormFile? newPhoto)
         {
             if (id != @event.EventID)
             {
@@ -162,10 +162,12 @@ namespace MyEvent.Controllers
             if (newPhoto != null && newPhoto.Length > 0)
             {
                 // **允許的檔案格式 (忽略大小寫)**
-                var allowedFormats = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "image/jpeg", "image/png" };
+                var allowedFormats = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "image/jpg", "image/png" };
                 if (!allowedFormats.Contains(newPhoto.ContentType))
                 {
-                    ViewData["Message"] = "請選擇 JPEG/PNG 檔案上傳";
+                    ViewData["Message"] = "請選擇 JPG/PNG 檔案上傳";
+                    ViewData["EventTypeID"] = new SelectList(_context.EventType, "EventTypeID", "EventType1", @event.EventTypeID);
+                    ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueName", @event.VenueID);
                     return View(@event);
                 }
 

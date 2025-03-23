@@ -8,7 +8,8 @@
         background-color: #55caf8;
         color: #fff;
     }
-    .btn-a:hover {
+
+        .btn-a:hover, .btn-check:checked + .btn-a {
         background-color: #45a2e0;
         color: #fff;
     }
@@ -16,7 +17,8 @@
         background-color: #3bd8a4;
         color: #fff;
     }
-    .btn-b:hover {
+
+        .btn-b:hover, .btn-check:checked + .btn-b {
         background-color: #25b685;
         color: #fff;
     }
@@ -24,7 +26,8 @@
         background-color: #d578dd;
         color: #fff;
     }
-    .btn-c:hover {
+
+        .btn-c:hover, .btn-check:checked + .btn-c {
         background-color: #b957c2;
         color: #fff;
     }
@@ -32,13 +35,21 @@
         background-color: #f89849;
         color: #fff;
     }
-    .btn-d:hover {
+
+        .btn-d:hover, .btn-check:checked + .btn-d {
             background-color: #f08935;
         color: #fff;
     }
 
     .shadow-sm{
         border-radius: 1rem !important;
+    }
+    .seat{
+        height: 35px;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
@@ -49,21 +60,24 @@
     <div><i class="bi bi-circle-fill me-2" style="color:#f89849;"></i>D區1000元</div>
     <div><i class="bi bi-circle-fill me-2 text-secondary"></i>E區800元</div>
 </div>
-<div class="mt-5">
+<div style="height:50px" class="border w-50 text-center p-3 mx-auto">舞台</div>
 @foreach (var group in groupedSeats)
 {
+    var sortedSeats = group.OrderBy(seat =>
+        int.TryParse(seat.Number.Replace("號", ""), out int num) ? num : int.MaxValue
+    );
     <div class="d-flex align-items-center justify-content-center my-3">
         <!-- 座位排標示 -->
         <span class="fw-bold me-2">@group.Key</span>
         <!-- 座位選擇 -->
         <div class="d-flex flex-wrap">
-            @foreach (var seat in group)
+            @foreach (var seat in sortedSeats)
             {
                 <div class="form-check-inline mx-2">
                     <input class="btn-check" type="checkbox" id="@seat.SeatID" name="SeatID" value="@seat.SeatID" autocomplete="off"
                     @(seat.Status != "1" ? "disabled" : "")>
 
-                    <label class="btn rounded-circle 
+                    <label class="btn rounded-circle seat
                         @(seat.SeatType == "A區1600元" ? "btn-a" :
                           seat.SeatType == "B區1400元" ? "btn-b" :
                           seat.SeatType == "C區1200元" ? "btn-c" :
@@ -77,4 +91,4 @@
         <span class="fw-bold ms-2">@group.Key</span>
     </div>
 }
-</div>
+
