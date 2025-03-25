@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M9wiBBnvHMwROr02W9XaMexfek2iNxXw0iT9z3a1Zn0=",
+  "Hash": "yJ4UfSsQefwUglCHgdj9y8USyU0upAdhSJpCviQFp/4=",
   "Source": "MyEvent",
   "BasePath": "_content/MyEvent",
   "Mode": "Default",
@@ -288,6 +288,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\EventPhotos\\E2025052801.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025052901.JPG",
+      "SourceId": "MyEvent",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\",
+      "BasePath": "_content/MyEvent",
+      "RelativePath": "EventPhotos/E2025052901#[.{fingerprint}]?.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "60jrpjy8uu",
+      "Integrity": "CmIJbAi4/fLfecqASZb1rDDQEhNbDHfhFrEianNJYcI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EventPhotos\\E2025052901.JPG"
     },
     {
       "Identity": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025062910.jpg",
@@ -2450,6 +2471,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-lnfC9cSqtUz3s3VDJzOhcxm6gGeI5MdATJxwZ3ppEjM="
+        }
+      ]
+    },
+    {
+      "Route": "EventPhotos/E2025052901.60jrpjy8uu.JPG",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025052901.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "563118"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CmIJbAi4/fLfecqASZb1rDDQEhNbDHfhFrEianNJYcI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 24 Mar 2025 00:31:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "60jrpjy8uu"
+        },
+        {
+          "Name": "label",
+          "Value": "EventPhotos/E2025052901.JPG"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CmIJbAi4/fLfecqASZb1rDDQEhNbDHfhFrEianNJYcI="
+        }
+      ]
+    },
+    {
+      "Route": "EventPhotos/E2025052901.JPG",
+      "AssetFile": "C:\\Users\\user\\Documents\\GitHub\\MyEvent\\MyEvent\\wwwroot\\EventPhotos\\E2025052901.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "563118"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CmIJbAi4/fLfecqASZb1rDDQEhNbDHfhFrEianNJYcI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 24 Mar 2025 00:31:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CmIJbAi4/fLfecqASZb1rDDQEhNbDHfhFrEianNJYcI="
         }
       ]
     },

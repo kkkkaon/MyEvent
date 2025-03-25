@@ -10,7 +10,6 @@ using MyEvent.Models;
 
 namespace MyEvent.Controllers
 {
-    [ServiceFilter(typeof(AdminLoginFilter))]
     public class ManageOrdersController : Controller
     {
         private readonly MyEventContext _context;
@@ -19,6 +18,7 @@ namespace MyEvent.Controllers
             _context = context;
         }
 
+        [ServiceFilter(typeof(AdminLoginFilter))]
         // GET: ManageOrders
         public async Task<IActionResult> Index()
         {
@@ -37,7 +37,6 @@ namespace MyEvent.Controllers
             var order = await _context.Order
                 .Include(o => o.Event)
                 .Include(o => o.Member)
-                .Include(o => o.Payment)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
             {
@@ -71,7 +70,6 @@ namespace MyEvent.Controllers
             }
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "EventID", order.EventID);
             ViewData["MemberID"] = new SelectList(_context.Member, "MemberID", "MemberID", order.MemberID);
-            ViewData["PaymentID"] = new SelectList(_context.Payment, "PaymentID", "PaymentID", order.PaymentID);
             return View(order);
         }
 
@@ -83,14 +81,18 @@ namespace MyEvent.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Order.FindAsync(id);
+            var order = await _context.Order
+                .Include(o => o.Event)
+                .Include(o => o.Member)
+                .Include(o => o.OrderDetail)
+                .FirstOrDefaultAsync(o => o.OrderID == id);
             if (order == null)
             {
                 return NotFound();
             }
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "EventID", order.EventID);
-            ViewData["MemberID"] = new SelectList(_context.Member, "MemberID", "MemberID", order.MemberID);
-            ViewData["PaymentID"] = new SelectList(_context.Payment, "PaymentID", "PaymentID", order.PaymentID);
+            ViewData["MemberID"] = new SelectList(_context.Member, "MemberID", "MemberName", order.Member.MemberID);
+            //ViewData["PaymentID"] = new SelectList(_context.Payment, "PaymentID", "PaymentID", order.PaymentID);
             return View(order);
         }
 
@@ -99,7 +101,7 @@ namespace MyEvent.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("OrderID,Date,Qty,Status,Memo,EventID,MemberID,PaymentID,TotalPrice")] Order order)
+        public async Task<IActionResult> Edit(string id, Order order)
         {
             if (id != order.OrderID)
             {
@@ -127,11 +129,12 @@ namespace MyEvent.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "EventID", order.EventID);
-            ViewData["MemberID"] = new SelectList(_context.Member, "MemberID", "MemberID", order.MemberID);
-            ViewData["PaymentID"] = new SelectList(_context.Payment, "PaymentID", "PaymentID", order.PaymentID);
+            ViewData["MemberID"] = new SelectList(_context.Member, "MemberID", "MemberName", order.MemberID);
+            //ViewData["PaymentID"] = new SelectList(_context.Payment, "PaymentID", "PaymentID", order.PaymentID);
             return View(order);
         }
 
+        //[ServiceFilter(typeof(AdminLoginFilter))]
         // GET: ManageOrders/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
@@ -143,7 +146,6 @@ namespace MyEvent.Controllers
             var order = await _context.Order
                 .Include(o => o.Event)
                 .Include(o => o.Member)
-                .Include(o => o.Payment)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
             {

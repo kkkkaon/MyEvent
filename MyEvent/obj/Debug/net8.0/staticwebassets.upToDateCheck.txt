@@ -9,6 +9,7 @@ wwwroot\EventPhotos\E2025050822.jpg
 wwwroot\EventPhotos\E2025051201.JPG
 wwwroot\EventPhotos\E2025052001.JPG
 wwwroot\EventPhotos\E2025052801.JPG
+wwwroot\EventPhotos\E2025052901.JPG
 wwwroot\EventPhotos\E2025062910.jpg
 wwwroot\favicon.ico
 wwwroot\js\site.js

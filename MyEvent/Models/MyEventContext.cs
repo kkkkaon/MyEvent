@@ -268,10 +268,6 @@ public partial class MyEventContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__MemberID__30C33EC3");
 
-            entity.HasOne(d => d.Payment).WithMany(p => p.Order)
-                .HasForeignKey(d => d.PaymentID)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Order__PaymentID__31B762FC");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
